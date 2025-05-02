@@ -11,9 +11,9 @@ const SubscribeNewsletter = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-12 bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl text-gray-800 mb-4">
+        <h2 className="text-3xl md:text-4xl text-emerald-600 mb-4">
           Subscribe to Our Newsletter
         </h2>
         <p className="text-gray-600 mb-8">

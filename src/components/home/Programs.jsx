@@ -32,7 +32,7 @@ const Programs = () => {
                     className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                     wrapperClassName="w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-emerald-300 opacity-20 hover:opacity-30 transition duration-500"></div>
+                  <div className="absolute inset-0 bg-emerald-300 opacity-10 hover:opacity-30 transition duration-500"></div>
                 </div>
               </div>
             </Link>
@@ -53,7 +53,7 @@ const Programs = () => {
                     className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                     wrapperClassName="w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-emerald-300 opacity-20 hover:opacity-30 transition duration-500"></div>
+                  <div className="absolute inset-0 bg-emerald-300 opacity-10 hover:opacity-30 transition duration-500"></div>
                 </div>
               </div>
             </Link>
@@ -74,7 +74,7 @@ const Programs = () => {
                     className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                     wrapperClassName="w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-emerald-300 opacity-20 hover:opacity-30 transition duration-500"></div>
+                  <div className="absolute inset-0 bg-emerald-300 opacity-10 hover:opacity-30 transition duration-500"></div>
                 </div>
               </div>
             </Link>

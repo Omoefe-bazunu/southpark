@@ -8,16 +8,22 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Branding Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-extrabold">SouthPark University</h3>
+            <h3 className="text-2xl ">SouthPark University</h3>
             <p className="text-gray-400">
               Transforming lives through education with full scholarships and
               academic excellence.
             </p>
+            <img
+              src="/SouthparkLogow.png"
+              alt="SouthPark Logo"
+              width={200}
+              height={200}
+            />
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -69,7 +75,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Contact Us</h4>
+            <h4 className="text-lg">Contact Us</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Email: info@southparkuniversity.edu</li>
               <li>Phone: (123) 456-7890</li>

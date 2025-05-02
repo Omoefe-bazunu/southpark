@@ -10,10 +10,10 @@ const Features = () => {
             className="text-5xl text-emerald-600 mb-4"
             aria-hidden="true"
           />
-          <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+          <h2 className="text-2xl text-gray-800 mb-3">
             World-Class Scholarship Programs
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 hidden">
             SouthPark University offers fully funded scholarships for
             undergraduate, graduate, and international students, ensuring access
             to top-tier education for all.
@@ -26,10 +26,10 @@ const Features = () => {
             className="text-5xl text-emerald-600 mb-4"
             aria-hidden="true"
           />
-          <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+          <h2 className="text-2xl  text-gray-800 mb-3">
             Expert Mentors for Scholarship Students
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 hidden">
             Our dedicated mentors provide personalized guidance to scholarship
             recipients, helping them excel academically and achieve their
             dreams.
@@ -42,10 +42,10 @@ const Features = () => {
             className="text-5xl text-emerald-600 mb-4"
             aria-hidden="true"
           />
-          <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+          <h2 className="text-2xl text-gray-800 mb-3">
             Flexible Learning Opportunities
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600  hidden">
             With a range of programs and scholarship support, SouthPark offers
             flexible learning options for students worldwide, including those
             from Nigeria studying in the US.

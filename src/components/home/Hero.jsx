@@ -35,7 +35,7 @@ const Hero = () => {
   }, [bannerImages.length]);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 pt-30">
       {/* Hero Section with Fading Slideshow */}
       <section className="relative w-full h-[90vh] overflow-hidden">
         {/* Slideshow Images with Parallax Effect */}
@@ -62,7 +62,7 @@ const Hero = () => {
           {/* Headline with Animation */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl  text-white mb-4 drop-shadow-lg animate__animated animate__fadeInDown">
             Advance your Studies with a Full{" "}
-            <span className="text-yellow-300">Scholarship</span>
+            <span className="text-yellow-200">Scholarship</span>
           </h1>
 
           {/* Tagline with Animation */}
@@ -81,7 +81,7 @@ const Hero = () => {
             </Link>
             <Link
               to="/academics"
-              className="border-2 border-emerald-600 text-emerald-600 py-3 px-8 text-lg hover:bg-emerald-600 hover:text-white transition duration-300 shadow-lg hover:scale-105 transform"
+              className="border-2 border-white text-white py-3 px-8 text-lg hover:bg-emerald-600 hover:text-white hover:border-0 transition duration-300 shadow-lg hover:scale-105 transform"
               aria-label="Find your program at SouthPark University"
             >
               Find Your Program

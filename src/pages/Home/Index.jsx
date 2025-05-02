@@ -6,6 +6,7 @@ import Programs from "../../components/home/Programs";
 import Impact from "../../components/home/Impact";
 import Testimonials from "../../components/common/Testimonials";
 import SubscribeNewsletter from "../../components/home/SubscribeNewsLetter";
+import FAQ from "../../components/common/FAQs";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Programs />
       <Impact />
       <Testimonials />
+      <FAQ />
       <SubscribeNewsletter />
     </div>
   );

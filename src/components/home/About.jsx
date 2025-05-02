@@ -13,7 +13,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl text-gray-800">
+            <h2 className="text-2xl md:text-3xl text-gray-800">
               Fueling Minds. Igniting Purpose at SouthPark University
             </h2>
             <p className="text-gray-600 text-lg">
@@ -32,7 +32,7 @@ const About = () => {
               className="inline-block bg-emerald-600 text-white py-3 px-6 font-semibold text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform bg-gradient-to-r from-emerald-600 to-emerald-500"
               aria-label="Discover the full story of SouthPark University"
             >
-              Discover Our Story
+              Read More
             </Link>
           </div>
 
@@ -42,10 +42,10 @@ const About = () => {
               src="/bg3.jpg"
               alt="SouthPark University students in a classroom setting"
               effect="opacity"
-              className="w-full h-96 object-cover rounded-lg shadow-lg"
+              className="w-full h-96 object-cover shadow-lg"
               wrapperClassName="w-full h-full"
             />
-            <div className="absolute inset-0 bg-emerald-600 opacity-20 rounded-lg"></div>
+            <div className="absolute inset-0 bg-emerald-600 opacity-10 "></div>
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ const Header = () => {
       <div className="">
         {/* Top Bar with Service Center and Email Center */}
         <div
-          className={`flex justify-center items-center py-2 border-b border-gray-200 transition-all duration-300 ${
+          className={`hidden lg:flex justify-center items-center py-2 border-b border-gray-200 transition-all duration-300 ${
             isTopBarVisible
               ? "opacity-100 max-h-12"
               : "opacity-0 max-h-0 overflow-hidden"
@@ -56,14 +56,19 @@ const Header = () => {
         {/* University Name and Navigation */}
         <div className="flex flex-col items-center">
           {/* University Name */}
-          <div className="text-4xl text-emerald-900 my-4">
+          <div className="text-3xl flex items-center md:text-4xl text-emerald-900 my-2">
             <Link to="/" aria-label="SouthPark University Home">
-              SouthPark University
+              <img
+                src="/SouthparkLogo.png"
+                alt="SouthPark Logo"
+                width={200}
+                height={200}
+              />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center py-4 justify-center w-full bg-emerald-700  text-white">
+          <div className="hidden md:flex items-center py-4 justify-center w-full bg-gradient-to-b from-emerald-800 to-emerald-950  text-white">
             <nav className="flex space-x-6">
               <Link
                 to="/"
@@ -108,7 +113,7 @@ const Header = () => {
                 Athletics
               </Link>
               <Link
-                to="/news"
+                to="/campus"
                 className=" hover:text-emerald-300 transition duration-300"
                 aria-label="News Page"
               >
@@ -125,10 +130,10 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center justify-between w-full">
+          <div className="md:hidden flex items-center justify-between w-full ">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 p-2"
+              className="text-gray-600 hover:text-emerald-600 focus:outline-none mx-auto cursor-pointer mb-2 p-2"
               aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -145,7 +150,7 @@ const Header = () => {
           <div className="flex justify-end p-4">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 p-2"
+              className="text-gray-600 hover:text-emerald-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 p-2"
               aria-label="Close Menu"
             >
               <FaTimes size={24} />
@@ -201,7 +206,7 @@ const Header = () => {
               Athletics
             </Link>
             <Link
-              to="/news"
+              to="/campus"
               onClick={toggleMobileMenu}
               className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
               aria-label="News Page"
