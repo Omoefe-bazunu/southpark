@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaPhone, FaEnvelope, FaSearch } from "react-icons/fa"; // Icons for hamburger menu, contact, and search
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTopBarVisible, setIsTopBarVisible] = useState(true);
+  const location = useLocation(); // Get current route
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -29,6 +30,9 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Function to determine if a link is active
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
@@ -68,60 +72,76 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center py-4 justify-center w-full bg-gradient-to-b from-emerald-800 to-emerald-950  text-white">
+          <div className="hidden md:flex items-center py-4 justify-center w-full bg-gradient-to-b from-emerald-800 to-emerald-950 text-white">
             <nav className="flex space-x-6">
               <Link
                 to="/"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Home Page"
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/about") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="About Page"
               >
                 About
               </Link>
               <Link
                 to="/academics"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/academics") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Academics Page"
               >
                 Academics
               </Link>
               <Link
                 to="/faculties"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/faculties") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Faculties Page"
               >
                 Admissions
               </Link>
               <Link
-                to="/research"
-                className=" hover:text-emerald-300 transition duration-300"
+                to="/alumni"
+                className={`${
+                  isActive("/alumni") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Research Page"
               >
                 Alumni
               </Link>
               <Link
-                to="/events"
-                className=" hover:text-emerald-300 transition duration-300"
+                to="/athlete"
+                className={`${
+                  isActive("/athlete") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Events Page"
               >
                 Athletics
               </Link>
               <Link
                 to="/campus"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/campus") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="News Page"
               >
                 CampusLife
               </Link>
               <Link
                 to="/contact"
-                className=" hover:text-emerald-300 transition duration-300"
+                className={`${
+                  isActive("/contact") ? "text-emerald-300 underline" : ""
+                } hover:text-emerald-300 transition duration-300`}
                 aria-label="Contact Page"
               >
                 Contact Us
@@ -130,7 +150,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center justify-between w-full ">
+          <div className="md:hidden flex items-center justify-between w-full">
             <button
               onClick={toggleMobileMenu}
               className="text-gray-600 hover:text-emerald-600 focus:outline-none mx-auto cursor-pointer mb-2 p-2"
@@ -143,24 +163,43 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden fixed top-0 right-0 h-full w-3/4 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`md:hidden fixed top-0 right-0 h-full w-3/4 bg-gradient-to-b from-emerald-800 to-emerald-950 shadow-lg transform transition-transform duration-300 ease-in-out  ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex justify-end p-4">
-            <button
-              onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 p-2"
-              aria-label="Close Menu"
-            >
-              <FaTimes size={24} />
-            </button>
+          {/* Mobile Menu Header */}
+          <div className="flex flex-col items-center p-4 border-b border-emerald-700">
+            <div className="flex justify-between items-center w-full">
+              <Link
+                to="/"
+                onClick={toggleMobileMenu}
+                aria-label="SouthPark University Home"
+              >
+                <h2 className="text-white text-lg">
+                  SouthPark <br />
+                  University
+                </h2>
+              </Link>
+              <button
+                onClick={toggleMobileMenu}
+                className="text-white hover:text-emerald-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 p-2"
+                aria-label="Close Menu"
+              >
+                <FaTimes size={24} />
+              </button>
+            </div>
           </div>
-          <nav className="flex flex-col items-center space-y-6 py-8">
+
+          {/* Mobile Navigation Links */}
+          <nav className="flex flex-col items-center space-y-4 py-6">
             <Link
               to="/"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg  border-b border-emerald-700 transition duration-300 ${
+                isActive("/")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Home Page"
             >
               Home
@@ -168,7 +207,11 @@ const Header = () => {
             <Link
               to="/about"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/about")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="About Page"
             >
               About
@@ -176,7 +219,11 @@ const Header = () => {
             <Link
               to="/academics"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/academics")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Academics Page"
             >
               Academics
@@ -184,23 +231,35 @@ const Header = () => {
             <Link
               to="/faculties"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/faculties")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Faculties Page"
             >
               Admission
             </Link>
             <Link
-              to="/research"
+              to="/alumni"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/alumni")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Research Page"
             >
               Alumni
             </Link>
             <Link
-              to="/events"
+              to="/athlete"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/athlete")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Events Page"
             >
               Athletics
@@ -208,7 +267,11 @@ const Header = () => {
             <Link
               to="/campus"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/campus")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="News Page"
             >
               CampusLife
@@ -216,7 +279,11 @@ const Header = () => {
             <Link
               to="/contact"
               onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-emerald-600 transition duration-300 font-medium text-lg"
+              className={`w-full text-center py-3 text-white text-lg border-b border-emerald-700 transition duration-300 ${
+                isActive("/contact")
+                  ? "text-emerald-300 bg-emerald-700/30"
+                  : "hover:text-emerald-300 hover:bg-emerald-700/20"
+              }`}
               aria-label="Contact Page"
             >
               Contact Us

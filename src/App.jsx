@@ -6,6 +6,10 @@ import Footer from "./components/layout/Footer";
 import AboutUs from "./pages/AboutUs/Index";
 import ContactUs from "./pages/ContactUs/Index";
 import CampusLife from "./pages/CampusLife/Index";
+import Athletics from "./pages/Athletic/Index";
+import Alumni from "./pages/Alumni/Index";
+import Academics from "./pages/Academics/Index";
+// import AcademicDivisions from "./pages/AcademicDivisions";
 
 const App = () => (
   <Router>
@@ -16,6 +20,10 @@ const App = () => (
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/campus" element={<CampusLife />} />
+        <Route path="/athlete" element={<Athletics />} />
+        <Route path="/alumni" element={<Alumni />} />
+        <Route path="/academics" element={<Academics />} />
+        {/* <Route path="/academics" element={<AcademicDivisions />} /> */}
         {/* Other routes */}
       </Routes>
     </Suspense>

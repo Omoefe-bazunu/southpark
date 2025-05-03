@@ -21,7 +21,7 @@ const AboutUs = () => {
           {/* Overlay for readability */}
           <div className="absolute inset-0  bg-gradient-to-b from-black/50 to-black/70"></div>
           {/* Breadcrumb Overlay */}
-          <div className="absolute bottom-4 px-4 lg:px-12 left-4 text-white text-lg flex items-center space-x-2">
+          <div className="absolute bottom-4 px-4 lg:px-12 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
             <Link
               to="/"
               className="hover:text-emerald-400 transition duration-300"
@@ -35,14 +35,13 @@ const AboutUs = () => {
         </section>
 
         {/* Introduction Section */}
-        <section className="py-16 bg-white px-4 lg:px-8">
-          <div className="max-w-7xl px-4 lg:px-8">
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl md:text-4xl text-gray-800 mb-6 animate__animated animate__fadeInDown">
               Fueling Minds. Igniting Purpose.
             </h1>
             <div className=" flex flex-col">
               <div className=" w-8 h-8 bg-emerald-600 mb-2 "></div>
-
               <p className="text-gray-600 border-b border-emerald-100 pb-4 text-lg mb-8 animate__animated animate__fadeInUp animate__delay-1s">
                 Welcome to South Park University—where knowledge meets calling
                 and learning transforms lives. Nestled in the energetic city of

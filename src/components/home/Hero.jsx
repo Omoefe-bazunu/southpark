@@ -60,7 +60,7 @@ const Hero = () => {
         {/* Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70 flex flex-col justify-center items-center text-center px-4">
           {/* Headline with Animation */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl  text-white mb-4 drop-shadow-lg animate__animated animate__fadeInDown">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl px-8  text-white mb-4 drop-shadow-lg animate__animated animate__fadeInDown">
             Advance your Studies with a Full{" "}
             <span className="text-yellow-200">Scholarship</span>
           </h1>
