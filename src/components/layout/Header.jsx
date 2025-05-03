@@ -77,7 +77,7 @@ const Header = () => {
               <Link
                 to="/"
                 className={`${
-                  isActive("/") ? "text-emerald-300 underline" : ""
+                  isActive("/") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Home Page"
               >
@@ -86,7 +86,7 @@ const Header = () => {
               <Link
                 to="/about"
                 className={`${
-                  isActive("/about") ? "text-emerald-300 underline" : ""
+                  isActive("/about") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="About Page"
               >
@@ -95,7 +95,7 @@ const Header = () => {
               <Link
                 to="/academics"
                 className={`${
-                  isActive("/academics") ? "text-emerald-300 underline" : ""
+                  isActive("/academics") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Academics Page"
               >
@@ -104,7 +104,7 @@ const Header = () => {
               <Link
                 to="/faculties"
                 className={`${
-                  isActive("/faculties") ? "text-emerald-300 underline" : ""
+                  isActive("/faculties") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Faculties Page"
               >
@@ -113,7 +113,7 @@ const Header = () => {
               <Link
                 to="/alumni"
                 className={`${
-                  isActive("/alumni") ? "text-emerald-300 underline" : ""
+                  isActive("/alumni") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Research Page"
               >
@@ -122,7 +122,7 @@ const Header = () => {
               <Link
                 to="/athlete"
                 className={`${
-                  isActive("/athlete") ? "text-emerald-300 underline" : ""
+                  isActive("/athlete") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Events Page"
               >
@@ -131,7 +131,7 @@ const Header = () => {
               <Link
                 to="/campus"
                 className={`${
-                  isActive("/campus") ? "text-emerald-300 underline" : ""
+                  isActive("/campus") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="News Page"
               >
@@ -140,7 +140,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 className={`${
-                  isActive("/contact") ? "text-emerald-300 underline" : ""
+                  isActive("/contact") ? "text-emerald-300" : ""
                 } hover:text-emerald-300 transition duration-300`}
                 aria-label="Contact Page"
               >
