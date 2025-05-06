@@ -33,7 +33,7 @@ const Academics = () => {
   };
 
   return (
-    <main className="bg-gray-50 min-h-screen">
+    <main className="bg-gray-50 min-h-screen pt-16">
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
@@ -44,7 +44,7 @@ const Academics = () => {
           wrapperClassName="w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
-        <div className="absolute bottom-4 px-4 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
+        <div className="absolute bottom-4 px-4 lg:px-12 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
           <Link
             to="/"
             className="hover:text-emerald-400 transition duration-300"

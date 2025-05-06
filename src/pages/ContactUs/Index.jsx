@@ -5,6 +5,8 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import "animate.css"; // For animations
 import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon
 import SubscribeNewsletter from "../../components/home/SubscribeNewsLetter";
+import { db } from "../../services/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -13,18 +15,47 @@ const ContactUs = () => {
     subject: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Placeholder for form submission logic (e.g., API call)
-    console.log("Form submitted:", formData);
-    // Reset form after submission
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setSubmitting(true);
+
+    try {
+      const dataToSubmit = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        submittedAt: new Date().toISOString(),
+      };
+
+      await addDoc(collection(db, "contact"), dataToSubmit);
+      setSuccess(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  if (success) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center p-6 bg-white shadow-lg rounded-lg">
+          <h2 className="text-2xl text-emerald-600 mb-4">Success!</h2>
+          <p className="text-gray-600">
+            Your message has been submitted successfully. We'll get back to you
+            soon!
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,8 +97,8 @@ const ContactUs = () => {
             </p>
 
             {/* Contact Form */}
-            <div className="bg-gray-50 p-8  shadow-md animate__animated animate__fadeInUp">
-              <div className="space-y-6">
+            <div className="bg-gray-50 p-8 shadow-md animate__animated animate__fadeInUp">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
                   <label
@@ -82,7 +113,7 @@ const ContactUs = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full p-3  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800"
+                    className="w-full p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800"
                     placeholder="Your Name"
                     aria-label="Your Name"
                     required
@@ -155,14 +186,15 @@ const ContactUs = () => {
                 {/* Submit Button */}
                 <div className="text-center">
                   <button
-                    onClick={handleSubmit}
-                    className="bg-emerald-600 text-white py-3 px-8  text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    type="submit"
+                    className="bg-emerald-600 text-white py-3 px-8 text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     aria-label="Submit Contact Form"
+                    disabled={submitting}
                   >
-                    Send Message
+                    {submitting ? "Submitting..." : "Send Message"}
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
 
             {/* WhatsApp Chat Option */}

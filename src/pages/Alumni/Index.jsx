@@ -32,7 +32,7 @@ const Alumni = () => {
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
         {/* Breadcrumb Overlay */}
-        <div className="absolute bottom-4 px-4 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
+        <div className="absolute bottom-4 px-4 lg:px-12 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
           <Link
             to="/"
             className="hover:text-emerald-400 transition duration-300"
@@ -194,15 +194,6 @@ const Alumni = () => {
                 Park University alumni.
               </p>
             </div>
-          </div>
-          <div className="relative grid grid-cols-1 lg:grid-cols-2">
-            <LazyLoadImage
-              src="/bg4.jpg"
-              alt="SouthPark University alumni networking at an event"
-              effect="opacity"
-              className="w-full mb-2 h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent rounded-lg"></div>
           </div>
         </div>
       </section>

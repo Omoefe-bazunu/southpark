@@ -35,7 +35,7 @@ const Hero = () => {
   }, [bannerImages.length]);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-30">
+    <div className="min-h-screen bg-gray-50 pt-25">
       {/* Hero Section with Fading Slideshow */}
       <section className="relative w-full h-[90vh] overflow-hidden">
         {/* Slideshow Images with Parallax Effect */}
@@ -61,8 +61,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70 flex flex-col justify-center items-center text-center px-4">
           {/* Headline with Animation */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl px-8  text-white mb-4 drop-shadow-lg animate__animated animate__fadeInDown">
-            Advance your Studies with a Full{" "}
-            <span className="text-yellow-200">Scholarship</span>
+            Advance your Studies with a Full Ride
+            <span className="text-yellow-200"> Scholarship</span>
           </h1>
 
           {/* Tagline with Animation */}
@@ -73,7 +73,7 @@ const Hero = () => {
           {/* Buttons with Animation */}
           <div className="flex flex-col sm:flex-row gap-4 animate__animated animate__fadeInUp animate__delay-2s">
             <Link
-              to="/apply"
+              to="/stageOne"
               className="bg-emerald-600 lg:w-36 text-white py-3 px-8 hover:bg-emerald-800 text-lg transition duration-300 shadow-lg hover:scale-105 transform "
               aria-label="Apply for a scholarship at SouthPark University"
             >

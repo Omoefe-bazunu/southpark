@@ -19,7 +19,7 @@ const Athletics = () => {
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
         {/* Breadcrumb Overlay */}
-        <div className="absolute bottom-4 px-4 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
+        <div className="absolute bottom-4 px-4 lg:px-12 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
           <Link
             to="/"
             className="hover:text-emerald-400 transition duration-300"
@@ -218,7 +218,7 @@ const Athletics = () => {
             className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
           />
           <Link
-            to="/apply-athletics"
+            to="/stageOne"
             className="block bg-emerald-600 text-white py-3 mt-8 px-8 w-fit font-semibold text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform animate__animated animate__fadeInUp animate__delay-2s"
             aria-label="Apply to join SouthPark University Athletics"
           >

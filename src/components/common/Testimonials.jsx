@@ -348,23 +348,29 @@ const Testimonials = () => {
           >
             {getVisibleTestimonials().map((testimonial, index) => (
               <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-4">
-                <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 px-6 py-8 text-center">
+                <div className="bg-white rounded-lg px-12 flex flex-col lg:flex-row text-center lg:text-left  gap-x-8 shadow-md hover:shadow-lg transition duration-300 py-8 ">
                   <div className="">
                     <LazyLoadImage
                       src={testimonial.image}
                       alt={`Portrait of ${testimonial.name}`}
                       effect="opacity"
-                      className="w-24 h-24 rounded-full mx-auto object-cover border-2 border-emerald-600"
+                      className="w-44 h-44 rounded-full mx-auto object-cover border-2 border-emerald-600"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-500">{testimonial.region}</p>
-                  <p className="text-sm text-emerald-600 font-medium">
-                    {testimonial.status}
-                  </p>
-                  <p className="text-gray-600 mt-4 italic">
-                    “{testimonial.quote}”
-                  </p>
+                  <div>
+                    <h3 className="text-xl font-semibold">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      {testimonial.region}
+                    </p>
+                    <p className="text-sm text-emerald-600 font-medium">
+                      {testimonial.status}
+                    </p>
+                    <p className="text-gray-600 mt-4 italic max-w-3xl">
+                      “{testimonial.quote}”
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}

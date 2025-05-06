@@ -8,17 +8,21 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Branding Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl ">SouthPark University</h3>
+            <div className="flex gap-4 items-center">
+              {" "}
+              <img
+                src="/SouthparkLogowbt.png"
+                alt="SouthPark Logo"
+                width={60}
+                height={60}
+              />
+              <h3 className="text-2xl ">SouthPark University</h3>
+            </div>
+
             <p className="text-gray-400">
               Transforming lives through education with full scholarships and
               academic excellence.
             </p>
-            <img
-              src="/SouthparkLogow.png"
-              alt="SouthPark Logo"
-              width={200}
-              height={200}
-            />
           </div>
 
           {/* Quick Links */}
@@ -45,7 +49,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/programs"
+                  to="/academics"
                   className="text-gray-400 hover:text-emerald-600 transition duration-300"
                   aria-label="Programs Page"
                 >
@@ -54,7 +58,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/apply"
+                  to="/stageOne"
                   className="text-gray-400 hover:text-emerald-600 transition duration-300"
                   aria-label="Apply Page"
                 >
