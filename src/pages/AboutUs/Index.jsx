@@ -26,7 +26,7 @@ const AboutUs = () => {
         {/* Hero Section with Image and Breadcrumb */}
         <section className="relative w-full h-[60vh] overflow-hidden">
           <LazyLoadImage
-            src="/bg3.jpg"
+            src="/abt2.jpeg"
             alt="SouthPark University campus with students and faculty"
             effect="opacity"
             className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -106,7 +106,7 @@ const AboutUs = () => {
               <div className="flex flex-col md:flex-row items-start bg-gray-50 p-6 rounded-lg shadow-md">
                 <div className="mb-4 md:mb-0 md:mr-6">
                   <img
-                    src="/bg4.jpg"
+                    src="/abt2.jpeg"
                     alt="Growth and recognition"
                     className="w-44 h-44 object-cover rounded-full border-4 border-emerald-600"
                   />
@@ -153,7 +153,7 @@ const AboutUs = () => {
               <div className="flex flex-col md:flex-row items-start bg-gray-50 p-6 rounded-lg shadow-md">
                 <div className="mb-4 md:mb-0 md:mr-6">
                   <img
-                    src="/bg3.jpg"
+                    src="/academ2.jpeg"
                     alt="Mission and values"
                     className="w-44 h-44 object-cover rounded-full border-4 border-emerald-600"
                   />
@@ -276,7 +276,7 @@ const AboutUs = () => {
         {/* Closing Section */}
         <section
           className="py-16 bg-emerald-600 text-white bg-cover bg-center bg-no-repeat relative"
-          style={{ backgroundImage: `url('/bg3.jpg')` }}
+          style={{ backgroundImage: `url('/featrdabt.jpg')` }}
         >
           <div className="absolute inset-0  bg-gradient-to-b from-black/50 to-black/70"></div>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -36,7 +36,7 @@ const Admissions = () => {
         {/* Hero Section with Image and Breadcrumb */}
         <section className="relative w-full h-[60vh] overflow-hidden">
           <LazyLoadImage
-            src="/bg5.jpg"
+            src="/academ3.jpeg"
             alt="SouthPark University admissions office with students"
             effect="opacity"
             className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -100,7 +100,7 @@ const Admissions = () => {
             <div className="mb-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-6">
                 <img
-                  src="/bg4.jpg"
+                  src="/academics.jpeg"
                   alt="Undergraduate students at SouthPark University"
                   className="w-full h-48 sm:h-64 md:h-72 object-cover border-b-6 border-white"
                 />
@@ -186,14 +186,14 @@ const Admissions = () => {
                         Apply
                       </Link>
                       <Link
-                        to="/request-info"
+                        to="/contact"
                         className="inline-block bg-emerald-600 text-white py-2 px-6 font-serif hover:bg-emerald-700 transition duration-300 hover:scale-105 transform"
                         aria-label="Request more information about undergraduate programs"
                       >
                         Request More Information
                       </Link>
                       <Link
-                        to="/course-offerings"
+                        to="/academics"
                         className="inline-block bg-emerald-600 text-white py-2 px-6 font-serif hover:bg-emerald-700 transition duration-300 hover:scale-105 transform"
                         aria-label="View current course offerings for undergraduate programs"
                       >
@@ -209,7 +209,7 @@ const Admissions = () => {
             <div className="mb-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-6">
                 <img
-                  src="/bg5.jpg"
+                  src="/p2.jpg"
                   alt="Graduate students at SouthPark University"
                   className="w-full h-48 sm:h-64 md:h-72 object-cover border-b-6 border-white"
                 />
@@ -267,14 +267,14 @@ const Admissions = () => {
                         Apply
                       </Link>
                       <Link
-                        to="/request-info"
+                        to="/contact"
                         className="inline-block bg-emerald-600 text-white py-2 px-6 font-serif hover:bg-emerald-700 transition duration-300 hover:scale-105 transform"
                         aria-label="Request more information about graduate programs"
                       >
                         Request More Information
                       </Link>
                       <Link
-                        to="/course-offerings"
+                        to="/academics"
                         className="inline-block bg-emerald-600 text-white py-2 px-6 font-serif hover:bg-emerald-700 transition duration-300 hover:scale-105 transform"
                         aria-label="View current course offerings for graduate programs"
                       >
@@ -317,7 +317,7 @@ const Admissions = () => {
         <section className="pb-8 sm:pb-12 md:pb-16 bg-emerald-600 text-white">
           <div className="relative min-h-[20vh] sm:min-h-[30vh] md:min-h-[40vh] w-full mb-10">
             <img
-              src="/bg4.jpg"
+              src="/hero2.jpg"
               alt="SouthPark University campus during a visit event"
               className="w-full h-72 object-cover"
             />
@@ -423,7 +423,7 @@ const Admissions = () => {
         {/* Speak with a Counselor Section */}
         <section
           className="py-12 sm:py-16 bg-white bg-cover bg-center bg-no-repeat relative text-center"
-          style={{ backgroundImage: `url('/bg4.jpg')` }}
+          style={{ backgroundImage: `url('/counsel.jpeg')` }}
         >
           <div className="absolute inset-0 bg-gray-600 opacity-50 z-0"></div>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -439,14 +439,16 @@ const Admissions = () => {
               for personalized guidance to ensure your application process goes
               smoothly.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center space-x-2 bg-white text-emerald-600 py-3 px-6 sm:px-8 text-base sm:text-lg  shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform animate__animated animate__pulse animate__delay-2s"
+            <a
+              href="mailto:admissions@southparkuni.com?subject=Inquiry%20About%20SouthPark%20University%20Admissions"
+              className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-8 fontMuch text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform"
               aria-label="Email the SouthPark University Admissions Team"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaEnvelope className="text-xl" />
               <span>Email Admissions Team</span>
-            </Link>
+            </a>
           </div>
         </section>
       </main>

@@ -12,15 +12,15 @@ const Hero = () => {
   // Array of banner images with alt text for accessibility
   const bannerImages = [
     {
-      src: "/bg3.jpg",
+      src: "/hero3.jpg",
       alt: "SouthPark University students celebrating scholarship awards",
     },
     {
-      src: "/bg4.jpg",
+      src: "/hero1.png",
       alt: "A diverse group of students studying together on campus",
     },
     {
-      src: "/bg5.jpg",
+      src: "/hero2.jpg",
       alt: "SouthPark University campus with modern facilities",
     },
   ];
@@ -67,7 +67,7 @@ const Hero = () => {
 
           {/* Tagline with Animation */}
           <p className="text-md md:text-lg lg:text-xl text-gray-200 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
-            Transforming Lives Through Education at SouthPark
+            Transforming Lives Through Education at South Park
           </p>
 
           {/* Buttons with Animation */}

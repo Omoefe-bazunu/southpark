@@ -6,11 +6,11 @@ import { FaBandAid, FaDumbbell, FaAppleAlt } from "react-icons/fa";
 
 const Athletics = () => {
   return (
-    <main className="bg-gray-50 min-h-screen pt-16">
+    <main className="bg-gray-50 min-h-screen pt-16 overflow-x-hidden">
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/athletics.jpg"
           alt="SouthPark University athletes competing on the field"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -36,7 +36,7 @@ const Athletics = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
-            <h1 className="text-5xl text-emerald-600">Our athletics program</h1>
+            <h1 className="text-5xl text-emerald-600">Our Athletics Program</h1>
             <hr className="w-24 bg-emerald-600 text-emerald-600 mt-4 mb-8" />
           </div>
           <p className="text-gray-600 text-lg mb-8 animate__animated animate__fadeInUp animate__delay-1s">
@@ -48,10 +48,10 @@ const Athletics = () => {
             programs that challenge and inspire our students.
           </p>
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/athletics.jpg"
             alt="SouthPark University athletes training together"
             effect="opacity"
-            className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
+            className="w-120  h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
           />
         </div>
       </section>
@@ -80,7 +80,7 @@ const Athletics = () => {
                 Swimming and Diving
               </p>
               <LazyLoadImage
-                src="/bg3.jpg"
+                src="/mensport.png"
                 alt="SouthPark University men's sports team in action"
                 effect="opacity"
                 className="w-full h-48 border-b-6 border-emerald-600 object-cover mx-auto mt-6"
@@ -96,7 +96,7 @@ const Athletics = () => {
                 Swimming and Diving
               </p>
               <LazyLoadImage
-                src="/bg3.jpg"
+                src="/womensp.jpeg"
                 alt="SouthPark University men's sports team in action"
                 effect="opacity"
                 className="w-full h-48 border-b-6 border-emerald-600 object-cover mx-auto mt-6"
@@ -126,10 +126,10 @@ const Athletics = () => {
             mentorship programs for athletes.
           </p>
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/commit.jpg"
             alt="SouthPark University student-athlete studying with a mentor"
             effect="opacity"
-            className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
+            className="w-120  h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
           />
         </div>
       </section>
@@ -152,19 +152,19 @@ const Athletics = () => {
           </p>
           <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4">
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/spf.jpeg"
               alt="SouthPark University athletic facilities"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
             />
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/spf1.jpeg"
               alt="SouthPark University athletic facilities"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
             />
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/spf2.jpeg"
               alt="SouthPark University athletic facilities"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
@@ -188,10 +188,10 @@ const Athletics = () => {
           </p>
 
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/games.jpeg"
             alt="SouthPark University game day with fans cheering"
             effect="opacity"
-            className="w-full h-64 object-cover border-b-6 border-white shadow-md animate__animated animate__fadeInUp animate__delay-3s"
+            className="w-120 h-64 object-cover border-b-6 border-white shadow-md animate__animated animate__fadeInUp animate__delay-3s"
           />
         </div>
       </section>
@@ -212,10 +212,10 @@ const Athletics = () => {
           </p>
 
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/spteam.jpeg"
             alt="SouthPark University athlete recruitment event"
             effect="opacity"
-            className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
+            className="w-120 h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
           />
           <Link
             to="/stageOne"
@@ -282,19 +282,19 @@ const Athletics = () => {
           </p>
           <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4">
             <LazyLoadImage
-              src="/bg4.jpg"
+              src="/comm.jpeg"
               alt="SouthPark University community supporting athletics events"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
             />
             <LazyLoadImage
-              src="/bg4.jpg"
+              src="/comm2.png"
               alt="SouthPark University community supporting athletics events"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
             />
             <LazyLoadImage
-              src="/bg4.jpg"
+              src="/community.jpeg"
               alt="SouthPark University community supporting athletics events"
               effect="opacity"
               className="w-full h-64 object-cover border-b-6 border-emerald-600 shadow-md animate__animated animate__fadeInUp animate__delay-2s"

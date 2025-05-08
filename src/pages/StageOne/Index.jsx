@@ -13,7 +13,9 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 import { db } from "../../services/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const Stage1Application = () => {
   const { user, loading: authLoading } = useAuth();
@@ -21,7 +23,7 @@ const Stage1Application = () => {
 
   const [formData, setFormData] = useState({
     fullName: "",
-    email: "",
+    email: user?.email || "",
     phone: "",
     nationality: "",
     currentLocation: "",
@@ -59,6 +61,8 @@ const Stage1Application = () => {
   useEffect(() => {
     if (!authLoading && !user) {
       navigate("/login", { replace: true });
+    } else if (user) {
+      setFormData((prev) => ({ ...prev, email: user.email }));
     }
   }, [authLoading, user, navigate]);
 
@@ -75,43 +79,38 @@ const Stage1Application = () => {
     setSubmitting(true);
 
     try {
+      // Write to Firestore eligibility/{uid}
       const dataToSubmit = {
         ...formData,
-        userId: user?.uid,
+        email: user.email,
+        userId: user.uid,
+        eligibility: false,
+        approved: false,
         timestamp: new Date().toISOString(),
         submittedAt: new Date().toISOString(),
       };
+      const eligibilityRef = doc(db, "eligibility", user.uid);
+      await setDoc(eligibilityRef, dataToSubmit);
 
-      await addDoc(collection(db, "eligibility"), dataToSubmit);
+      // Send confirmation email via EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.fullName,
+          email: formData.email,
+        },
+        import.meta.env.VITE_EMAILJS_USER_ID
+      );
+
       setSuccess(true);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        nationality: "",
-        currentLocation: "",
-        dateOfBirth: "",
-        gender: "",
-        educationLevel: "",
-        institution: "",
-        graduationYear: "",
-        gpa: "",
-        program: "",
-        intakeSession: "",
-        studiedInEnglish: "",
-        yearsStudiedEnglish: "",
-        fluentEnglish: "",
-        motivation: "",
-        impact: "",
-        employed: "",
-        incomeRange: "",
-        dependents: "",
-        sponsorSupport: "",
-        confirmAccuracy: false,
-        agreeVerificationFee: false,
-      });
+      toast.success("Application submitted and confirmation email sent!");
+      setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
     } catch (error) {
-      console.error("Error submitting application:", error);
+      console.error("Error submitting application:", error.message);
+      toast.error(
+        "Failed to submit application or send email. Please try again."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -119,14 +118,14 @@ const Stage1Application = () => {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <p className="text-gray-700 text-lg">Loading...</p>
       </div>
     );
   }
 
   if (!user) {
-    return null; // Redirect will handle navigation
+    return null;
   }
 
   if (success) {
@@ -135,8 +134,8 @@ const Stage1Application = () => {
         <div className="text-center p-6 bg-white shadow-lg rounded-lg">
           <h2 className="text-2xl text-emerald-700 mb-4">Success!</h2>
           <p className="text-gray-600">
-            Your eligibility application has been submitted successfully. You'll
-            be notified of the next steps soon.
+            Your eligibility application has been submitted successfully. A
+            confirmation email has been sent to {formData.email}.
           </p>
         </div>
       </div>
@@ -156,7 +155,7 @@ const Stage1Application = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
         <div className="absolute bottom-4 px-4 lg:px-12 left-0 lg:left-4 text-white text-lg flex items-center space-x-2">
           <Link
-            to="/"
+            to="/dashboard"
             className="hover:text-emerald-400 transition duration-300"
             aria-label="Home Page"
           >
@@ -210,11 +209,10 @@ const Stage1Application = () => {
                     id="email"
                     name="email"
                     value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
                     aria-required="true"
                     aria-label="Email Address"
-                    required
+                    readOnly
                   />
                 </div>
                 <div>

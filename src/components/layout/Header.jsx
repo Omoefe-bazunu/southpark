@@ -6,7 +6,6 @@ import {
   FaPhone,
   FaEnvelope,
   FaCaretDown,
-  FaUser,
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -51,13 +50,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full pb-2 pt-2 lg:pt-0 bg-white shadow-md z-50 border-b-6 border-emerald-700 transition-all duration-300">
       <div>
         <div
-          className={`hidden lg:flex justify-center mb-2 items-center py-2 border-b border-gray-200 transition-all duration-300 ${
+          className={`hidden justify-center mb-2 items-center py-2  border-gray-200 transition-all duration-300 ${
             isTopBarVisible
               ? "opacity-100 max-h-12"
               : "opacity-0 max-h-0 overflow-hidden"
           }`}
         >
-          <div className="flex items-center space-x-6 text-gray-600 text-sm">
+          <div className="hidden items-center space-x-6 text-gray-600 text-sm">
             <div className="flex items-center space-x-2">
               <FaPhone className="text-emerald-600" />
               <span>+1-800-555-1234</span>
@@ -128,7 +127,7 @@ const Header = () => {
                   className={`${isActive("/dashboard") ? "text-emerald-700" : ""} hover:text-white hover:bg-emerald-700 py-4 px-4 transition duration-200 flex items-center`}
                   aria-label="Dashboard"
                 >
-                  <FaUser className="mr-2" /> Dashboard
+                  Dashboard
                 </Link>
               ) : (
                 <Link
@@ -147,7 +146,7 @@ const Header = () => {
                   aria-expanded={isPageDropdownOpen}
                   aria-controls="page-dropdown"
                 >
-                  Page <FaCaretDown className="ml-1" />
+                  DISCOVER <FaCaretDown className="ml-1" />
                 </button>
                 {isPageDropdownOpen && (
                   <div
@@ -214,7 +213,7 @@ const Header = () => {
               </Link>
               <Link
                 to="/stageOne"
-                className={`${isActive("/stageOne") ? "text-white bg-emerald-900" : ""} hover:bg-emerald-900 bg-emerald-700 transition duration-200 py-4 mr-4 text-white px-8`}
+                className={`${isActive("/stageOne") ? "text-white bg-emerald-900" : ""} hover:bg-emerald-900 bg-emerald-700 transition duration-200 py-4 mr-4 text-white px-4`}
                 aria-label="Apply Page"
               >
                 Apply
@@ -253,8 +252,8 @@ const Header = () => {
                   height={40}
                   className="transition-transform duration-300 hover:scale-105"
                 />
-                <h2 className="text-white text-xl leading-5">
-                  SouthPark <br />
+                <h2 className="text-white text-xl leading-5 text-center">
+                  South Park <br />
                   University
                 </h2>
               </Link>
@@ -323,7 +322,7 @@ const Header = () => {
                 aria-expanded={isPageDropdownOpen}
                 aria-controls="mobile-page-dropdown"
               >
-                Page <FaCaretDown className="ml-1" />
+                DISCOVER <FaCaretDown className="ml-1" />
               </button>
               {isPageDropdownOpen && (
                 <div
@@ -434,7 +433,7 @@ const Header = () => {
                 } flex items-center justify-center`}
                 aria-label="Dashboard"
               >
-                <FaUser className="mr-2" /> Dashboard
+                Dashboard
               </Link>
             ) : (
               <Link

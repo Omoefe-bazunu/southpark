@@ -15,7 +15,7 @@ const FinancialAidOffice = () => {
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/aid.jpeg"
           alt="SouthPark University alumni at a networking event"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -44,7 +44,7 @@ const FinancialAidOffice = () => {
           <div className="flex flex-col mb-10 w-full md:flex-row bg-white px-6 sm:px-12 py-8 overflow-hidden animate__animated animate__slideInLeft">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg4.jpg"
+                src="/academ4.jpeg"
                 alt="Students receiving support"
                 className="w-full h-48 object-cover border-b-6 border-emerald-600"
               />
@@ -127,7 +127,7 @@ const FinancialAidOffice = () => {
           <div className="flex flex-col md:flex-row  bg-white px-6 sm:px-12 py-8 mb-6 overflow-hidden animate__animated animate__slideInLeft">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg4.jpg"
+                src="/aid.jpeg"
                 alt="Financial planning guide"
                 className="w-full h-48 object-cover border-b-6 border-emerald-600"
               />
@@ -174,7 +174,7 @@ const FinancialAidOffice = () => {
           {/* Call to Action */}
           <div className="text-center animate__animated animate__fadeInUp">
             <a
-              href="/financial-planning-guide"
+              href="/financial-guide"
               className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-6 text-lg font-semibold hover:bg-emerald-700 transition duration-300 shadow-lg animate__animated animate__pulse animate__delay-1s"
               aria-label="View SouthPark University Financial Planning Guide"
             >

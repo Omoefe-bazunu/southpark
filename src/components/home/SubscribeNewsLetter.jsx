@@ -12,6 +12,7 @@ const SubscribeNewsletter = () => {
 
   return (
     <section
+      id="newsLetter"
       className="py-12 bg-emerald-600 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url('/impactbg.jpg')` }}
     >
@@ -21,7 +22,7 @@ const SubscribeNewsletter = () => {
         </h2>
         <p className="text-white mb-8">
           Stay updated with the latest news, scholarship opportunities, and
-          events at SouthPark University.
+          events at South Park University.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <input

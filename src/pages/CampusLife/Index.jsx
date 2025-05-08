@@ -9,7 +9,7 @@ const CampusLife = () => {
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/firstyear.jpeg"
           alt="Vibrant campus life at SouthPark University with students"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -55,7 +55,7 @@ const CampusLife = () => {
             talents.
           </p>
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/bg5.jpg"
             alt="Students engaging in campus activities at SouthPark University"
             effect="opacity"
             className="w-full h-64  object-cover shadow-md animate__animated animate__fadeInUp animate__delay-3s"
@@ -76,7 +76,7 @@ const CampusLife = () => {
             {/* Student Engagement */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp">
               <LazyLoadImage
-                src="/bg4.jpg"
+                src="/diversity2.jpg"
                 alt="Students participating in clubs at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -91,7 +91,7 @@ const CampusLife = () => {
             {/* Spiritual Growth */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp animate__delay-1s">
               <LazyLoadImage
-                src="/bg3.jpg"
+                src="/service.jpeg"
                 alt="Students in a worship service at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -106,7 +106,7 @@ const CampusLife = () => {
             {/* Wellness and Recreation */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp animate__delay-2s">
               <LazyLoadImage
-                src="/bg5.jpg"
+                src="/fitness.jpeg"
                 alt="Students using fitness facilities at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -139,20 +139,20 @@ const CampusLife = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Move-In Day", image: "/bg4.jpg" },
-              { title: "Beach Blast", image: "/bg4.jpg" },
+              { title: "Move-In Day", image: "/move.jpg" },
+              { title: "Beach Blast", image: "/beach.jpg" },
               {
                 title: "Trojan Tradition",
-                image: "/bg4.jpg",
+                image: "/trojan.jpg",
               },
-              { title: "West Fest", image: "/bg4.jpg" },
+              { title: "West Fest", image: "/westfest.jpg" },
               {
                 title: "Outdoor Movie Night",
-                image: "/bg4.jpg",
+                image: "/movie.jpg",
               },
               {
                 title: "Campus Tours",
-                image: "/bg4.jpg",
+                image: "/tour.jpg",
               },
             ].map((event, index) => (
               <div
@@ -189,7 +189,7 @@ const CampusLife = () => {
             friendships and connections.
           </p>
           <LazyLoadImage
-            src="/bg3.jpg"
+            src="/firstyear.jpeg"
             alt="Modern residence halls at SouthPark University"
             effect="opacity"
             className="w-full h-64 object-cover  transform hover:scale-110 transition duration-500 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
@@ -212,7 +212,7 @@ const CampusLife = () => {
           </p>
           <div className="relative">
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/housing.jpeg"
               alt="Modern residence halls at SouthPark University"
               effect="opacity"
               className="w-full h-64 object-cover  transform hover:scale-110 transition duration-500 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
@@ -238,11 +238,11 @@ const CampusLife = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "The Commons Café", image: "/bg4.jpg" },
-              { title: "Chick-fil-A", image: "/bg4.jpg" },
+              { title: "The Commons Café", image: "/ch1.jpeg" },
+              { title: "Chick-fil-A", image: "/ch3.jpeg" },
               {
                 title: "Starbucks",
-                image: "/bg4.jpg",
+                image: "/ch2.jpeg",
               },
             ].map((event, index) => (
               <div
@@ -276,7 +276,7 @@ const CampusLife = () => {
             {/* Chapel Services */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp">
               <LazyLoadImage
-                src="/bg5.jpg"
+                src="/service.jpeg"
                 alt="Students in chapel services at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -287,7 +287,7 @@ const CampusLife = () => {
             {/* Student-Led Worship */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp animate__delay-1s">
               <LazyLoadImage
-                src="/bg5.jpg"
+                src="/worship.png"
                 alt="Students leading worship at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -300,7 +300,7 @@ const CampusLife = () => {
             {/* Mission Trips */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp animate__delay-2s">
               <LazyLoadImage
-                src="/bg5.jpg"
+                src="/trip.jpeg"
                 alt="Students on mission trips from SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover transform hover:scale-110 duration-300 rounded-lg mb-4"
@@ -329,7 +329,7 @@ const CampusLife = () => {
             response to general safety practices, we prioritize your well-being.
           </p>
           <LazyLoadImage
-            src="/bg4.jpg"
+            src="/safety.jpeg"
             alt="Campus safety team at SouthPark University"
             effect="opacity"
             className="w-full h-64 border-b-6 border-white object-cover shadow-md animate__animated animate__fadeInUp animate__delay-2s"
@@ -348,7 +348,7 @@ const CampusLife = () => {
             {/* State-of-the-Art Fitness Center */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp">
               <LazyLoadImage
-                src="/bg5.jpg"
+                src="/fitness.jpeg"
                 alt="State-of-the-art fitness center at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover rounded-lg mb-4 transform hover:scale-110 duration-300"
@@ -361,7 +361,7 @@ const CampusLife = () => {
             {/* Intramural Sports */}
             <div className="bg-white p-6 flex flex-col  shadow-md text-center animate__animated animate__fadeInUp animate__delay-1s">
               <LazyLoadImage
-                src="/bg4.jpg"
+                src="/sport.jpeg"
                 alt="Students playing intramural sports at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover rounded-lg mb-4 transform hover:scale-110 duration-300"
@@ -374,7 +374,7 @@ const CampusLife = () => {
             {/* Outdoor Pool */}
             <div className="bg-white p-6 flex flex-col shadow-md text-center animate__animated animate__fadeInUp animate__delay-2s">
               <LazyLoadImage
-                src="/bg3.jpg"
+                src="/pool.png"
                 alt="Outdoor pool at SouthPark University"
                 effect="opacity"
                 className="w-full h-48 object-cover rounded-lg mb-4 transform hover:scale-110 duration-300"
@@ -403,11 +403,11 @@ const CampusLife = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Fall Fest", image: "/bg4.jpg" },
-              { title: "Andie Craft Fair", image: "/bg4.jpg" },
+              { title: "Fall Fest", image: "/fest.png" },
+              { title: "Andie Craft Fair", image: "/fair.jpg" },
               {
                 title: "SP's Got Talent",
-                image: "/bg4.jpg",
+                image: "/talent.jpg",
               },
             ].map((event, index) => (
               <div
@@ -446,10 +446,10 @@ const CampusLife = () => {
             community.
           </p>
           <LazyLoadImage
-            src="/bg3.jpg"
+            src="/diversity.jpg"
             alt="Diverse students at SouthPark University"
             effect="opacity"
-            className="w-full h-64 object-cover shadow-md animate__animated animate__fadeInUp animate__delay-2s"
+            className="w-full h-64 border-b-6 border-emerald-600 object-cover shadow-md animate__animated animate__fadeInUp animate__delay-2s"
           />
         </div>
       </section>
@@ -469,10 +469,10 @@ const CampusLife = () => {
             well-being.
           </p>
           <LazyLoadImage
-            src="/bg3.jpg"
+            src="/wellness.jpg"
             alt="Thrive Wellness Center at SouthPark University"
             effect="opacity"
-            className="w-full h-64 object-cover shadow-md animate__animated animate__fadeInUp animate__delay-2s"
+            className="w-full border-b-6 border-white h-64 object-cover shadow-md animate__animated animate__fadeInUp animate__delay-2s"
           />
         </div>
       </section>

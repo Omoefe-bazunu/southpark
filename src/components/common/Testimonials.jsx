@@ -235,52 +235,45 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Jane Doe",
+      name: "Mary Ogile",
       region: "Lagos, Nigeria",
       status: "Undergraduate Student",
       quote:
-        "SouthPark’s full scholarship transformed my life, giving me the opportunity to pursue my dreams in Engineering with world-class mentors.",
-      image: "/me.jpeg",
+        "South Park’s full scholarship transformed my life, giving me the opportunity to pursue my dreams in Engineering with world-class mentors.",
+      image: "/testnig.jpg",
     },
     {
       name: "Michael Chen",
       region: "Shanghai, China",
       status: "Master’s Student",
       quote:
-        "The supportive community and rigorous academics at SouthPark prepared me to lead in my field. I’m proud to be part of this global family.",
-      image: "/me.jpeg",
+        "The supportive community and rigorous academics at South Park prepared me to lead in my field. I’m proud to be part of this global family.",
+      image: "/testasia.jpg",
     },
     {
       name: "Aisha Patel",
       region: "Mumbai, India",
       status: "Certification Program",
       quote:
-        "SouthPark’s certification program helped me enhance my career in Cybersecurity. The resources and faculty support were exceptional.",
-      image: "/me.jpeg",
+        "South Park’s certification program helped me enhance my career in Cybersecurity. The resources and faculty support were exceptional.",
+      image: "/testindia.jpg",
     },
     {
-      name: "Carlos Rivera",
-      region: "São Paulo, Brazil",
+      name: "Carly Asahe",
+      region: "Nairobi, Kenya",
       status: "Undergraduate Student",
       quote:
-        "SouthPark gave me the tools to succeed in Computer Science while fostering a sense of community that made me feel at home.",
-      image: "/me.jpeg",
+        "South Park gave me the tools to succeed in Computer Science while fostering a sense of community that made me feel at home.",
+      image: "/testkenya.jpg",
     },
+
     {
-      name: "Fatima Al-Sayed",
-      region: "Cairo, Egypt",
-      status: "Master’s Student",
-      quote:
-        "The scholarship I received allowed me to focus on my studies in Public Health, making a real difference in my community.",
-      image: "/me.jpeg",
-    },
-    {
-      name: "Liam O’Connor",
-      region: "Dublin, Ireland",
+      name: "Liam Connor",
+      region: "North Carolina, Uinted States",
       status: "Certification Program",
       quote:
-        "SouthPark’s flexible certification program fit perfectly into my schedule, helping me upskill in Data Analytics with ease.",
-      image: "/me.jpeg",
+        "South Park’s flexible certification program fit perfectly into my schedule, helping me upskill in Data Analytics with ease.",
+      image: "/testamerica.jpg",
     },
   ];
 

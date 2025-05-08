@@ -14,7 +14,7 @@ const About = () => {
           {/* Text Content */}
           <div className="space-y-6">
             <h2 className="text-2xl md:text-3xl text-gray-800">
-              Fueling Minds. Igniting Purpose at SouthPark University
+              Fueling Minds. Igniting Purpose at South Park University
             </h2>
             <p className="text-gray-600 text-lg">
               Located in Anderson, South Carolina, SouthPark University is a
@@ -39,10 +39,10 @@ const About = () => {
           {/* Image */}
           <div className="relative">
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/featrdabt.jpg"
               alt="SouthPark University students in a classroom setting"
               effect="opacity"
-              className="w-full h-96 object-cover shadow-lg"
+              className="w-full h-96 object-cover shadow-lg border-b-6 border-emerald-600"
               wrapperClassName="w-full h-full"
             />
             <div className="absolute inset-0 bg-emerald-600 opacity-10 "></div>

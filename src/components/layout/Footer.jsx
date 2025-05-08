@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"; // Social media icons
+import { FaFacebook, FaInstagram } from "react-icons/fa"; // Social media icons
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
                 width={60}
                 height={60}
               />
-              <h3 className="text-2xl ">SouthPark University</h3>
+              <h3 className="text-2xl ">South Park University</h3>
             </div>
 
             <p className="text-gray-400">
@@ -81,22 +81,13 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg">Contact Us</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Email: info@southparkuniversity.edu</li>
-              <li>Phone: (123) 456-7890</li>
-              <li>Address: 123 University Ave, Anderson, SC 29621</li>
+              <li>Email: info@southparkuni.com</li>
+              <li>Phone: +1 (660) 235-0276</li>
+              <li>Address: 140 Stoneridge Drive, Columbia, SC, 29210, USA</li>
             </ul>
             <div className="flex space-x-4">
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-emerald-600 transition duration-300"
-                aria-label="Twitter"
-              >
-                <FaTwitter size={20} />
-              </a>
-              <a
-                href="https://facebook.com"
+                href="https://web.facebook.com/profile.php?id=61576010662644"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-emerald-600 transition duration-300"
@@ -105,7 +96,7 @@ const Footer = () => {
                 <FaFacebook size={20} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/southparkuniversity/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-emerald-600 transition duration-300"

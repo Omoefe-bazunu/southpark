@@ -36,7 +36,7 @@ const GiveToSouthPark = () => {
       {/* Hero Section with Background Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/give1.jpeg"
           alt="SouthPark University athletes competing on the field"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -65,7 +65,7 @@ const GiveToSouthPark = () => {
           <div className="flex flex-col md:flex-row items-center bg-white px-6 sm:px-12 py-8 shadow-lg overflow-hidden animate__animated animate__slideInLeft">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg3.jpg"
+                src="/give1.jpeg"
                 alt="Supporting students"
                 className="w-full h-48 object-cover rounded-lg"
               />
@@ -270,7 +270,7 @@ const GiveToSouthPark = () => {
           <div className="flex flex-col md:flex-row items-center bg-white px-6 sm:px-12 py-8 shadow-lg overflow-hidden animate__animated animate__slideInRight">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg3.jpg"
+                src="/aid.jpeg"
                 alt="Online donation"
                 className="w-full h-48 object-cover rounded-lg"
               />
@@ -297,7 +297,7 @@ const GiveToSouthPark = () => {
           </div>
 
           {/* Contact Us Section */}
-          <div className="bg-emerald-50 px-6 sm:px-12 pt-8 pb-16 animate__animated animate__fadeInUp">
+          <div className="bg-emerald-50 hidden px-6 sm:px-12 pt-8 pb-16 animate__animated animate__fadeInUp">
             <h2 className="text-2xl sm:text-3xl text-emerald-600 mb-4 flex items-center">
               <FaEnvelope className="mr-2" />
               Contact Us

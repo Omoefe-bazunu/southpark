@@ -35,6 +35,7 @@ const ContactUs = () => {
 
       await addDoc(collection(db, "contact"), dataToSubmit);
       setSuccess(true);
+
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error("Error submitting contact form:", error);
@@ -63,7 +64,7 @@ const ContactUs = () => {
         {/* Hero Section with Image and Breadcrumb */}
         <section className="relative w-full h-[60vh] overflow-hidden">
           <LazyLoadImage
-            src="/bg5.jpg"
+            src="/contact.jpg"
             alt="SouthPark University campus contact section"
             effect="opacity"
             className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -195,23 +196,6 @@ const ContactUs = () => {
                   </button>
                 </div>
               </form>
-            </div>
-
-            {/* WhatsApp Chat Option */}
-            <div className="mt-8 text-center animate__animated animate__fadeInUp animate__delay-1s">
-              <p className="text-gray-600 text-lg mb-4">
-                Prefer to chat? Reach us on WhatsApp!
-              </p>
-              <a
-                href="https://wa.me/1234567890?text=Hello%20SouthPark%20University,%20I%20have%20a%20question!"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-lg hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-green-500"
-                aria-label="Chat with SouthPark University on WhatsApp"
-              >
-                <FaWhatsapp className="mr-2" size={24} />
-                Chat on WhatsApp
-              </a>
             </div>
           </div>
         </section>

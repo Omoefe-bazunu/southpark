@@ -6,8 +6,10 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  sendPasswordResetEmail,
+  applyActionCode,
 } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const AuthContext = createContext();
@@ -18,35 +20,35 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        if (!firebaseUser.emailVerified) {
-          toast.warn("Please verify your email before logging in.");
-          await signOut(auth);
-          setUser(null);
-          setLoading(false);
-          return;
-        }
+      if (!firebaseUser) {
+        setUser(null);
+        setLoading(false);
+        return;
+      }
 
+      if (!firebaseUser.emailVerified) {
+        toast.warn("Please verify your email before logging in.");
+        await signOut(auth);
+        setUser(null);
+        setLoading(false);
+        return;
+      }
+
+      try {
         const userRef = doc(db, "users", firebaseUser.uid);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
           setUser({ ...firebaseUser, ...userSnap.data() });
         } else {
-          const userData = {
-            name: firebaseUser.displayName || "Anonymous",
-            email: firebaseUser.email,
-            approved: false,
-            eligibility: false,
-            createdAt: new Date().toISOString(),
-          };
-          await setDoc(userRef, userData);
-          setUser({ ...firebaseUser, ...userData });
+          setUser(firebaseUser); // Use Firebase Auth data only if no Firestore document
         }
-      } else {
-        setUser(null);
+      } catch (error) {
+        console.error("Error in onAuthStateChanged:", error);
+        setUser(firebaseUser); // Fallback to Firebase Auth data on error
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -64,20 +66,6 @@ export const AuthProvider = ({ children }) => {
       await signOut(auth);
       throw new Error("Email not verified.");
     }
-
-    const userRef = doc(db, "users", userCredential.user.uid);
-    const userSnap = await getDoc(userRef);
-
-    if (!userSnap.exists()) {
-      const userData = {
-        name: userCredential.user.displayName || "Anonymous",
-        email: userCredential.user.email,
-        approved: false,
-        eligibility: false,
-        createdAt: new Date().toISOString(),
-      };
-      await setDoc(userRef, userData);
-    }
   };
 
   const signup = async (email, password, name) => {
@@ -90,49 +78,73 @@ export const AuthProvider = ({ children }) => {
       const user = userCredential.user;
 
       await sendEmailVerification(user);
-
-      const userRef = doc(db, "users", user.uid);
-      const userData = {
-        name: name || "Anonymous",
-        email: email,
-        approved: false,
-        eligibility: false,
-        createdAt: new Date().toISOString(),
-      };
-
-      try {
-        await setDoc(userRef, userData);
-      } catch (firestoreError) {
-        console.error("Firestore error:", firestoreError);
-        await user.delete();
-        throw new Error("Failed to create user profile. Please try again.");
-      }
-
-      toast.success(
-        "Sign up successful! Please check your email to verify your account."
-      );
-      await signOut(auth);
+      toast.success("Account created! Check your email to verify.");
       return true;
     } catch (error) {
-      console.error("Signup error:", error);
-      let errorMessage = "Signup failed. Please try again.";
+      toast.error(error.message);
+      throw error;
+    }
+  };
 
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          errorMessage = "Email already in use.";
-          break;
-        case "auth/invalid-email":
-          errorMessage = "Invalid email address.";
-          break;
-        case "auth/weak-password":
-          errorMessage = "Password should be at least 6 characters.";
-          break;
-        case "auth/operation-not-allowed":
-          errorMessage = "Email/password accounts are not enabled.";
-          break;
+  const verifyEmail = async (oobCode) => {
+    try {
+      await applyActionCode(auth, oobCode);
+      if (auth.currentUser) {
+        await auth.currentUser.reload();
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setUser({ ...auth.currentUser, ...userSnap.data() });
+        } else {
+          setUser(auth.currentUser);
+        }
+      }
+      toast.success("Email verified successfully!");
+    } catch (error) {
+      toast.error(
+        error.message ||
+          "Verification failed. Please try again or request a new link."
+      );
+    } finally {
+      window.location.href = `${window.location.origin}/login`;
+    }
+  };
+
+  const resendVerification = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      if (user.emailVerified) {
+        throw new Error("Email is already verified. Please log in.");
       }
 
-      throw new Error(errorMessage);
+      await sendEmailVerification(user, {
+        url: `${window.location.origin}/login`,
+        handleCodeInApp: true,
+      });
+
+      await signOut(auth);
+      toast.success("Verification email sent successfully!");
+    } catch (error) {
+      toast.error(error.message || "Failed to resend verification email.");
+      throw error;
+    }
+  };
+
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email, {
+        url: `${window.location.origin}/login`,
+      });
+      toast.success("Password reset email sent! Please check your inbox.");
+    } catch (error) {
+      toast.error(error.message || "Failed to send password reset email.");
+      throw error;
     }
   };
 
@@ -142,7 +154,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        login,
+        signup,
+        verifyEmail,
+        resendVerification,
+        resetPassword,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -22,6 +22,10 @@ import Stage2Application from "./pages/StageTwo/Index";
 import Dashboard from "./pages/Dashboard/Index";
 import SignUp from "./Auth/SignUp";
 import Login from "./Auth/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import FinancialPlanningGuide from "./pages/FinancialGuide";
+import EligibilityViewer from "./pages/EligibilityView";
+import Stage2EligibilityViewer from "./pages/DocumentsVerification";
 
 const App = () => (
   <Router>
@@ -45,6 +49,16 @@ const App = () => (
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/financial-guide" element={<FinancialPlanningGuide />} />
+        <Route
+          path="/admin/verification-applicants"
+          element={<Stage2EligibilityViewer />}
+        />
+        <Route
+          path="/admin/eligibility-applicants"
+          element={<EligibilityViewer />}
+        />
       </Routes>
     </Suspense>
     <Footer />

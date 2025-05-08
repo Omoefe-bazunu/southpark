@@ -8,8 +8,6 @@ import {
   FaCheckCircle,
   FaPlane,
   FaCross,
-  FaExclamationTriangle,
-  FaBook,
 } from "react-icons/fa";
 
 const FullRideScholarship = () => {
@@ -30,7 +28,7 @@ const FullRideScholarship = () => {
       {/* Hero Section with Background Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/hero3.jpg"
           alt="SouthPark University athletes competing on the field"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -81,7 +79,7 @@ const FullRideScholarship = () => {
               </div>
               <div className="md:w-1/2 flex w-full">
                 <img
-                  src="/bg4.jpg"
+                  src="/hero1.png"
                   alt="Students celebrating scholarship"
                   className="w-full h-64 sm:h-80 object-cover rounded-lg border border-gray-200"
                 />
@@ -93,7 +91,7 @@ const FullRideScholarship = () => {
           <div className="flex flex-col md:flex-row items-center bg-emerald-600 p-8 sm:p-12 animate__animated animate__slideInRight">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg3.jpg"
+                src="/diversity.jpg"
                 alt="Global students"
                 className="w-full h-56 object-cover rounded-lg"
               />
@@ -187,10 +185,10 @@ const FullRideScholarship = () => {
           </div>
 
           {/* Visa Guidance & Travel Support Section */}
-          <div className="flex flex-col md:flex-row items-center bg-emerald-100 p-6 sm:p-8 rounded-lg animate__animated animate__slideInRight">
+          <div className="flex flex-col md:flex-row items-center bg-emerald-100 p-6 sm:p-8  animate__animated animate__slideInRight">
             <div className="md:w-1/3 mb-6 md:mb-0 flex w-full">
               <img
-                src="/bg3.jpg"
+                src="/consultation.jpeg"
                 alt="Visa support"
                 className="w-full h-56 object-cover rounded-lg"
               />
@@ -273,7 +271,6 @@ const FullRideScholarship = () => {
           {/* Apply Now Section */}
           <div className="text-center bg-emerald-600 p-8 sm:p-10 animate__animated animate__fadeInUp">
             <h2 className="text-3xl sm:text-4xl text-white mb-4 flex items-center justify-center">
-              <FaExclamationTriangle className="mr-2 text-3xl" />
               Limited Slots Available – Apply Now!
             </h2>
             <p className="text-white text-lg sm:text-xl mb-4 leading-relaxed">
@@ -281,11 +278,9 @@ const FullRideScholarship = () => {
               full-ride scholarship this cycle. Act fast!
             </p>
             <p className="text-white text-lg sm:text-xl mb-4 flex items-center justify-center">
-              <FaCheckCircle className="mr-2 text-white text-xl" />
               No exams. No fees. No limits—just opportunity.
             </p>
             <p className="text-white text-lg sm:text-xl mb-6 flex items-center justify-center">
-              <FaCheckCircle className="mr-2 text-white text-xl" />
               One application could transform your future.
             </p>
             <a

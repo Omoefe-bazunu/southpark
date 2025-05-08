@@ -14,7 +14,9 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 import { db } from "../../services/firebase.jsx";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const Stage2Application = () => {
   const { user, loading: authLoading } = useAuth();
@@ -39,6 +41,9 @@ const Stage2Application = () => {
     recommendationLetter: null,
     extracurricular: "",
     linkedin: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
     portfolio: "",
     consentFalseInfo: false,
     consentNameImage: false,
@@ -46,10 +51,28 @@ const Stage2Application = () => {
   });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [fullName, setFullName] = useState(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
       navigate("/login", { replace: true });
+    } else if (user) {
+      // Fetch fullName from eligibility collection
+      const fetchFullName = async () => {
+        try {
+          const eligibilityRef = doc(db, "eligibility", user.uid);
+          const eligibilityDoc = await getDoc(eligibilityRef);
+          if (eligibilityDoc.exists()) {
+            setFullName(eligibilityDoc.data().fullName || "Applicant");
+          } else {
+            setFullName("Applicant");
+          }
+        } catch (error) {
+          console.error("Error fetching fullName:", error);
+          setFullName("Applicant");
+        }
+      };
+      fetchFullName();
     }
   }, [authLoading, user, navigate]);
 
@@ -65,9 +88,30 @@ const Stage2Application = () => {
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       if (!file) return resolve(null);
+
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        reject(new Error("File size exceeds 5MB limit"));
+        return;
+      }
+
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
+      reader.onload = () => {
+        // Additional validation for images
+        if (file.type.startsWith("image/")) {
+          const img = new Image();
+          img.onload = () => {
+            resolve(reader.result);
+          };
+          img.onerror = () => {
+            reject(new Error("Invalid image file"));
+          };
+          img.src = reader.result;
+        } else {
+          resolve(reader.result);
+        }
+      };
       reader.onerror = (error) => reject(error);
     });
   };
@@ -77,55 +121,84 @@ const Stage2Application = () => {
     setSubmitting(true);
 
     try {
+      // Validate required files
+      if (!formData.passportPhoto || !formData.academicTranscripts) {
+        throw new Error("Required documents are missing");
+      }
+
+      // Prepare file data with metadata
+      const prepareFileData = async (file, fieldName) => {
+        if (!file) return null;
+        return {
+          base64: await convertToBase64(file),
+          name: file.name,
+          type: file.type,
+          size: file.size,
+          lastModified: file.lastModified,
+        };
+      };
+
       const dataToSubmit = {
         ...formData,
         userId: user?.uid,
         timestamp: new Date().toISOString(),
-        passportPhoto: await convertToBase64(formData.passportPhoto),
-        academicTranscripts: await convertToBase64(
-          formData.academicTranscripts
+        passportPhoto: await prepareFileData(
+          formData.passportPhoto,
+          "passportPhoto"
         ),
-        supportingDocs: await convertToBase64(formData.supportingDocs),
-        englishScore: await convertToBase64(formData.englishScore),
-        englishInstructionProof: await convertToBase64(
-          formData.englishInstructionProof
+        academicTranscripts: await prepareFileData(
+          formData.academicTranscripts,
+          "academicTranscripts"
         ),
-        employmentProof: await convertToBase64(formData.employmentProof),
-        sponsorPayslip: await convertToBase64(formData.sponsorPayslip),
-        recommendationLetter: await convertToBase64(
-          formData.recommendationLetter
+        supportingDocs: await prepareFileData(
+          formData.supportingDocs,
+          "supportingDocs"
+        ),
+        englishScore: await prepareFileData(
+          formData.englishScore,
+          "englishScore"
+        ),
+        englishInstructionProof: await prepareFileData(
+          formData.englishInstructionProof,
+          "englishInstructionProof"
+        ),
+        employmentProof: await prepareFileData(
+          formData.employmentProof,
+          "employmentProof"
+        ),
+        sponsorPayslip: await prepareFileData(
+          formData.sponsorPayslip,
+          "sponsorPayslip"
+        ),
+        recommendationLetter: await prepareFileData(
+          formData.recommendationLetter,
+          "recommendationLetter"
         ),
         submittedAt: new Date().toISOString(),
       };
 
+      // Write to Firestore applicants collection
       await addDoc(collection(db, "applicants"), dataToSubmit);
+
+      // Send confirmation email via EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_STAGE2_TEMPLATE_ID,
+        {
+          name: fullName || "Applicant",
+          email: user.email,
+        },
+        import.meta.env.VITE_EMAILJS_USER_ID
+      );
+
       setSuccess(true);
-      setFormData({
-        passportNumber: "",
-        passportPhoto: null,
-        academicTranscripts: null,
-        awards: "",
-        supportingDocs: null,
-        takenEnglishExam: "",
-        englishScore: null,
-        englishInstructionProof: null,
-        employmentProof: null,
-        sponsorPayslip: null,
-        financialNeed: "",
-        postGraduationPlan: "",
-        targetCountryIndustry: "",
-        fundingPlan: "",
-        leadershipRoles: "",
-        recommendationLetter: null,
-        extracurricular: "",
-        linkedin: "",
-        portfolio: "",
-        consentFalseInfo: false,
-        consentNameImage: false,
-        consentCompetitive: false,
-      });
+      toast.success("Application submitted and confirmation email sent!");
+      setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
     } catch (error) {
       console.error("Error submitting application:", error);
+      toast.error(
+        error.message || "Failed to submit application. Please try again."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -133,7 +206,7 @@ const Stage2Application = () => {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <p className="text-gray-700 text-lg">Loading...</p>
       </div>
     );
@@ -149,8 +222,9 @@ const Stage2Application = () => {
         <div className="text-center p-6 bg-white shadow-lg rounded-lg">
           <h2 className="text-2xl text-emerald-700 mb-4">Success!</h2>
           <p className="text-gray-600">
-            Your application has been submitted successfully. You will be
-            redirected to the payment page shortly.
+            Your application has been submitted successfully. A confirmation
+            email has been sent to {user.email}. You will be redirected to the
+            payment page shortly.
           </p>
         </div>
       </div>
@@ -189,12 +263,11 @@ const Stage2Application = () => {
             className="w-full h-48 sm:h-64 object-cover rounded-lg border border-gray-200 mb-6"
           />
           <h1 className="text-3xl sm:text-4xl text-emerald-700 mb-6 flex items-center">
-            <FaPassport className="mr-2 text-3xl" />
             Stage 2 Application - Submit Documents & Pay Verification Fee
           </h1>
           <p className="text-gray-600 text-lg mb-8">
             Complete your application by providing the required documents and
-            paying the document verification fee of $10.
+            paying the document verification fee of $100.
           </p>
 
           <form onSubmit={handleSubmit}>
@@ -229,6 +302,9 @@ const Stage2Application = () => {
                     className="block text-gray-700"
                   >
                     Upload Clear Passport-Style Photo *
+                    <span className="text-sm text-gray-500 block">
+                      (JPEG/PNG, max 5MB)
+                    </span>
                   </label>
                   <input
                     type="file"
@@ -238,333 +314,9 @@ const Stage2Application = () => {
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     aria-required="true"
                     aria-label="Upload Passport-Style Photo"
-                    accept="image/*"
+                    accept="image/jpeg,image/png"
                     required
                   />
-                </div>
-              </div>
-            </div>
-
-            {/* Academic Proof */}
-            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
-              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaFileUpload className="mr-2" /> Academic Proof
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="academicTranscripts"
-                    className="block text-gray-700"
-                  >
-                    Upload Academic Transcripts/Certificates *
-                  </label>
-                  <input
-                    type="file"
-                    id="academicTranscripts"
-                    name="academicTranscripts"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Upload Academic Transcripts"
-                    accept=".pdf,.doc,.docx"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="awards" className="block text-gray-700">
-                    List Any Awards or Honors
-                  </label>
-                  <textarea
-                    id="awards"
-                    name="awards"
-                    value={formData.awards}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 h-24"
-                    aria-label="List Awards or Honors"
-                  ></textarea>
-                </div>
-                <div className="md:col-span-2">
-                  <label
-                    htmlFor="supportingDocs"
-                    className="block text-gray-700"
-                  >
-                    Upload Supporting Documents (Optional)
-                  </label>
-                  <input
-                    type="file"
-                    id="supportingDocs"
-                    name="supportingDocs"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="Upload Supporting Documents"
-                    accept=".pdf,.doc,.docx"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* English Language Evidence */}
-            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
-              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaLanguage className="mr-2" /> English Language Evidence
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="takenEnglishExam"
-                    className="block text-gray-700"
-                  >
-                    Have you taken an English exam (e.g., IELTS/TOEFL)? *
-                  </label>
-                  <select
-                    id="takenEnglishExam"
-                    name="takenEnglishExam"
-                    value={formData.takenEnglishExam}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Taken English Exam"
-                    required
-                  >
-                    <option value="">Select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                {formData.takenEnglishExam === "Yes" && (
-                  <div>
-                    <label
-                      htmlFor="englishScore"
-                      className="block text-gray-700"
-                    >
-                      Upload Score/Report *
-                    </label>
-                    <input
-                      type="file"
-                      id="englishScore"
-                      name="englishScore"
-                      onChange={handleChange}
-                      className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                      aria-required="true"
-                      aria-label="Upload English Score"
-                      accept=".pdf,.doc,.docx"
-                      required
-                    />
-                  </div>
-                )}
-                <div className="md:col-span-2">
-                  <label
-                    htmlFor="englishInstructionProof"
-                    className="block text-gray-700"
-                  >
-                    Upload Proof of English Instruction (Optional)
-                  </label>
-                  <input
-                    type="file"
-                    id="englishInstructionProof"
-                    name="englishInstructionProof"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="Upload Proof of English Instruction"
-                    accept=".pdf,.doc,.docx"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Financial Documentation */}
-            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
-              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaMoneyBillWave className="mr-2" /> Financial Documentation
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="employmentProof"
-                    className="block text-gray-700"
-                  >
-                    Upload Proof of Employment/Income (If Applicable)
-                  </label>
-                  <input
-                    type="file"
-                    id="employmentProof"
-                    name="employmentProof"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="Upload Proof of Employment"
-                    accept=".pdf,.doc,.docx"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="sponsorPayslip"
-                    className="block text-gray-700"
-                  >
-                    Upload Parent/Sponsor Payslip or Letter *
-                  </label>
-                  <input
-                    type="file"
-                    id="sponsorPayslip"
-                    name="sponsorPayslip"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Upload Sponsor Payslip"
-                    accept=".pdf,.doc,.docx"
-                    required
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label
-                    htmlFor="financialNeed"
-                    className="block text-gray-700"
-                  >
-                    Brief Statement of Financial Need *
-                  </label>
-                  <textarea
-                    id="financialNeed"
-                    name="financialNeed"
-                    value={formData.financialNeed}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 h-24"
-                    aria-required="true"
-                    aria-label="Financial Need Statement"
-                    placeholder="Describe your financial need..."
-                    required
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-
-            {/* Career & Intent */}
-            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
-              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaBriefcase className="mr-2" /> Career & Intent
-              </h2>
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label
-                    htmlFor="postGraduationPlan"
-                    className="block text-gray-700"
-                  >
-                    What do you plan to do after graduation? *
-                  </label>
-                  <textarea
-                    id="postGraduationPlan"
-                    name="postGraduationPlan"
-                    value={formData.postGraduationPlan}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 h-24"
-                    aria-required="true"
-                    aria-label="Post-Graduation Plan"
-                    placeholder="Describe your plans..."
-                    required
-                  ></textarea>
-                </div>
-                <div>
-                  <label
-                    htmlFor="targetCountryIndustry"
-                    className="block text-gray-700"
-                  >
-                    Which country or industry do you aim to work in? *
-                  </label>
-                  <input
-                    type="text"
-                    id="targetCountryIndustry"
-                    name="targetCountryIndustry"
-                    value={formData.targetCountryIndustry}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Target Country or Industry"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="fundingPlan" className="block text-gray-700">
-                    Do you have a sponsor or plan to self-fund living expenses
-                    not covered by the scholarship? *
-                  </label>
-                  <select
-                    id="fundingPlan"
-                    name="fundingPlan"
-                    value={formData.fundingPlan}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Funding Plan"
-                    required
-                  >
-                    <option value="">Select</option>
-                    <option value="Sponsor">I have a sponsor</option>
-                    <option value="Self-Fund">I plan to self-fund</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Leadership & Community Impact */}
-            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
-              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaHandsHelping className="mr-2" /> Leadership & Community
-                Impact
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="leadershipRoles"
-                    className="block text-gray-700"
-                  >
-                    Have you held any leadership roles? Describe. *
-                  </label>
-                  <textarea
-                    id="leadershipRoles"
-                    name="leadershipRoles"
-                    value={formData.leadershipRoles}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 h-24"
-                    aria-required="true"
-                    aria-label="Leadership Roles"
-                    placeholder="Describe your leadership roles..."
-                    required
-                  ></textarea>
-                </div>
-                <div>
-                  <label
-                    htmlFor="recommendationLetter"
-                    className="block text-gray-700"
-                  >
-                    Upload Recommendation Letter(s) (Optional)
-                  </label>
-                  <input
-                    type="file"
-                    id="recommendationLetter"
-                    name="recommendationLetter"
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="Upload Recommendation Letter"
-                    accept=".pdf,.doc,.docx"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label
-                    htmlFor="extracurricular"
-                    className="block text-gray-700"
-                  >
-                    List Any Extracurricular or Volunteer Work *
-                  </label>
-                  <textarea
-                    id="extracurricular"
-                    name="extracurricular"
-                    value={formData.extracurricular}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 h-24"
-                    aria-required="true"
-                    aria-label="Extracurricular or Volunteer Work"
-                    placeholder="List your activities..."
-                    required
-                  ></textarea>
                 </div>
               </div>
             </div>
@@ -572,12 +324,12 @@ const Stage2Application = () => {
             {/* Social & Digital Proof */}
             <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
               <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaLink className="mr-2" /> Social & Digital Proof
+                <FaLink className="mr-2" /> Online Presence
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="linkedin" className="block text-gray-700">
-                    LinkedIn Profile (Optional)
+                    LinkedIn Profile
                   </label>
                   <input
                     type="url"
@@ -586,13 +338,54 @@ const Stage2Application = () => {
                     value={formData.linkedin}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="LinkedIn Profile"
-                    placeholder="https://linkedin.com/in/yourprofile"
+                    placeholder="https://linkedin.com/in/your-profile"
                   />
                 </div>
                 <div>
+                  <label htmlFor="facebook" className="block text-gray-700">
+                    Facebook Profile
+                  </label>
+                  <input
+                    type="url"
+                    id="facebook"
+                    name="facebook"
+                    value={formData.facebook}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    placeholder="https://facebook.com/your-profile"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="twitter" className="block text-gray-700">
+                    Twitter Profile
+                  </label>
+                  <input
+                    type="url"
+                    id="twitter"
+                    name="twitter"
+                    value={formData.twitter}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    placeholder="https://twitter.com/your-handle"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="instagram" className="block text-gray-700">
+                    Instagram Profile
+                  </label>
+                  <input
+                    type="url"
+                    id="instagram"
+                    name="instagram"
+                    value={formData.instagram}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    placeholder="https://instagram.com/your-handle"
+                  />
+                </div>
+                <div className="md:col-span-2">
                   <label htmlFor="portfolio" className="block text-gray-700">
-                    Personal Portfolio or Blog (Optional)
+                    Portfolio or Personal Website
                   </label>
                   <input
                     type="url"
@@ -601,89 +394,124 @@ const Stage2Application = () => {
                     value={formData.portfolio}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    aria-label="Personal Portfolio or Blog"
                     placeholder="https://yourportfolio.com"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Final Consent & Submission */}
+            {/* Document Upload */}
             <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
               <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
-                <FaCheckSquare className="mr-2" /> Final Consent & Submission
+                <FaFileUpload className="mr-2" /> Upload Documents
               </h2>
-              <div className="space-y-4">
-                <div className="flex items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="academicTranscripts"
+                    className="block text-gray-700"
+                  >
+                    Upload Academic Transcripts *
+                    <span className="text-sm text-gray-500 block">
+                      (PDF, max 5MB)
+                    </span>
+                  </label>
                   <input
-                    type="checkbox"
-                    id="consentFalseInfo"
-                    name="consentFalseInfo"
-                    checked={formData.consentFalseInfo}
+                    type="file"
+                    id="academicTranscripts"
+                    name="academicTranscripts"
                     onChange={handleChange}
-                    className="mr-2 text-emerald-600 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Consent to False Information Policy"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    aria-label="Upload Academic Transcripts"
+                    accept="application/pdf"
                     required
                   />
-                  <label htmlFor="consentFalseInfo" className="text-gray-700">
-                    I understand that providing false information may disqualify
-                    me. *
+                </div>
+                <div>
+                  <label
+                    htmlFor="supportingDocs"
+                    className="block text-gray-700"
+                  >
+                    Upload Supporting Documents
+                    <span className="text-sm text-gray-500 block">
+                      (PDF/JPEG/PNG, max 5MB each)
+                    </span>
+                  </label>
+                  <input
+                    type="file"
+                    id="supportingDocs"
+                    name="supportingDocs"
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    aria-label="Upload Supporting Documents"
+                    accept="application/pdf,image/jpeg,image/png"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Consent */}
+            <div className="border-t border-emerald-600 pt-4 mb-6 animate__animated animate__slideInLeft">
+              <h2 className="text-xl sm:text-2xl text-emerald-700 mb-4 flex items-center">
+                <FaCheckSquare className="mr-2" /> Consent
+              </h2>
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name="consentFalseInfo"
+                      checked={formData.consentFalseInfo}
+                      onChange={handleChange}
+                      className="form-checkbox text-emerald-500"
+                      required
+                    />
+                    <span className="text-gray-700">
+                      I agree that the information provided is accurate. *
+                    </span>
                   </label>
                 </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="consentNameImage"
-                    name="consentNameImage"
-                    checked={formData.consentNameImage}
-                    onChange={handleChange}
-                    className="mr-2 text-emerald-600 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Consent to Use Name and Image"
-                    required
-                  />
-                  <label htmlFor="consentNameImage" className="text-gray-700">
-                    I consent to my name and image being used on official
-                    university documentation. *
+                <div>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name="consentNameImage"
+                      checked={formData.consentNameImage}
+                      onChange={handleChange}
+                      className="form-checkbox text-emerald-500"
+                      required
+                    />
+                    <span className="text-gray-700">
+                      I agree to allow use of my name and image in promotional
+                      materials. *
+                    </span>
                   </label>
                 </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="consentCompetitive"
-                    name="consentCompetitive"
-                    checked={formData.consentCompetitive}
-                    onChange={handleChange}
-                    className="mr-2 text-emerald-600 focus:ring-emerald-500"
-                    aria-required="true"
-                    aria-label="Consent to Competitive Nature of Scholarship"
-                    required
-                  />
-                  <label htmlFor="consentCompetitive" className="text-gray-700">
-                    I agree that the scholarship is competitive and subject to
-                    final review. *
+                <div>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name="consentCompetitive"
+                      checked={formData.consentCompetitive}
+                      onChange={handleChange}
+                      className="form-checkbox text-emerald-500"
+                      required
+                    />
+                    <span className="text-gray-700">
+                      I acknowledge that this scholarship is competitive. *
+                    </span>
                   </label>
                 </div>
               </div>
             </div>
 
-            {/* Submit Button & Payment */}
-            <div className="text-center mt-8">
-              <button
-                type="submit"
-                className="bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition duration-300"
-                aria-label="Proceed to Payment"
-                disabled={submitting}
-              >
-                {submitting ? "Submitting..." : "Proceed to Payment"}
-              </button>
-              <p className="text-gray-600 text-sm mt-2">
-                You will be redirected to pay the document verification fee of{" "}
-                <span className="text-emerald-700 font-semibold">$10</span>{" "}
-                after submission.
-              </p>
-            </div>
+            <button
+              type="submit"
+              className="w-full py-3 px-4 bg-emerald-600 text-white rounded-lg text-xl font-semibold disabled:opacity-50"
+              disabled={submitting}
+            >
+              {submitting ? "Submitting..." : "Submit Application"}
+            </button>
           </form>
         </div>
       </div>

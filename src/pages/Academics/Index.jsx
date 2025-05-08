@@ -37,7 +37,7 @@ const Academics = () => {
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/aca.jpeg"
           alt="SouthPark University students in a classroom setting"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -62,7 +62,7 @@ const Academics = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <h1 className="text-5xl text-emerald-600">
-              Academics at SouthPark
+              Academics at South Park
             </h1>
             <hr className="w-24 bg-emerald-600 text-emerald-600 mt-4 mb-8" />
           </div>
@@ -83,7 +83,7 @@ const Academics = () => {
           </p>
           <div className="relative">
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/academ.jpeg"
               alt="SouthPark University students collaborating on a project"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
@@ -132,7 +132,7 @@ const Academics = () => {
 
           <div className="relative mt-8">
             <LazyLoadImage
-              src="/bg5.jpg"
+              src="/academics.jpeg"
               alt="SouthPark University students in various academic programs"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
@@ -173,7 +173,7 @@ const Academics = () => {
                 </p>
                 <Link
                   to="/gold-core"
-                  className="text-emerald-600 hover:underline mt-2 block"
+                  className="text-emerald-600 hover:underline mt-2 hidden"
                   aria-label="Learn more about Gold Core Curriculum"
                 >
                   Learn More
@@ -249,14 +249,16 @@ const Academics = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">
               Have Questions?
             </h3>
-            <Link
-              to="/contact-admissions"
-              className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-8  font-semibold text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform"
+            <a
+              href="mailto:admissions@southparkuni.com?subject=Inquiry%20About%20SouthPark%20University%20Admissions"
+              className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-8 fontMuch text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform"
               aria-label="Email the SouthPark University Admissions Team"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaEnvelope className="text-xl" />
               <span>Email Admissions Team</span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

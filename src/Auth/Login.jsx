@@ -3,18 +3,27 @@ import { useNavigate, Link } from "react-router-dom";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useAuth } from "../contexts/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, resetPassword } = useAuth();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   const handleLogin = async (e) => {
@@ -29,6 +38,21 @@ const Login = () => {
       setError(err.message || "Invalid email or password.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+    setResetLoading(true);
+
+    try {
+      await resetPassword(resetEmail);
+      setIsResetModalOpen(false);
+      setResetEmail("");
+    } catch (err) {
+      // Error is handled via toast in AuthContext
+    } finally {
+      setResetLoading(false);
     }
   };
 
@@ -79,15 +103,34 @@ const Login = () => {
               <label htmlFor="password" className="block text-gray-700">
                 Password *
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-emerald-600"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={() => setIsResetModalOpen(true)}
+                className="text-emerald-600 hover:underline text-sm"
+              >
+                Forgot Password?
+              </button>
             </div>
             <button
               type="submit"
@@ -107,6 +150,50 @@ const Login = () => {
           </form>
         </div>
       </div>
+
+      {/* Password Reset Modal */}
+      {isResetModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+            <h2 className="text-2xl text-emerald-700 mb-4 text-center">
+              Reset Password
+            </h2>
+            <form onSubmit={handlePasswordReset} className="space-y-4">
+              <div>
+                <label htmlFor="resetEmail" className="block text-gray-700">
+                  Enter your email address
+                </label>
+                <input
+                  type="email"
+                  id="resetEmail"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  required
+                />
+              </div>
+              <div className="flex gap-4">
+                <button
+                  type="submit"
+                  disabled={resetLoading}
+                  className={`flex-1 bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition duration-300 ${
+                    resetLoading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {resetLoading ? "Sending..." : "Send Reset Email"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsResetModalOpen(false)}
+                  className="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

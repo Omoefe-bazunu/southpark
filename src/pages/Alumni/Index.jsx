@@ -23,7 +23,7 @@ const Alumni = () => {
       {/* Hero Section with Image and Breadcrumb */}
       <section className="relative w-full h-[60vh] overflow-hidden">
         <LazyLoadImage
-          src="/bg3.jpg"
+          src="/alum1.jpeg"
           alt="SouthPark University alumni at a networking event"
           effect="opacity"
           className="w-full h-full object-cover transform scale-110 transition-transform duration-5000"
@@ -68,19 +68,19 @@ const Alumni = () => {
           </p>
           <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-4">
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/alum1.jpeg"
               alt="SouthPark University alumni reconnecting at an event"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
             />
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/alum2.jpeg"
               alt="SouthPark University alumni reconnecting at an event"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
             />
             <LazyLoadImage
-              src="/bg3.jpg"
+              src="/alum3.jpeg"
               alt="SouthPark University alumni reconnecting at an event"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-3s"
@@ -263,7 +263,7 @@ const Alumni = () => {
                   <FaUserEdit className="text-emerald-600 text-2xl" />
                   <div>
                     <Link
-                      to="/update-info"
+                      to="/dashboard"
                       className="text-emerald-600 hover:underline"
                       aria-label="Update your alumni information"
                     >
@@ -279,7 +279,7 @@ const Alumni = () => {
                   <FaEnvelope className="text-emerald-600 text-2xl" />
                   <div>
                     <Link
-                      to="/subscribe-newsletter"
+                      to="/#newsLetter"
                       className="text-emerald-600 hover:underline"
                       aria-label="Subscribe to the alumni newsletter"
                     >
@@ -296,7 +296,7 @@ const Alumni = () => {
           </div>
           <div className="relative">
             <LazyLoadImage
-              src="/bg5.jpg"
+              src="/informed.jpeg"
               alt="SouthPark University alumni giving back to the community"
               effect="opacity"
               className="w-full h-64 object-cover rounded-lg shadow-md animate__animated animate__zoomIn animate__delay-2s"
