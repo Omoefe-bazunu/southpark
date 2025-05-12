@@ -1,13 +1,33 @@
 import { useState } from "react";
+import { db } from "../../services/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const SubscribeNewsletter = () => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Placeholder for form submission logic (e.g., API call)
-    console.log("Subscribed with email:", email);
-    setEmail(""); // Clear the input field after submission
+    setError("");
+    setSuccess("");
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "newsLetters"), {
+        email: email,
+        subscribedAt: new Date(),
+      });
+      setSuccess("Successfully subscribed!");
+      setEmail("");
+    } catch (err) {
+      setError("Failed to subscribe. Please try again.");
+      console.error("Error adding email to Firestore:", err);
+    }
   };
 
   return (
@@ -42,6 +62,8 @@ const SubscribeNewsletter = () => {
             Subscribe
           </button>
         </div>
+        {error && <p className="text-red-300 mt-4">{error}</p>}
+        {success && <p className="text-green-300 mt-4">{success}</p>}
       </div>
     </section>
   );

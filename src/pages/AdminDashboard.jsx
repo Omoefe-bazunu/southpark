@@ -300,6 +300,12 @@ const AdminDashboard = () => {
               >
                 <span>Documents Verification Applicants Data</span>
               </Link>
+              <Link
+                to="newsletter"
+                className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-8 fontMuch text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform"
+              >
+                <span>NewsLetter Subscribers Emails</span>
+              </Link>
             </div>
             {/* Eligibility Management */}
             <div className="bg-white shadow-lg rounded-lg p-6">

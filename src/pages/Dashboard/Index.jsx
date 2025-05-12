@@ -38,7 +38,11 @@ const Dashboard = () => {
           name: fullName,
           email: user.email,
           profilePic: user.photoURL || "/default-profile-pic.jpeg",
-          eligibilityStatus: eligibility ? "Eligible" : "Not Eligible",
+          eligibilityStatus: !eligibilitySnap.exists()
+            ? "Not Eligible"
+            : eligibility
+              ? "Eligible"
+              : "Pending",
           approvedStatus: approved ? "Approved" : "Not Approved",
           applicationStatus: eligibility
             ? "Stage 1 Complete"

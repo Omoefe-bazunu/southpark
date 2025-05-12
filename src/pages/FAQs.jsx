@@ -46,7 +46,7 @@ const FAQ = () => {
     {
       question: "How do I apply?",
       answer:
-        "Just fill out our short application form, and we’ll take it from there!",
+        "Click on the 'Apply' button on any page in the website or in your dashboard and fill the first form to check if you're eligible for any of the program under the scholarship. Once eligible you will receive a email asking you to continue to stage 2 by completing another form to verify your documents. You can also check your dashboard if your status now reflects eligible after 48 hrs and click on the 'Continue to stage 2' button from there!",
     },
   ];
 

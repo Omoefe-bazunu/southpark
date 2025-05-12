@@ -11,6 +11,10 @@ service cloud.firestore {
       allow read, write, update: if true;
     }
 
+   match /newsLetters/{docId} {
+      allow read, write, update: if true;
+    }
+    
     match /applicants/{docId} {
       allow read, write, update: if true;
     }

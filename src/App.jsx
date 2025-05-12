@@ -26,6 +26,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import FinancialPlanningGuide from "./pages/FinancialGuide";
 import EligibilityViewer from "./pages/EligibilityView";
 import Stage2EligibilityViewer from "./pages/DocumentsVerification";
+import AdminNewsletterList from "./pages/AdminNewsLetter";
 
 const App = () => (
   <Router>
@@ -59,6 +60,7 @@ const App = () => (
           path="/admin/eligibility-applicants"
           element={<EligibilityViewer />}
         />
+        <Route path="/admin/newsletter" element={<AdminNewsletterList />} />
       </Routes>
     </Suspense>
     <Footer />
