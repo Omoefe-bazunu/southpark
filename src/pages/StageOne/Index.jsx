@@ -13,7 +13,15 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 import { db } from "../../services/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  query,
+  where,
+  getDocs,
+  collection,
+  doc,
+  setDoc,
+} from "firebase/firestore"; // ensure these are imported
+
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 
@@ -79,7 +87,22 @@ const Stage1Application = () => {
     setSubmitting(true);
 
     try {
-      // Write to Firestore eligibility/{uid}
+      // Check if email already exists in the eligibility collection
+      const eligibilityQuery = query(
+        collection(db, "eligibility"),
+        where("email", "==", user.email)
+      );
+      const existing = await getDocs(eligibilityQuery);
+
+      if (!existing.empty) {
+        toast.error(
+          "You've already applied. Duplicate applications are not allowed."
+        );
+        setSubmitting(false);
+        return;
+      }
+
+      // Proceed to submit if not found
       const dataToSubmit = {
         ...formData,
         email: user.email,
@@ -89,10 +112,10 @@ const Stage1Application = () => {
         timestamp: new Date().toISOString(),
         submittedAt: new Date().toISOString(),
       };
+
       const eligibilityRef = doc(db, "eligibility", user.uid);
       await setDoc(eligibilityRef, dataToSubmit);
 
-      // Send confirmation email via EmailJS
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -108,9 +131,7 @@ const Stage1Application = () => {
       setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
     } catch (error) {
       console.error("Error submitting application:", error.message);
-      toast.error(
-        "Failed to submit application or send email. Please try again."
-      );
+      toast.error("Failed to submit application. Please try again.");
     } finally {
       setSubmitting(false);
     }

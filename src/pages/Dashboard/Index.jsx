@@ -10,7 +10,14 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "../../services/firebase";
 
 const Dashboard = () => {
@@ -29,6 +36,12 @@ const Dashboard = () => {
           ? eligibilitySnap.data()
           : {};
 
+        // Query applicants collection to check if user's uid exists in any document
+        const applicantsRef = collection(db, "applicants");
+        const q = query(applicantsRef, where("userId", "==", user.uid));
+        const applicantSnap = await getDocs(q);
+        const isApplicant = !applicantSnap.empty;
+
         // Extract fullName, eligibility, and approved
         const fullName = eligibilityDoc.fullName || "";
         const eligibility = eligibilityDoc.eligibility || false;
@@ -46,8 +59,9 @@ const Dashboard = () => {
           approvedStatus: approved ? "Approved" : "Not Approved",
           applicationStatus: eligibility
             ? "Stage 1 Complete"
-            : "Stage 1 Pending ",
+            : "Stage 1 Pending",
           hasEligibilityData: eligibilitySnap.exists(),
+          isApplicant: isApplicant, // Flag to track if user is in applicants collection
         });
       } catch (error) {
         console.error("Error fetching user data:", error.message);
@@ -61,6 +75,7 @@ const Dashboard = () => {
           applicationStatus:
             "Stage 1 Pending (Complete to check if you're eligible)",
           hasEligibilityData: false,
+          isApplicant: false, // Default to false on error
         });
       }
     };
@@ -80,6 +95,7 @@ const Dashboard = () => {
           applicationStatus:
             "Stage 1 Pending (Apply to check if you're eligible)",
           hasEligibilityData: false,
+          isApplicant: false, // Default to false for unauthenticated users
         });
       }
     }
@@ -229,7 +245,8 @@ const Dashboard = () => {
                   </Link>
                 )}
                 {userData.eligibilityStatus === "Eligible" &&
-                  userData.approvedStatus === "Not Approved" && (
+                  userData.approvedStatus === "Not Approved" &&
+                  !userData.isApplicant && (
                     <Link
                       to="/stageTwo"
                       className="mt-4 bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition duration-300 inline-block"

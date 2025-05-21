@@ -16,6 +16,8 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaDownload,
+  FaTrash,
+  FaSearch,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -23,23 +25,28 @@ const Stage2EligibilityViewer = () => {
   const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState({});
+  const [dateFilter, setDateFilter] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [emailSearch, setEmailSearch] = useState("");
 
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        // Fetch applicants from the applicants collection
         const applicantsCollection = collection(db, "applicants");
         const applicantsSnapshot = await getDocs(applicantsCollection);
         const applicantsList = applicantsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
+          submittedAt: doc.data().submittedAt
+            ? new Date(doc.data().submittedAt).toISOString()
+            : "N/A",
         }));
 
-        // Fetch fullName for each applicant from eligibility collection
-        const applicantsWithNames = await Promise.all(
+        const applicantsWithDetails = await Promise.all(
           applicantsList.map(async (applicant) => {
             try {
-              // Fetch eligibility document by userId (document ID)
               const eligibilityDocRef = doc(
                 db,
                 "eligibility",
@@ -49,18 +56,21 @@ const Stage2EligibilityViewer = () => {
               const fullName = eligibilityDoc.exists()
                 ? eligibilityDoc.data().fullName || "Unknown"
                 : "Unknown";
-              return { ...applicant, fullName };
+              const email = eligibilityDoc.exists()
+                ? eligibilityDoc.data().email || "N/A"
+                : "N/A";
+              return { ...applicant, fullName, email };
             } catch (error) {
               console.error(
-                `Error fetching fullName for user ${applicant.userId}:`,
+                `Error fetching details for user ${applicant.userId}:`,
                 error
               );
-              return { ...applicant, fullName: "Unknown" };
+              return { ...applicant, fullName: "Unknown", email: "N/A" };
             }
           })
         );
 
-        setApplicants(applicantsWithNames);
+        setApplicants(applicantsWithDetails);
       } catch (error) {
         console.error("Error fetching applicants data:", error.message);
         toast.error("Failed to fetch applicant data. Please try again.");
@@ -79,6 +89,18 @@ const Stage2EligibilityViewer = () => {
     }));
   };
 
+  const handleDelete = (applicantId, applicantName) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to remove ${applicantName || "Unknown"} from the view?`
+    );
+    if (confirmed) {
+      setApplicants((prevApplicants) =>
+        prevApplicants.filter((applicant) => applicant.id !== applicantId)
+      );
+      toast.success("Applicant removed from view.");
+    }
+  };
+
   const downloadFile = (fileData, defaultFileName) => {
     if (!fileData || !fileData.base64) {
       toast.error("No file available for download.");
@@ -88,8 +110,6 @@ const Stage2EligibilityViewer = () => {
     try {
       const { base64, name, type } = fileData;
       const fileName = name || defaultFileName;
-
-      // Extract the base64 data without the prefix
       const base64WithoutPrefix = base64.split(",")[1];
       const byteCharacters = atob(base64WithoutPrefix);
       const byteNumbers = new Array(byteCharacters.length);
@@ -103,7 +123,6 @@ const Stage2EligibilityViewer = () => {
         type: type || "application/octet-stream",
       });
 
-      // Create download link
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -111,7 +130,6 @@ const Stage2EligibilityViewer = () => {
       document.body.appendChild(link);
       link.click();
 
-      // Cleanup
       setTimeout(() => {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
@@ -178,6 +196,31 @@ const Stage2EligibilityViewer = () => {
     }
   };
 
+  const filterApplicants = () => {
+    return applicants.filter((applicant) => {
+      let dateMatch = true;
+      if (dateFilter.startDate || dateFilter.endDate) {
+        if (applicant.submittedAt === "N/A") return false;
+        const itemDate = new Date(applicant.submittedAt);
+        const start = dateFilter.startDate
+          ? new Date(dateFilter.startDate)
+          : null;
+        const end = dateFilter.endDate ? new Date(dateFilter.endDate) : null;
+        dateMatch =
+          (!start || itemDate >= start) &&
+          (!end || itemDate <= new Date(end.setHours(23, 59, 59, 999)));
+      }
+
+      const emailMatch = applicant.email
+        ? applicant.email.toLowerCase().includes(emailSearch.toLowerCase())
+        : false;
+
+      return dateMatch && (!emailSearch || emailMatch);
+    });
+  };
+
+  const filteredApplicants = filterApplicants();
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -213,38 +256,95 @@ const Stage2EligibilityViewer = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl text-emerald-700 mb-8 flex items-center mt-8">
           <FaPassport className="mr-2 text-3xl" />
-          Stage 2 Applications
+          Stage 2 Applications ({filteredApplicants.length})
         </h1>
-        {applicants.length === 0 ? (
+        <div className="mb-6 flex flex-col sm:flex-row gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Start Date
+            </label>
+            <input
+              type="date"
+              value={dateFilter.startDate}
+              onChange={(e) =>
+                setDateFilter((prev) => ({
+                  ...prev,
+                  startDate: e.target.value,
+                }))
+              }
+              className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              End Date
+            </label>
+            <input
+              type="date"
+              value={dateFilter.endDate}
+              onChange={(e) =>
+                setDateFilter((prev) => ({
+                  ...prev,
+                  endDate: e.target.value,
+                }))
+              }
+              className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+            />
+          </div>
+          <div className="flex-grow">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Search by Email
+            </label>
+            <div className="relative">
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                value={emailSearch}
+                onChange={(e) => setEmailSearch(e.target.value)}
+                placeholder="Search by email..."
+                className="w-full p-2 pl-10 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+              />
+            </div>
+          </div>
+        </div>
+        {filteredApplicants.length === 0 ? (
           <p className="text-gray-600 text-lg">No applications found.</p>
         ) : (
-          applicants.map((applicant) => (
+          filteredApplicants.map((applicant) => (
             <div
               key={applicant.id}
               className="mb-4 bg-white shadow-lg rounded-lg overflow-hidden"
             >
-              <button
-                className="w-full flex justify-between items-center p-4 bg-emerald-600 text-white hover:bg-emerald-700 transition duration-300"
-                onClick={() => toggleExpand(applicant.id)}
-                aria-expanded={expanded[applicant.id]}
-                aria-controls={`applicant-details-${applicant.id}`}
-              >
-                <span className="text-lg font-semibold">
-                  Applicant: {applicant.fullName || "Unknown"} (Submitted:{" "}
-                  {new Date(applicant.submittedAt).toLocaleDateString()})
-                </span>
-                {expanded[applicant.id] ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
+              <div className="flex justify-between items-center p-4 bg-emerald-600 text-white hover:bg-emerald-700 transition duration-300">
+                <button
+                  className="flex-1 flex justify-between items-center"
+                  onClick={() => toggleExpand(applicant.id)}
+                  aria-expanded={expanded[applicant.id]}
+                  aria-controls={`applicant-details-${applicant.id}`}
+                >
+                  <span className="text-lg font-semibold">
+                    Applicant: {applicant.fullName || "Unknown"} (Email:{" "}
+                    {applicant.email})
+                  </span>
+                  {expanded[applicant.id] ? <FaChevronUp /> : <FaChevronDown />}
+                </button>
+                <button
+                  className="ml-4 flex items-center text-white hover:text-red-300"
+                  onClick={() => handleDelete(applicant.id, applicant.fullName)}
+                  aria-label={`Remove ${applicant.fullName || "Unknown"} from view`}
+                >
+                  <FaTrash className="mr-1" /> Delete
+                </button>
+              </div>
               {expanded[applicant.id] && (
                 <div id={`applicant-details-${applicant.id}`} className="p-6">
-                  {/* Applicant Verification */}
                   <div className="mb-6">
                     <h2 className="text-xl text-emerald-700 mb-2 flex items-center">
                       <FaPassport className="mr-2" /> Applicant Verification
                     </h2>
                     <p>
                       <strong>Passport Number/National ID:</strong>{" "}
-                      {applicant.passportNumber}
+                      {applicant.passportNumber || "N/A"}
                     </p>
                     {applicant.passportPhoto &&
                       renderFilePreview(
@@ -253,12 +353,11 @@ const Stage2EligibilityViewer = () => {
                       )}
                   </div>
 
-                  {/* Social & Digital Proof */}
                   <div className="mb-6">
                     <h2 className="text-xl text-emerald-700 mb-2 flex items-center">
                       <FaLink className="mr-2" /> Online Presence
                     </h2>
-                    {applicant.linkedin && (
+                    {applicant.linkedin ? (
                       <p>
                         <strong>LinkedIn:</strong>{" "}
                         <a
@@ -270,8 +369,12 @@ const Stage2EligibilityViewer = () => {
                           {applicant.linkedin}
                         </a>
                       </p>
+                    ) : (
+                      <p>
+                        <strong>LinkedIn:</strong> N/A
+                      </p>
                     )}
-                    {applicant.facebook && (
+                    {applicant.facebook ? (
                       <p>
                         <strong>Facebook:</strong>{" "}
                         <a
@@ -283,8 +386,12 @@ const Stage2EligibilityViewer = () => {
                           {applicant.facebook}
                         </a>
                       </p>
+                    ) : (
+                      <p>
+                        <strong>Facebook:</strong> N/A
+                      </p>
                     )}
-                    {applicant.twitter && (
+                    {applicant.twitter ? (
                       <p>
                         <strong>Twitter:</strong>{" "}
                         <a
@@ -296,8 +403,12 @@ const Stage2EligibilityViewer = () => {
                           {applicant.twitter}
                         </a>
                       </p>
+                    ) : (
+                      <p>
+                        <strong>Twitter:</strong> N/A
+                      </p>
                     )}
-                    {applicant.instagram && (
+                    {applicant.instagram ? (
                       <p>
                         <strong>Instagram:</strong>{" "}
                         <a
@@ -309,8 +420,12 @@ const Stage2EligibilityViewer = () => {
                           {applicant.instagram}
                         </a>
                       </p>
+                    ) : (
+                      <p>
+                        <strong>Instagram:</strong> N/A
+                      </p>
                     )}
-                    {applicant.portfolio && (
+                    {applicant.portfolio ? (
                       <p>
                         <strong>Portfolio:</strong>{" "}
                         <a
@@ -322,52 +437,89 @@ const Stage2EligibilityViewer = () => {
                           {applicant.portfolio}
                         </a>
                       </p>
+                    ) : (
+                      <p>
+                        <strong>Portfolio:</strong> N/A
+                      </p>
                     )}
                   </div>
 
-                  {/* Document Upload */}
                   <div className="mb-6">
                     <h2 className="text-xl text-emerald-700 mb-2 flex items-center">
                       <FaFileUpload className="mr-2" /> Uploaded Documents
                     </h2>
-                    {applicant.academicTranscripts &&
+                    {applicant.academicTranscripts ? (
                       renderFilePreview(
                         applicant.academicTranscripts,
                         `transcripts_${applicant.userId}.pdf`
-                      )}
-                    {applicant.supportingDocs &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>Academic Transcripts:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.supportingDocs ? (
                       renderFilePreview(
                         applicant.supportingDocs,
                         `supporting_docs_${applicant.userId}.pdf`
-                      )}
-                    {applicant.englishScore &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>Supporting Documents:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.englishScore ? (
                       renderFilePreview(
                         applicant.englishScore,
                         `english_score_${applicant.userId}.pdf`
-                      )}
-                    {applicant.englishInstructionProof &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>English Score:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.englishInstructionProof ? (
                       renderFilePreview(
                         applicant.englishInstructionProof,
                         `english_proof_${applicant.userId}.pdf`
-                      )}
-                    {applicant.employmentProof &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>English Instruction Proof:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.employmentProof ? (
                       renderFilePreview(
                         applicant.employmentProof,
                         `employment_proof_${applicant.userId}.pdf`
-                      )}
-                    {applicant.sponsorPayslip &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>Employment Proof:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.sponsorPayslip ? (
                       renderFilePreview(
                         applicant.sponsorPayslip,
                         `sponsor_payslip_${applicant.userId}.pdf`
-                      )}
-                    {applicant.recommendationLetter &&
+                      )
+                    ) : (
+                      <p>
+                        <strong>Sponsor Payslip:</strong> N/A
+                      </p>
+                    )}
+                    {applicant.recommendationLetter ? (
                       renderFilePreview(
                         applicant.recommendationLetter,
                         `recommendation_letter_${applicant.userId}.pdf`
-                      )}
+                      )
+                    ) : (
+                      <p>
+                        <strong>Recommendation Letter:</strong> N/A
+                      </p>
+                    )}
                   </div>
 
-                  {/* Consent */}
                   <div className="mb-6">
                     <h2 className="text-xl text-emerald-700 mb-2 flex items-center">
                       <FaCheckSquare className="mr-2" /> Consent
@@ -386,17 +538,21 @@ const Stage2EligibilityViewer = () => {
                     </p>
                   </div>
 
-                  {/* Submission Details */}
                   <div>
                     <h2 className="text-xl text-emerald-700 mb-2">
                       Submission Details
                     </h2>
                     <p>
                       <strong>Submitted At:</strong>{" "}
-                      {new Date(applicant.submittedAt).toLocaleString()}
+                      {applicant.submittedAt !== "N/A"
+                        ? new Date(applicant.submittedAt).toLocaleString()
+                        : "N/A"}
                     </p>
                     <p>
-                      <strong>User ID:</strong> {applicant.userId}
+                      <strong>User ID:</strong> {applicant.userId || "N/A"}
+                    </p>
+                    <p>
+                      <strong>Email:</strong> {applicant.email}
                     </p>
                   </div>
                 </div>

@@ -24,7 +24,7 @@
     "express": "^5.1.0",
     "firebase": "^11.6.1",
     "framer-motion": "^12.9.4",
-    "nodemailer": "^7.0.2",
+    "nodemailer": "^6.10.1",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "react": "^19.0.0",

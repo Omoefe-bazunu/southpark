@@ -223,8 +223,7 @@ const Stage2Application = () => {
           <h2 className="text-2xl text-emerald-700 mb-4">Success!</h2>
           <p className="text-gray-600">
             Your application has been submitted successfully. A confirmation
-            email has been sent to {user.email}. You will be redirected to the
-            payment page shortly.
+            email has been sent to {user.email}.
           </p>
         </div>
       </div>

@@ -11,6 +11,8 @@ import {
   FaTimes,
   FaTrash,
   FaEnvelope,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 import { useAuth } from "../contexts/AuthContext";
 import {
@@ -42,6 +44,21 @@ const AdminDashboard = () => {
   });
   const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [eligibilityFilter, setEligibilityFilter] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [applicantsFilter, setApplicantsFilter] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [expandedEligibility, setExpandedEligibility] = useState({});
+  const [expandedApplicants, setExpandedApplicants] = useState({});
+  const [sectionExpanded, setSectionExpanded] = useState({
+    eligibility: true,
+    applicants: true,
+    contact: true,
+  });
 
   useEffect(() => {
     if (!loading && !user) {
@@ -84,17 +101,27 @@ const AdminDashboard = () => {
             status: doc.data().status || "Pending",
             paymentStatus: doc.data().paymentStatus || "Unpaid",
             additionalInfo: doc.data().additionalInfo || null,
-          }));
-
-          const contactData = contactSnap.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().name || "Anonymous",
-            email: doc.data().email || "N/A",
-            message: doc.data().message || "No message provided",
             submittedAt: doc.data().submittedAt
               ? new Date(doc.data().submittedAt).toISOString()
               : "N/A",
           }));
+
+          const contactData = contactSnap.docs
+            .map((doc) => ({
+              id: doc.id,
+              name: doc.data().name || "Anonymous",
+              email: doc.data().email || "N/A",
+              message: doc.data().message || "No message provided",
+              submittedAt: doc.data().submittedAt
+                ? new Date(doc.data().submittedAt).toISOString()
+                : "N/A",
+            }))
+            .sort((a, b) => {
+              if (a.submittedAt === "N/A" && b.submittedAt === "N/A") return 0;
+              if (a.submittedAt === "N/A") return 1;
+              if (b.submittedAt === "N/A") return -1;
+              return new Date(b.submittedAt) - new Date(a.submittedAt);
+            });
 
           const eligibilityData = eligibilitySnap.docs.map((doc) => ({
             id: doc.id,
@@ -102,6 +129,9 @@ const AdminDashboard = () => {
             email: doc.data().email || "N/A",
             eligibility: doc.data().eligibility || false,
             approved: doc.data().approved || false,
+            submittedAt: doc.data().submittedAt
+              ? new Date(doc.data().submittedAt).toISOString()
+              : "N/A",
           }));
 
           setAdminData({
@@ -197,7 +227,7 @@ const AdminDashboard = () => {
   const handleDelete = async (collectionName, docId) => {
     if (
       !window.confirm(
-        `Are you sure you want to delete this ${collectionName} record?`
+        `Are you sure you want to remove this ${collectionName} record from the dashboard view?`
       )
     ) {
       return;
@@ -205,17 +235,22 @@ const AdminDashboard = () => {
 
     setIsDeleting(true);
     try {
-      await deleteDoc(doc(db, collectionName, docId));
+      if (collectionName === "eligibility") {
+        setEligibleUsers((prev) => prev.filter((user) => user.id !== docId));
+        toast.success("Eligibility record removed from view.");
+      } else {
+        await deleteDoc(doc(db, collectionName, docId));
 
-      setAdminData((prev) => ({
-        ...prev,
-        [collectionName === "contact" ? "contactMessages" : collectionName]:
-          prev[
-            collectionName === "contact" ? "contactMessages" : collectionName
-          ].filter((item) => item.id !== docId),
-      }));
+        setAdminData((prev) => ({
+          ...prev,
+          [collectionName === "contact" ? "contactMessages" : collectionName]:
+            prev[
+              collectionName === "contact" ? "contactMessages" : collectionName
+            ].filter((item) => item.id !== docId),
+        }));
 
-      toast.success(`${collectionName} record deleted successfully!`);
+        toast.success(`${collectionName} record deleted successfully!`);
+      }
     } catch (error) {
       console.error(`Error deleting ${collectionName} record:`, error.message);
       toast.error(
@@ -226,6 +261,41 @@ const AdminDashboard = () => {
     }
   };
 
+  const filterByDate = (items, filter) => {
+    if (!filter.startDate && !filter.endDate) return items;
+    return items.filter((item) => {
+      if (item.submittedAt === "N/A") return false;
+      const itemDate = new Date(item.submittedAt);
+      const start = filter.startDate ? new Date(filter.startDate) : null;
+      const end = filter.endDate ? new Date(filter.endDate) : null;
+      return (
+        (!start || itemDate >= start) &&
+        (!end || itemDate <= new Date(end.setHours(23, 59, 59, 999)))
+      );
+    });
+  };
+
+  const toggleEligibilityExpand = (id) => {
+    setExpandedEligibility((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const toggleApplicantExpand = (id) => {
+    setExpandedApplicants((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const toggleSectionExpand = (section) => {
+    setSectionExpanded((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -233,6 +303,12 @@ const AdminDashboard = () => {
       </div>
     );
   }
+
+  const filteredEligibleUsers = filterByDate(eligibleUsers, eligibilityFilter);
+  const filteredApplicants = filterByDate(
+    adminData.applicants,
+    applicantsFilter
+  );
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-gray-100 to-emerald-50 text-gray-700">
@@ -286,8 +362,7 @@ const AdminDashboard = () => {
             Admin Dashboard
           </h1>
           <div className="space-y-8">
-            <div className=" flex flex-col gap-8">
-              {" "}
+            <div className="flex flex-col gap-8">
               <Link
                 to="eligibility-applicants"
                 className="inline-flex items-center space-x-2 bg-emerald-600 text-white py-3 px-8 fontMuch text-lg hover:bg-emerald-700 transition duration-300 shadow-lg hover:scale-105 transform"
@@ -307,265 +382,433 @@ const AdminDashboard = () => {
                 <span>NewsLetter Subscribers Emails</span>
               </Link>
             </div>
+
             {/* Eligibility Management */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-emerald-700 mb-6 flex items-center">
-                <FaFileAlt className="mr-3" /> Eligibility Management (
-                {eligibleUsers.length})
-              </h2>
-              {eligibleUsers.length === 0 ? (
-                <p className="text-gray-500">No eligible users found.</p>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {eligibleUsers.map((user) => (
-                    <div
-                      key={user.id}
-                      className="border border-gray-200 rounded-lg p-2 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-medium text-lg">
-                            {user.fullName || "N/A"}
-                          </h3>
-                          <p className="text-gray-600 text-sm">
-                            {user.email || "No email"}
-                          </p>
-                        </div>
-                        <span
-                          className={`px-2 py-1 rounded-full text-xs ${
-                            user.eligibility
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {user.eligibility ? "Eligible" : "Not Eligible"}
-                        </span>
-                      </div>
-                      <div className="mt-4 flex items-center gap-2">
-                        <form
-                          onSubmit={handleUpdateEligibility}
-                          className="flex items-end gap-2 flex-grow"
-                        >
-                          <div className="flex-grow">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                              Update Status
-                            </label>
-                            <select
-                              value={
-                                updateEligibility.userId === user.id
-                                  ? updateEligibility.status
-                                  : ""
-                              }
-                              onChange={(e) =>
-                                setUpdateEligibility({
-                                  userId: user.id,
-                                  status: e.target.value,
-                                })
-                              }
-                              className="w-full p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
-                              required
-                            >
-                              <option value="">Select status</option>
-                              <option value="Eligible">Eligible</option>
-                              <option value="Not Eligible">Not Eligible</option>
-                            </select>
-                          </div>
-                          <button
-                            type="submit"
-                            disabled={
-                              isUpdating ||
-                              !updateEligibility.status ||
-                              updateEligibility.userId !== user.id
-                            }
-                            className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded disabled:opacity-50 flex items-center"
-                          >
-                            <FaEdit className="mr-2" />
-                            {isUpdating ? "Updating..." : "Update"}
-                          </button>
-                        </form>
-                      </div>
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleSectionExpand("eligibility")}
+              >
+                <h2 className="text-2xl font-semibold text-emerald-700 flex items-center">
+                  <FaFileAlt className="mr-3" /> Eligibility Management (
+                  {filteredEligibleUsers.length})
+                </h2>
+                {sectionExpanded.eligibility ? (
+                  <FaChevronUp />
+                ) : (
+                  <FaChevronDown />
+                )}
+              </div>
+              {sectionExpanded.eligibility && (
+                <div className="mt-6">
+                  <div className="mb-6 flex flex-col sm:flex-row gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Start Date
+                      </label>
+                      <input
+                        type="date"
+                        value={eligibilityFilter.startDate}
+                        onChange={(e) =>
+                          setEligibilityFilter((prev) => ({
+                            ...prev,
+                            startDate: e.target.value,
+                          }))
+                        }
+                        className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                      />
                     </div>
-                  ))}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        End Date
+                      </label>
+                      <input
+                        type="date"
+                        value={eligibilityFilter.endDate}
+                        onChange={(e) =>
+                          setEligibilityFilter((prev) => ({
+                            ...prev,
+                            endDate: e.target.value,
+                          }))
+                        }
+                        className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                      />
+                    </div>
+                  </div>
+                  {filteredEligibleUsers.length === 0 ? (
+                    <p className="text-gray-500">No eligible users found.</p>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {filteredEligibleUsers.map((user) => (
+                        <div
+                          key={user.id}
+                          className="border border-gray-200 rounded-lg p-2 hover:shadow-md transition-shadow"
+                        >
+                          <div
+                            className="flex justify-between items-center cursor-pointer"
+                            onClick={() => toggleEligibilityExpand(user.id)}
+                          >
+                            <div>
+                              <h3 className="font-medium text-lg">
+                                {user.fullName || "N/A"}
+                              </h3>
+                              <p className="text-gray-600 text-sm">
+                                {user.email || "No email"}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span
+                                className={`px-2 py-1 rounded text-xs ${
+                                  user.eligibility
+                                    ? "bg-green-100 text-green-800"
+                                    : "bg-red-100 text-red-800"
+                                }`}
+                              >
+                                {user.eligibility ? "Eligible" : "Not Eligible"}
+                              </span>
+                              {expandedEligibility[user.id] ? (
+                                <FaChevronUp />
+                              ) : (
+                                <FaChevronDown />
+                              )}
+                            </div>
+                          </div>
+                          {expandedEligibility[user.id] && (
+                            <div className="mt-2">
+                              <p className="text-gray-500 text-xs mb-2">
+                                Submitted:{" "}
+                                {user.submittedAt !== "N/A"
+                                  ? new Date(user.submittedAt).toLocaleString()
+                                  : "N/A"}
+                              </p>
+                              <form
+                                onSubmit={handleUpdateEligibility}
+                                className="flex w-full items-end gap-2 flex-grow"
+                              >
+                                <div className="flex-grow">
+                                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Update Status
+                                  </label>
+                                  <select
+                                    value={
+                                      updateEligibility.userId === user.id
+                                        ? updateEligibility.status
+                                        : ""
+                                    }
+                                    onChange={(e) =>
+                                      setUpdateEligibility({
+                                        userId: user.id,
+                                        status: e.target.value,
+                                      })
+                                    }
+                                    className="w-full p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                                    required
+                                  >
+                                    <option value="">Select status</option>
+                                    <option value="Eligible">Eligible</option>
+                                    <option value="Not Eligible">
+                                      Not Eligible
+                                    </option>
+                                  </select>
+                                </div>
+                                <button
+                                  type="submit"
+                                  disabled={
+                                    isUpdating ||
+                                    !updateEligibility.status ||
+                                    updateEligibility.userId !== user.id
+                                  }
+                                  className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded disabled:opacity-50 flex items-center"
+                                >
+                                  <FaEdit className="mr-2" />
+                                  {isUpdating ? "Updating..." : "Update"}
+                                </button>
+                              </form>
+                              <hr className="w-full h-0.5 my-2 bg-gray-200 text-gray-200" />
+                              <button
+                                onClick={() =>
+                                  handleDelete("eligibility", user.id)
+                                }
+                                disabled={isDeleting}
+                                className="text-white py-2 hover:bg-red-800 w-full flex justify-center rounded text-sm items-center bg-red-600"
+                              >
+                                <FaTrash className="mr-1" /> Delete
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
 
             {/* Applicants Section */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-emerald-700 mb-6 flex items-center">
-                <FaFileAlt className="mr-3" /> Applicants (
-                {adminData.applicants.length})
-              </h2>
-              {adminData.applicants.length === 0 ? (
-                <p className="text-gray-500">No applicants found.</p>
-              ) : (
-                <div className="space-y-4">
-                  {adminData.applicants.map((applicant) => {
-                    const relatedUser = eligibleUsers.find(
-                      (u) => u.id === (applicant.userId || applicant.id)
-                    );
-                    return (
-                      <div
-                        key={applicant.id}
-                        className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="font-medium">
-                              {relatedUser?.fullName || "Applicant"}
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                              {relatedUser?.email || "No email"}
-                            </p>
-                          </div>
-                          <div className="flex flex-col items-end gap-1">
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs ${
-                                applicant.status === "Approved"
-                                  ? "bg-green-100 text-green-800"
-                                  : applicant.status === "Rejected"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-yellow-100 text-yellow-800"
-                              }`}
-                            >
-                              {applicant.status || "Pending"}
-                            </span>
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs ${
-                                applicant.paymentStatus === "Paid"
-                                  ? "bg-green-100 text-green-800"
-                                  : "bg-red-100 text-red-800"
-                              }`}
-                            >
-                              {applicant.paymentStatus || "Unpaid"}
-                            </span>
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs ${
-                                relatedUser?.approved
-                                  ? "bg-green-100 text-green-800"
-                                  : "bg-yellow-100 text-yellow-800"
-                              }`}
-                            >
-                              {relatedUser?.approved
-                                ? "Approved"
-                                : "Not Approved"}
-                            </span>
-                            <button
-                              onClick={() =>
-                                handleDelete("applicants", applicant.id)
-                              }
-                              disabled={isDeleting}
-                              className="text-red-600 hover:text-red-800 flex items-center mt-2"
-                            >
-                              <FaTrash className="mr-1" /> Delete
-                            </button>
-                          </div>
-                        </div>
-                        {applicant.additionalInfo && (
-                          <div className="mt-3 p-3 bg-gray-50 rounded text-sm">
-                            <h4 className="font-medium mb-1">
-                              Additional Information:
-                            </h4>
-                            <p>{applicant.additionalInfo}</p>
-                          </div>
-                        )}
-                        <div className="mt-4 flex items-center gap-2">
-                          <form
-                            onSubmit={handleUpdateApproval}
-                            className="flex items-end gap-2 flex-grow"
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleSectionExpand("applicants")}
+              >
+                <h2 className="text-2xl font-semibold text-emerald-700 flex items-center">
+                  <FaFileAlt className="mr-3" /> Applicants (
+                  {filteredApplicants.length})
+                </h2>
+                {sectionExpanded.applicants ? (
+                  <FaChevronUp />
+                ) : (
+                  <FaChevronDown />
+                )}
+              </div>
+              {sectionExpanded.applicants && (
+                <div className="mt-6">
+                  <div className="mb-6 flex flex-col sm:flex-row gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Start Date
+                      </label>
+                      <input
+                        type="date"
+                        value={applicantsFilter.startDate}
+                        onChange={(e) =>
+                          setApplicantsFilter((prev) => ({
+                            ...prev,
+                            startDate: e.target.value,
+                          }))
+                        }
+                        className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        End Date
+                      </label>
+                      <input
+                        type="date"
+                        value={applicantsFilter.endDate}
+                        onChange={(e) =>
+                          setApplicantsFilter((prev) => ({
+                            ...prev,
+                            endDate: e.target.value,
+                          }))
+                        }
+                        className="p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                      />
+                    </div>
+                  </div>
+                  {filteredApplicants.length === 0 ? (
+                    <p className="text-gray-500">No applicants found.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      {filteredApplicants.map((applicant) => {
+                        const relatedUser = eligibleUsers.find(
+                          (u) => u.id === (applicant.userId || applicant.id)
+                        );
+                        return (
+                          <div
+                            key={applicant.id}
+                            className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
                           >
-                            <div className="flex-grow">
-                              <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Update Approval
-                              </label>
-                              <select
-                                value={
-                                  updateApproval.userId ===
-                                  (applicant.userId || applicant.id)
-                                    ? updateApproval.status
-                                    : ""
-                                }
-                                onChange={(e) =>
-                                  setUpdateApproval({
-                                    userId: applicant.userId || applicant.id,
-                                    status: e.target.value,
-                                  })
-                                }
-                                className="w-full p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
-                                required
-                              >
-                                <option value="">Select status</option>
-                                <option value="Approved">Approved</option>
-                                <option value="Not Approved">
-                                  Not Approved
-                                </option>
-                              </select>
-                            </div>
-                            <button
-                              type="submit"
-                              disabled={
-                                isUpdating ||
-                                !updateApproval.status ||
-                                updateApproval.userId !==
-                                  (applicant.userId || applicant.id)
+                            <div
+                              className="flex justify-between items-center cursor-pointer"
+                              onClick={() =>
+                                toggleApplicantExpand(applicant.id)
                               }
-                              className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded disabled:opacity-50 flex items-center"
                             >
-                              <FaEdit className="mr-2" />
-                              {isUpdating ? "Updating..." : "Update"}
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    );
-                  })}
+                              <div>
+                                <h3 className="font-medium">
+                                  {relatedUser?.fullName || "Applicant"}
+                                </h3>
+                                <p className="text-gray-600 text-sm">
+                                  {relatedUser?.email || "No email"}
+                                </p>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className={`px-2 py-1 rounded-full text-xs ${
+                                    applicant.status === "Approved"
+                                      ? "bg-green-100 text-green-800"
+                                      : applicant.status === "Rejected"
+                                        ? "bg-red-100 text-red-800"
+                                        : "bg-yellow-100 text-yellow-800"
+                                  }`}
+                                >
+                                  {applicant.status || "Pending"}
+                                </span>
+                                {expandedApplicants[applicant.id] ? (
+                                  <FaChevronUp />
+                                ) : (
+                                  <FaChevronDown />
+                                )}
+                              </div>
+                            </div>
+                            {expandedApplicants[applicant.id] && (
+                              <div className="mt-3">
+                                <p className="text-gray-500 text-xs mb-2">
+                                  Submitted:{" "}
+                                  {applicant.submittedAt !== "N/A"
+                                    ? new Date(
+                                        applicant.submittedAt
+                                      ).toLocaleString()
+                                    : "N/A"}
+                                </p>
+                                <div className="flex flex-col gap-1">
+                                  <span
+                                    className={`px-2 py-1 rounded-full text-xs ${
+                                      applicant.paymentStatus === "Paid"
+                                        ? "bg-green-100 text-green-800"
+                                        : "bg-red-100 text-red-800"
+                                    }`}
+                                  >
+                                    {applicant.paymentStatus || "Unpaid"}
+                                  </span>
+                                  <span
+                                    className={`px-2 py-1 rounded-full text-xs ${
+                                      relatedUser?.approved
+                                        ? "bg-green-100 text-green-800"
+                                        : "bg-yellow-100 text-yellow-800"
+                                    }`}
+                                  >
+                                    {relatedUser?.approved
+                                      ? "Approved"
+                                      : "Not Approved"}
+                                  </span>
+                                </div>
+                                {applicant.additionalInfo && (
+                                  <div className="mt-3 p-3 bg-gray-50 rounded text-sm">
+                                    <h4 className="font-medium mb-1">
+                                      Additional Information:
+                                    </h4>
+                                    <p>{applicant.additionalInfo}</p>
+                                  </div>
+                                )}
+                                <div className="mt-4 flex items-center gap-2">
+                                  <form
+                                    onSubmit={handleUpdateApproval}
+                                    className="flex items-end gap-2 flex-grow"
+                                  >
+                                    <div className="flex-grow">
+                                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Update Approval
+                                      </label>
+                                      <select
+                                        value={
+                                          updateApproval.userId ===
+                                          (applicant.userId || applicant.id)
+                                            ? updateApproval.status
+                                            : ""
+                                        }
+                                        onChange={(e) =>
+                                          setUpdateApproval({
+                                            userId:
+                                              applicant.userId || applicant.id,
+                                            status: e.target.value,
+                                          })
+                                        }
+                                        className="w-full p-2 border rounded focus:ring-emerald-500 focus:border-emerald-500"
+                                        required
+                                      >
+                                        <option value="">Select status</option>
+                                        <option value="Approved">
+                                          Approved
+                                        </option>
+                                        <option value="Not Approved">
+                                          Not Approved
+                                        </option>
+                                      </select>
+                                    </div>
+                                    <button
+                                      type="submit"
+                                      disabled={
+                                        isUpdating ||
+                                        !updateApproval.status ||
+                                        updateApproval.userId !==
+                                          (applicant.userId || applicant.id)
+                                      }
+                                      className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded disabled:opacity-50 flex items-center"
+                                    >
+                                      <FaEdit className="mr-2" />
+                                      {isUpdating ? "Updating..." : "Update"}
+                                    </button>
+                                  </form>
+                                </div>
+                                <button
+                                  onClick={() =>
+                                    handleDelete("applicants", applicant.id)
+                                  }
+                                  disabled={isDeleting}
+                                  className="text-red-600 hover:text-red-800 flex items-center mt-2"
+                                >
+                                  <FaTrash className="mr-1" /> Delete
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
 
             {/* Contact Messages Section */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-emerald-700 mb-6 flex items-center">
-                <FaEnvelope className="mr-3" /> Contact Messages (
-                {adminData.contactMessages.length})
-              </h2>
-              {adminData.contactMessages.length === 0 ? (
-                <p className="text-gray-500">No contact messages found.</p>
-              ) : (
-                <div className="space-y-4">
-                  {adminData.contactMessages.map((message) => (
-                    <div
-                      key={message.id}
-                      className="border border-gray-200 rounded-lg p-2 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-medium">{message.name}</h3>
-                          <p className="text-gray-600 text-sm">
-                            {message.email}
-                          </p>
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleSectionExpand("contact")}
+              >
+                <h2 className="text-2xl font-semibold text-emerald-700 flex items-center">
+                  <FaEnvelope className="mr-3" /> Contact Messages (
+                  {adminData.contactMessages.length})
+                </h2>
+                {sectionExpanded.contact ? <FaChevronUp /> : <FaChevronDown />}
+              </div>
+              {sectionExpanded.contact && (
+                <div className="mt-6">
+                  {adminData.contactMessages.length === 0 ? (
+                    <p className="text-gray-500">No contact messages found.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      {adminData.contactMessages.map((message) => (
+                        <div
+                          key={message.id}
+                          className="border border-gray-200 rounded-lg p-2 hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h3 className="font-medium">{message.name}</h3>
+                              <p className="text-gray-600 text-sm">
+                                {message.email}
+                              </p>
+                            </div>
+                            <div className="flex flex-col items-end gap-1">
+                              <span className="text-gray-500 text-xs">
+                                {message.submittedAt !== "N/A"
+                                  ? new Date(
+                                      message.submittedAt
+                                    ).toLocaleString()
+                                  : "N/A"}
+                              </span>
+                              <button
+                                onClick={() =>
+                                  handleDelete("contact", message.id)
+                                }
+                                disabled={isDeleting}
+                                className="text-red-600 hover:text-red-800 flex items-center mt-2"
+                              >
+                                <FaTrash className="mr-1" /> Delete
+                              </button>
+                            </div>
+                          </div>
+                          <div className="mt-3 p-3 bg-gray-50 rounded text-sm">
+                            <h4 className="font-medium mb-1">Message:</h4>
+                            <p>{message.message}</p>
+                          </div>
                         </div>
-                        <div className="flex flex-col items-end gap-1">
-                          <span className="text-gray-500 text-xs">
-                            {message.submittedAt !== "N/A"
-                              ? new Date(message.submittedAt).toLocaleString()
-                              : "N/A"}
-                          </span>
-                          <button
-                            onClick={() => handleDelete("contact", message.id)}
-                            disabled={isDeleting}
-                            className="text-red-600 hover:text-red-800 flex items-center mt-2"
-                          >
-                            <FaTrash className="mr-1" /> Delete
-                          </button>
-                        </div>
-                      </div>
-                      <div className="mt-3 p-3 bg-gray-50 rounded text-sm">
-                        <h4 className="font-medium mb-1">Message:</h4>
-                        <p>{message.message}</p>
-                      </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
               )}
             </div>
