@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
@@ -59,16 +59,25 @@ const EligibilityViewer = () => {
     }));
   };
 
-  const handleRemoveFromView = (idToRemove) => {
+  const handleRemoveFromView = async (idToRemove) => {
     if (
-      window.confirm(
-        "Remove this application from view? It will remain in the database."
+      !window.confirm(
+        "Are you sure you want to permanently delete this application from the database?"
       )
     ) {
+      return;
+    }
+
+    try {
+      const docRef = doc(db, "eligibility", idToRemove);
+      await deleteDoc(docRef);
       setUsers((prev) =>
         prev.filter((applicant) => applicant.id !== idToRemove)
       );
-      toast.success("Application removed from view.");
+      toast.success("Application permanently deleted from database.");
+    } catch (error) {
+      console.error("Error deleting application:", error.message);
+      toast.error("Failed to delete application. Please try again.");
     }
   };
 
@@ -354,7 +363,7 @@ const EligibilityViewer = () => {
                     onClick={() => handleRemoveFromView(user.id)}
                     className="mt-6 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded text-sm"
                   >
-                    Remove from View
+                    Delete Application
                   </button>
                 </div>
               )}

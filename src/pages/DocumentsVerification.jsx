@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { db } from "../services/firebase";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
@@ -89,15 +95,22 @@ const Stage2EligibilityViewer = () => {
     }));
   };
 
-  const handleDelete = (applicantId, applicantName) => {
+  const handleDelete = async (applicantId, applicantName) => {
     const confirmed = window.confirm(
-      `Are you sure you want to remove ${applicantName || "Unknown"} from the view?`
+      `Are you sure you want to permanently delete ${applicantName || "Unknown"}'s application from the database?`
     );
     if (confirmed) {
-      setApplicants((prevApplicants) =>
-        prevApplicants.filter((applicant) => applicant.id !== applicantId)
-      );
-      toast.success("Applicant removed from view.");
+      try {
+        const docRef = doc(db, "applicants", applicantId);
+        await deleteDoc(docRef);
+        setApplicants((prevApplicants) =>
+          prevApplicants.filter((applicant) => applicant.id !== applicantId)
+        );
+        toast.success("Applicant permanently deleted from database.");
+      } catch (error) {
+        console.error("Error deleting applicant:", error.message);
+        toast.error("Failed to delete applicant. Please try again.");
+      }
     }
   };
 
@@ -331,7 +344,7 @@ const Stage2EligibilityViewer = () => {
                 <button
                   className="ml-4 flex items-center text-white hover:text-red-300"
                   onClick={() => handleDelete(applicant.id, applicant.fullName)}
-                  aria-label={`Remove ${applicant.fullName || "Unknown"} from view`}
+                  aria-label={`Delete ${applicant.fullName || "Unknown"}'s application`}
                 >
                   <FaTrash className="mr-1" /> Delete
                 </button>

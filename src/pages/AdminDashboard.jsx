@@ -13,6 +13,7 @@ import {
   FaEnvelope,
   FaChevronDown,
   FaChevronUp,
+  FaEye,
 } from "react-icons/fa";
 import { useAuth } from "../contexts/AuthContext";
 import {
@@ -22,6 +23,7 @@ import {
   updateDoc,
   deleteDoc,
   getDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { toast } from "react-toastify";
@@ -34,6 +36,7 @@ const AdminDashboard = () => {
     contactMessages: [],
   });
   const [eligibleUsers, setEligibleUsers] = useState([]);
+  const [hiddenEligibilityRecords, setHiddenEligibilityRecords] = useState([]);
   const [updateEligibility, setUpdateEligibility] = useState({
     userId: "",
     status: "",
@@ -56,6 +59,7 @@ const AdminDashboard = () => {
   const [expandedApplicants, setExpandedApplicants] = useState({});
   const [sectionExpanded, setSectionExpanded] = useState({
     eligibility: true,
+    hiddenEligibility: false,
     applicants: true,
     contact: true,
   });
@@ -88,6 +92,37 @@ const AdminDashboard = () => {
             return;
           }
 
+          // Fetch hidden eligibility and applicants records
+          const [hiddenEligibilitySnap, hiddenApplicantsSnap] =
+            await Promise.all([
+              getDoc(doc(db, "admins", "hiddenEligibility")),
+              getDoc(doc(db, "admins", "hiddenApplicants")),
+            ]);
+          const hiddenEligibilityIds = hiddenEligibilitySnap.exists()
+            ? hiddenEligibilitySnap.data().hiddenIds || []
+            : [];
+          const hiddenApplicantIds = hiddenApplicantsSnap.exists()
+            ? hiddenApplicantsSnap.data().hiddenIds || []
+            : [];
+
+          // Fetch hidden eligibility records' details
+          const hiddenEligibilityData = [];
+          for (const id of hiddenEligibilityIds) {
+            const eligibilityDoc = await getDoc(doc(db, "eligibility", id));
+            if (eligibilityDoc.exists()) {
+              hiddenEligibilityData.push({
+                id: eligibilityDoc.id,
+                fullName: eligibilityDoc.data().fullName || "N/A",
+                email: eligibilityDoc.data().email || "N/A",
+                eligibility: eligibilityDoc.data().eligibility || false,
+                approved: eligibilityDoc.data().approved || false,
+                submittedAt: eligibilityDoc.data().submittedAt
+                  ? new Date(eligibilityDoc.data().submittedAt).toISOString()
+                  : "N/A",
+              });
+            }
+          }
+
           const [applicantsSnap, contactSnap, eligibilitySnap] =
             await Promise.all([
               getDocs(collection(db, "applicants")),
@@ -95,16 +130,18 @@ const AdminDashboard = () => {
               getDocs(collection(db, "eligibility")),
             ]);
 
-          const applicantsData = applicantsSnap.docs.map((doc) => ({
-            id: doc.id,
-            userId: doc.data().userId || doc.id,
-            status: doc.data().status || "Pending",
-            paymentStatus: doc.data().paymentStatus || "Unpaid",
-            additionalInfo: doc.data().additionalInfo || null,
-            submittedAt: doc.data().submittedAt
-              ? new Date(doc.data().submittedAt).toISOString()
-              : "N/A",
-          }));
+          const applicantsData = applicantsSnap.docs
+            .filter((doc) => !hiddenApplicantIds.includes(doc.id))
+            .map((doc) => ({
+              id: doc.id,
+              userId: doc.data().userId || doc.id,
+              status: doc.data().status || "Pending",
+              paymentStatus: doc.data().paymentStatus || "Unpaid",
+              additionalInfo: doc.data().additionalInfo || null,
+              submittedAt: doc.data().submittedAt
+                ? new Date(doc.data().submittedAt).toISOString()
+                : "N/A",
+            }));
 
           const contactData = contactSnap.docs
             .map((doc) => ({
@@ -123,22 +160,25 @@ const AdminDashboard = () => {
               return new Date(b.submittedAt) - new Date(a.submittedAt);
             });
 
-          const eligibilityData = eligibilitySnap.docs.map((doc) => ({
-            id: doc.id,
-            fullName: doc.data().fullName || "N/A",
-            email: doc.data().email || "N/A",
-            eligibility: doc.data().eligibility || false,
-            approved: doc.data().approved || false,
-            submittedAt: doc.data().submittedAt
-              ? new Date(doc.data().submittedAt).toISOString()
-              : "N/A",
-          }));
+          const eligibilityData = eligibilitySnap.docs
+            .filter((doc) => !hiddenEligibilityIds.includes(doc.id))
+            .map((doc) => ({
+              id: doc.id,
+              fullName: doc.data().fullName || "N/A",
+              email: doc.data().email || "N/A",
+              eligibility: doc.data().eligibility || false,
+              approved: doc.data().approved || false,
+              submittedAt: doc.data().submittedAt
+                ? new Date(doc.data().submittedAt).toISOString()
+                : "N/A",
+            }));
 
           setAdminData({
             applicants: applicantsData,
             contactMessages: contactData,
           });
           setEligibleUsers(eligibilityData);
+          setHiddenEligibilityRecords(hiddenEligibilityData);
           console.log("Admin data loaded successfully");
         } catch (error) {
           console.error(
@@ -227,7 +267,11 @@ const AdminDashboard = () => {
   const handleDelete = async (collectionName, docId) => {
     if (
       !window.confirm(
-        `Are you sure you want to remove this ${collectionName} record from the dashboard view?`
+        `Are you sure you want to ${
+          collectionName === "contact"
+            ? "permanently delete this contact message"
+            : `hide this ${collectionName} record from the dashboard view`
+        }?`
       )
     ) {
       return;
@@ -236,26 +280,127 @@ const AdminDashboard = () => {
     setIsDeleting(true);
     try {
       if (collectionName === "eligibility") {
-        setEligibleUsers((prev) => prev.filter((user) => user.id !== docId));
-        toast.success("Eligibility record removed from view.");
-      } else {
-        await deleteDoc(doc(db, collectionName, docId));
+        // Add to hiddenEligibility
+        const hiddenEligibilityRef = doc(db, "admins", "hiddenEligibility");
+        const hiddenEligibilitySnap = await getDoc(hiddenEligibilityRef);
+        let hiddenIds = hiddenEligibilitySnap.exists()
+          ? hiddenEligibilitySnap.data().hiddenIds || []
+          : [];
 
+        if (!hiddenIds.includes(docId)) {
+          hiddenIds.push(docId);
+          await setDoc(hiddenEligibilityRef, { hiddenIds }, { merge: true });
+        }
+
+        // Update state to remove from UI
+        setEligibleUsers((prev) => prev.filter((user) => user.id !== docId));
+        // Add to hidden records state
+        const eligibilityDoc = await getDoc(doc(db, "eligibility", docId));
+        if (eligibilityDoc.exists()) {
+          setHiddenEligibilityRecords((prev) => [
+            ...prev,
+            {
+              id: eligibilityDoc.id,
+              fullName: eligibilityDoc.data().fullName || "N/A",
+              email: eligibilityDoc.data().email || "N/A",
+              eligibility: eligibilityDoc.data().eligibility || false,
+              approved: eligibilityDoc.data().approved || false,
+              submittedAt: eligibilityDoc.data().submittedAt
+                ? new Date(eligibilityDoc.data().submittedAt).toISOString()
+                : "N/A",
+            },
+          ]);
+        }
+        toast.success("Eligibility record hidden from view.");
+      } else if (collectionName === "applicants") {
+        // Add to hiddenApplicants
+        const hiddenApplicantsRef = doc(db, "admins", "hiddenApplicants");
+        const hiddenApplicantsSnap = await getDoc(hiddenApplicantsRef);
+        let hiddenIds = hiddenApplicantsSnap.exists()
+          ? hiddenApplicantsSnap.data().hiddenIds || []
+          : [];
+
+        if (!hiddenIds.includes(docId)) {
+          hiddenIds.push(docId);
+          await setDoc(hiddenApplicantsRef, { hiddenIds }, { merge: true });
+        }
+
+        // Update state to remove from UI
         setAdminData((prev) => ({
           ...prev,
-          [collectionName === "contact" ? "contactMessages" : collectionName]:
-            prev[
-              collectionName === "contact" ? "contactMessages" : collectionName
-            ].filter((item) => item.id !== docId),
+          applicants: prev.applicants.filter((item) => item.id !== docId),
         }));
-
-        toast.success(`${collectionName} record deleted successfully!`);
+        toast.success("Applicant record hidden from view.");
+      } else if (collectionName === "contact") {
+        // Permanently delete contact message
+        await deleteDoc(doc(db, "contact", docId));
+        setAdminData((prev) => ({
+          ...prev,
+          contactMessages: prev.contactMessages.filter(
+            (item) => item.id !== docId
+          ),
+        }));
+        toast.success("Contact message permanently deleted.");
       }
     } catch (error) {
-      console.error(`Error deleting ${collectionName} record:`, error.message);
-      toast.error(
-        `Failed to delete ${collectionName} record. Please try again.`
+      console.error(
+        `Error processing ${collectionName} record:`,
+        error.message
       );
+      toast.error(
+        `Failed to process ${collectionName} record. Please try again.`
+      );
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const handleUnhideEligibility = async (docId) => {
+    if (
+      !window.confirm(
+        "Are you sure you want to unhide this eligibility record?"
+      )
+    ) {
+      return;
+    }
+
+    setIsDeleting(true);
+    try {
+      const hiddenEligibilityRef = doc(db, "admins", "hiddenEligibility");
+      const hiddenEligibilitySnap = await getDoc(hiddenEligibilityRef);
+      let hiddenIds = hiddenEligibilitySnap.exists()
+        ? hiddenEligibilitySnap.data().hiddenIds || []
+        : [];
+
+      hiddenIds = hiddenIds.filter((id) => id !== docId);
+      await setDoc(hiddenEligibilityRef, { hiddenIds }, { merge: true });
+
+      // Fetch the eligibility record and add to eligibleUsers
+      const eligibilityDoc = await getDoc(doc(db, "eligibility", docId));
+      if (eligibilityDoc.exists()) {
+        setEligibleUsers((prev) => [
+          ...prev,
+          {
+            id: eligibilityDoc.id,
+            fullName: eligibilityDoc.data().fullName || "N/A",
+            email: eligibilityDoc.data().email || "N/A",
+            eligibility: eligibilityDoc.data().eligibility || false,
+            approved: eligibilityDoc.data().approved || false,
+            submittedAt: eligibilityDoc.data().submittedAt
+              ? new Date(eligibilityDoc.data().submittedAt).toISOString()
+              : "N/A",
+          },
+        ]);
+      }
+
+      // Remove from hidden records state
+      setHiddenEligibilityRecords((prev) =>
+        prev.filter((record) => record.id !== docId)
+      );
+      toast.success("Eligibility record restored to view.");
+    } catch (error) {
+      console.error("Error unhiding eligibility record:", error.message);
+      toast.error("Failed to unhide eligibility record. Please try again.");
     } finally {
       setIsDeleting(false);
     }
@@ -308,6 +453,10 @@ const AdminDashboard = () => {
   const filteredApplicants = filterByDate(
     adminData.applicants,
     applicantsFilter
+  );
+  const filteredHiddenEligibility = filterByDate(
+    hiddenEligibilityRecords,
+    eligibilityFilter
   );
 
   return (
@@ -532,10 +681,85 @@ const AdminDashboard = () => {
                                 disabled={isDeleting}
                                 className="text-white py-2 hover:bg-red-800 w-full flex justify-center rounded text-sm items-center bg-red-600"
                               >
-                                <FaTrash className="mr-1" /> Delete
+                                <FaTrash className="mr-1" /> Hide
                               </button>
                             </div>
                           )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Hidden Eligibility Records */}
+            <div className="bg-white shadow-lg rounded-lg p-6">
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleSectionExpand("hiddenEligibility")}
+              >
+                <h2 className="text-2xl font-semibold text-emerald-700 flex items-center">
+                  <FaEye className="mr-3" /> Hidden Eligibility Records (
+                  {filteredHiddenEligibility.length})
+                </h2>
+                {sectionExpanded.hiddenEligibility ? (
+                  <FaChevronUp />
+                ) : (
+                  <FaChevronDown />
+                )}
+              </div>
+              {sectionExpanded.hiddenEligibility && (
+                <div className="mt-6">
+                  {filteredHiddenEligibility.length === 0 ? (
+                    <p className="text-gray-500">
+                      No hidden eligibility records found.
+                    </p>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {filteredHiddenEligibility.map((record) => (
+                        <div
+                          key={record.id}
+                          className="border border-gray-200 rounded-lg p-2 hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <h3 className="font-medium text-lg">
+                                {record.fullName || "N/A"}
+                              </h3>
+                              <p className="text-gray-600 text-sm">
+                                {record.email || "No email"}
+                              </p>
+                              <p className="text-gray-500 text-xs mt-1">
+                                Submitted:{" "}
+                                {record.submittedAt !== "N/A"
+                                  ? new Date(
+                                      record.submittedAt
+                                    ).toLocaleString()
+                                  : "N/A"}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span
+                                className={`px-2 py-1 rounded text-xs ${
+                                  record.eligibility
+                                    ? "bg-green-100 text-green-800"
+                                    : "bg-red-100 text-red-800"
+                                }`}
+                              >
+                                {record.eligibility
+                                  ? "Eligible"
+                                  : "Not Eligible"}
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => handleUnhideEligibility(record.id)}
+                            disabled={isDeleting}
+                            className="text-white py-2 hover:bg-emerald-800 w-full flex justify-center rounded text-sm items-center bg-emerald-600 mt-2"
+                          >
+                            <FaEye className="mr-1" /> Unhide
+                          </button>
                         </div>
                       ))}
                     </div>
@@ -737,9 +961,9 @@ const AdminDashboard = () => {
                                     handleDelete("applicants", applicant.id)
                                   }
                                   disabled={isDeleting}
-                                  className="text-red-600 hover:text-red-800 flex items-center mt-2"
+                                  className="text-white py-2 hover:bg-red-800 w-full flex justify-center rounded text-sm items-center bg-red-600 mt-2"
                                 >
-                                  <FaTrash className="mr-1" /> Delete
+                                  <FaTrash className="mr-1" /> Hide
                                 </button>
                               </div>
                             )}
@@ -795,7 +1019,7 @@ const AdminDashboard = () => {
                                   handleDelete("contact", message.id)
                                 }
                                 disabled={isDeleting}
-                                className="text-red-600 hover:text-red-800 flex items-center mt-2"
+                                className="text-white py-2 hover:bg-red-800 w-full flex justify-center rounded text-sm items-center bg-red-600"
                               >
                                 <FaTrash className="mr-1" /> Delete
                               </button>
