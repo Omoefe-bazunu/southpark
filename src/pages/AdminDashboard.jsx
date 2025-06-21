@@ -200,6 +200,7 @@ const AdminDashboard = () => {
 
   const handleUpdateEligibility = async (e) => {
     e.preventDefault();
+
     if (!updateEligibility.userId || !updateEligibility.status) {
       toast.error("Please select a status to update.");
       return;
@@ -208,6 +209,9 @@ const AdminDashboard = () => {
     setIsUpdating(true);
     try {
       const eligibilityRef = doc(db, "eligibility", updateEligibility.userId);
+      const eligibilityDoc = await getDoc(eligibilityRef);
+      const userData = eligibilityDoc.exists() ? eligibilityDoc.data() : {};
+
       await updateDoc(eligibilityRef, {
         eligibility: updateEligibility.status === "Eligible",
         lastUpdated: new Date().toISOString(),
@@ -221,6 +225,30 @@ const AdminDashboard = () => {
         )
       );
 
+      if (
+        updateEligibility.status === "Eligible" &&
+        userData.email &&
+        userData.email !== "N/A"
+      ) {
+        await fetch("/api/sendScholarshipAwardEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            toEmail: userData.email,
+            name: userData.fullName || "Candidate",
+          }),
+        }).then(async (response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send email: " + (await response.text()));
+          }
+          return response.json();
+        });
+      } else if (updateEligibility.status === "Eligible") {
+        toast.warn("Email not sent: No valid email address found.");
+      }
+
       toast.success("Eligibility status updated successfully!");
     } catch (error) {
       console.error("Error updating eligibility:", error.message);
@@ -233,6 +261,7 @@ const AdminDashboard = () => {
 
   const handleUpdateApproval = async (e) => {
     e.preventDefault();
+
     if (!updateApproval.userId || !updateApproval.status) {
       toast.error("Please select a status to update.");
       return;
@@ -241,6 +270,9 @@ const AdminDashboard = () => {
     setIsUpdating(true);
     try {
       const eligibilityRef = doc(db, "eligibility", updateApproval.userId);
+      const eligibilityDoc = await getDoc(eligibilityRef);
+      const userData = eligibilityDoc.exists() ? eligibilityDoc.data() : {};
+
       await updateDoc(eligibilityRef, {
         approved: updateApproval.status === "Approved",
         lastUpdated: new Date().toISOString(),
@@ -253,6 +285,30 @@ const AdminDashboard = () => {
             : user
         )
       );
+
+      if (
+        updateApproval.status === "Approved" &&
+        userData.email &&
+        userData.email !== "N/A"
+      ) {
+        await fetch("/api/sendPaymentConfirmationEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            toEmail: userData.email,
+            name: userData.fullName || "Applicant",
+          }),
+        }).then(async (response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send email: " + (await response.text()));
+          }
+          return response.json();
+        });
+      } else if (updateApproval.status === "Approved") {
+        toast.warn("Email not sent: No valid email address found.");
+      }
 
       toast.success("Approval status updated successfully!");
     } catch (error) {
@@ -280,7 +336,6 @@ const AdminDashboard = () => {
     setIsDeleting(true);
     try {
       if (collectionName === "eligibility") {
-        // Add to hiddenEligibility
         const hiddenEligibilityRef = doc(db, "admins", "hiddenEligibility");
         const hiddenEligibilitySnap = await getDoc(hiddenEligibilityRef);
         let hiddenIds = hiddenEligibilitySnap.exists()
@@ -292,9 +347,7 @@ const AdminDashboard = () => {
           await setDoc(hiddenEligibilityRef, { hiddenIds }, { merge: true });
         }
 
-        // Update state to remove from UI
         setEligibleUsers((prev) => prev.filter((user) => user.id !== docId));
-        // Add to hidden records state
         const eligibilityDoc = await getDoc(doc(db, "eligibility", docId));
         if (eligibilityDoc.exists()) {
           setHiddenEligibilityRecords((prev) => [
@@ -313,7 +366,6 @@ const AdminDashboard = () => {
         }
         toast.success("Eligibility record hidden from view.");
       } else if (collectionName === "applicants") {
-        // Add to hiddenApplicants
         const hiddenApplicantsRef = doc(db, "admins", "hiddenApplicants");
         const hiddenApplicantsSnap = await getDoc(hiddenApplicantsRef);
         let hiddenIds = hiddenApplicantsSnap.exists()
@@ -325,14 +377,12 @@ const AdminDashboard = () => {
           await setDoc(hiddenApplicantsRef, { hiddenIds }, { merge: true });
         }
 
-        // Update state to remove from UI
         setAdminData((prev) => ({
           ...prev,
           applicants: prev.applicants.filter((item) => item.id !== docId),
         }));
         toast.success("Applicant record hidden from view.");
       } else if (collectionName === "contact") {
-        // Permanently delete contact message
         await deleteDoc(doc(db, "contact", docId));
         setAdminData((prev) => ({
           ...prev,
@@ -375,7 +425,6 @@ const AdminDashboard = () => {
       hiddenIds = hiddenIds.filter((id) => id !== docId);
       await setDoc(hiddenEligibilityRef, { hiddenIds }, { merge: true });
 
-      // Fetch the eligibility record and add to eligibleUsers
       const eligibilityDoc = await getDoc(doc(db, "eligibility", docId));
       if (eligibilityDoc.exists()) {
         setEligibleUsers((prev) => [
@@ -393,7 +442,6 @@ const AdminDashboard = () => {
         ]);
       }
 
-      // Remove from hidden records state
       setHiddenEligibilityRecords((prev) =>
         prev.filter((record) => record.id !== docId)
       );

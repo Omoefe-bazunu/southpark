@@ -83,7 +83,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li>Email: info@southparkuni.com</li>
               <li>Phone: +1 (660) 235-0276</li>
-              <li>Address: 140 Stoneridge Drive, Columbia, SC, 29210, USA</li>
+              <li>Address: RVXC+77, Jacksonville, AR 72076, United States</li>
             </ul>
             <div className="flex space-x-4">
               <a

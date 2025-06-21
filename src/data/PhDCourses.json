@@ -1,0 +1,578 @@
+{
+  "Faculties": [
+    {
+      "Faculty": "Medicine & Allied Health",
+      "Programs": [
+        {
+          "Program": "Doctor of Medicine (MD)",
+          "Overview": "The MD program advances medical practice and research. Students prepare for leadership in clinical and medical research fields.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced medical research.",
+            "Develop expertise in clinical diagnostics and treatment.",
+            "Analyze medical ethics and patient care.",
+            "Contribute to medical advancements."
+          ],
+          "CareerProspects": "Physicians, medical researchers, or professors.",
+          "UniqueFeatures": "Clinical research, hospital rotations, and focus on advanced medicine."
+        },
+        {
+          "Program": "PhD in Public Health",
+          "Overview": "The PhD in Public Health advances research in community health and epidemiology. Students contribute to global health solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced public health research.",
+            "Develop expertise in epidemiology and health policy.",
+            "Analyze global health challenges.",
+            "Contribute to public health scholarship."
+          ],
+          "CareerProspects": "Public health researchers, professors, or policy advisors.",
+          "UniqueFeatures": "Global health projects, research collaborations, and focus on health equity."
+        },
+        {
+          "Program": "PhD in Clinical Psychology",
+          "Overview": "The PhD in Clinical Psychology advances research and practice in mental health. Students contribute to psychological scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced clinical psychology research.",
+            "Develop expertise in therapeutic techniques.",
+            "Analyze mental health disorders and treatments.",
+            "Contribute to clinical psychology advancements."
+          ],
+          "CareerProspects": "Clinical psychologists, researchers, or professors.",
+          "UniqueFeatures": "Clinical research labs, internships, and focus on cognitive-behavioral therapy."
+        },
+        {
+          "Program": "PhD in Physiotherapy",
+          "Overview": "The PhD in Physiotherapy advances research in rehabilitation and therapy. Students contribute to therapeutic advancements.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced physiotherapy research.",
+            "Develop expertise in rehabilitation techniques.",
+            "Analyze musculoskeletal and neurological therapies.",
+            "Contribute to physiotherapy scholarship."
+          ],
+          "CareerProspects": "Physiotherapy researchers, professors, or advanced practitioners.",
+          "UniqueFeatures": "Rehabilitation research, clinical studies, and focus on sports therapy."
+        }
+      ]
+    },
+    {
+      "Faculty": "Sciences",
+      "Programs": [
+        {
+          "Program": "PhD in Environmental Science",
+          "Overview": "The PhD in Environmental Science advances research in environmental challenges. Students conduct original research in sustainability and conservation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced research in environmental science.",
+            "Develop expertise in ecological modeling and policy analysis.",
+            "Analyze global environmental issues.",
+            "Contribute to sustainable environmental solutions."
+          ],
+          "CareerProspects": "Environmental researchers, professors, or policy advisors in academia and government.",
+          "UniqueFeatures": "Field-based research, collaborations with environmental agencies, and focus on climate change."
+        },
+        {
+          "Program": "PhD in Biotechnology",
+          "Overview": "The PhD in Biotechnology advances research in genetic engineering and bioprocessing. Students contribute to biotech innovation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced biotechnology research.",
+            "Develop expertise in molecular biology and bioinformatics.",
+            "Analyze ethical and regulatory issues in biotech.",
+            "Contribute to advancements in healthcare and agriculture."
+          ],
+          "CareerProspects": "Biotech researchers, professors, or industry consultants.",
+          "UniqueFeatures": "Biotech research labs, industry partnerships, and focus on bioprocessing."
+        },
+        {
+          "Program": "PhD in Mathematics",
+          "Overview": "The PhD in Mathematics advances research in pure and applied mathematics. Students contribute to mathematical theory and applications.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced mathematical research.",
+            "Develop expertise in mathematical modeling and analysis.",
+            "Analyze complex mathematical problems.",
+            "Contribute to interdisciplinary applications of mathematics."
+          ],
+          "CareerProspects": "Mathematicians, professors, or data scientists in academia and industry.",
+          "UniqueFeatures": "Computational labs, interdisciplinary research, and focus on applied mathematics."
+        },
+        {
+          "Program": "PhD in Physics",
+          "Overview": "The PhD in Physics advances research in theoretical and experimental physics. Students explore cutting-edge topics like quantum mechanics.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced physics research.",
+            "Develop expertise in computational and experimental physics.",
+            "Analyze complex physical phenomena.",
+            "Contribute to advancements in physicists."
+          ],
+          "CareerProspects": "Physicists, professors, or researchers in academia and technology.",
+          "UniqueFeatures": "Advanced physics labs, research collaborations, and focus on quantum physics."
+        },
+        {
+          "Program": "PhD in Chemistry",
+          "Overview": "The PhD in Chemistry advances research in chemical sciences. Students contribute to innovations in materials and pharmaceuticals.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced chemical research.",
+            "Develop expertise in analytical and synthetic chemistry.",
+            "Analyze chemical applications in industry.",
+            "Contribute to chemical innovations."
+          ],
+          "CareerProspects": "Chemists, professors, or researchers in academia and industry.",
+          "UniqueFeatures": "Chemistry labs, industry collaborations, and focus on green chemistry."
+        }
+      ]
+    },
+    {
+      "Faculty": "Technology & Engineering",
+      "Programs": [
+        {
+          "Program": "PhD in Computer Science",
+          "Overview": "The PhD in Computer Science advances research in computational systems and algorithms. Students contribute to tech innovation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced computer science research.",
+            "Develop expertise in AI, algorithms, and systems.",
+            "Analyze emerging computational technologies.",
+            "Contribute to computer science advancements."
+          ],
+          "CareerProspects": "Computer scientists, professors, or tech researchers.",
+          "UniqueFeatures": "Advanced computing labs, industry collaborations, and focus on AI."
+        },
+        {
+          "Program": "PhD in Data Science",
+          "Overview": "The PhD in Data Science advances research in data analytics and machine learning. Students contribute to data-driven solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced data science research.",
+            "Develop expertise in machine learning and big data.",
+            "Analyze data-driven problems in industry.",
+            "Contribute to data science innovations."
+          ],
+          "CareerProspects": "Data scientists, researchers, or professors in tech and academia.",
+          "UniqueFeatures": "Data science labs, real-world projects, and focus on predictive analytics."
+        },
+        {
+          "Program": "PhD in Engineering",
+          "Overview": "The PhD in Engineering advances research in engineering disciplines. Students contribute to technical innovations.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced engineering research.",
+            "Develop expertise in specialized engineering fields.",
+            "Analyze technical and industrial challenges.",
+            "Contribute to engineering advancements."
+          ],
+          "CareerProspects": "Engineering researchers, professors, or consultants.",
+          "UniqueFeatures": "Engineering labs, industry projects, and focus on sustainable engineering."
+        }
+      ]
+    },
+    {
+      "Faculty": "Business & Social Sciences",
+      "Programs": [
+        {
+          "Program": "PhD in Psychology",
+          "Overview": "The PhD in Psychology advances research in psychological theory and practice. Students contribute to mental health and behavioral research.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced psychological research.",
+            "Develop expertise in clinical and experimental psychology.",
+            "Analyze mental health and behavioral issues.",
+            "Contribute to psychological scholarship."
+          ],
+          "CareerProspects": "Clinical psychologists, professors, or researchers in healthcare and academia.",
+          "UniqueFeatures": "Psychology research labs, clinical studies, and focus on neuropsychology."
+        },
+        {
+          "Program": "PhD in Sociology",
+          "Overview": "The PhD in Sociology advances research in social structures and inequalities. Students explore societal dynamics and policies.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced sociological research.",
+            "Develop expertise in social theory and research methods.",
+            "Analyze social issues like inequality and race.",
+            "Contribute to sociological scholarship."
+          ],
+          "CareerProspects": "Sociologists, professors, or policy analysts in academia and research.",
+          "UniqueFeatures": "Sociological research projects, community studies, and focus on social justice."
+        },
+        {
+          "Program": "PhD in Political Science",
+          "Overview": "The PhD in Political Science advances research in political systems and policies. Students contribute to political scholarship and analysis.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced political research.",
+            "Develop expertise in political theory and policy analysis.",
+            "Analyze global political systems and issues.",
+            "Contribute to political science scholarship."
+          ],
+          "CareerProspects": "Political scientists, policy advisors, or professors in government and academia.",
+          "UniqueFeatures": "Policy research projects, diplomatic simulations, and focus on global politics."
+        },
+        {
+          "Program": "PhD in International Relations",
+          "Overview": "The PhD in International Relations advances research in global politics and diplomacy. Students contribute to international policy scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced research in international relations.",
+            "Develop expertise in global governance and diplomacy.",
+            "Analyze international security and trade issues.",
+            "Contribute to global policy solutions."
+          ],
+          "CareerProspects": "Diplomats, international policy analysts, or professors.",
+          "UniqueFeatures": "International simulations, research collaborations, and focus on global security."
+        },
+        {
+          "Program": "PhD in Economics",
+          "Overview": "The PhD in Economics advances research in economic theory and policy. Students contribute to economic scholarship and solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced economic research.",
+            "Develop expertise in econometrics and policy analysis.",
+            "Analyze global economic trends and issues.",
+            "Contribute to economic policy development."
+          ],
+          "CareerProspects": "Economists, professors, or policy advisors in academia, government, and industry.",
+          "UniqueFeatures": "Economic modeling projects, research seminars, and focus on behavioral economics."
+        }
+      ]
+    },
+    {
+      "Faculty": "Architecture & Design",
+      "Programs": [
+        {
+          "Program": "PhD in Architecture",
+          "Overview": "The PhD in Architecture advances research in architectural design and theory. Students contribute to innovative architectural solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced architectural research.",
+            "Develop expertise in sustainable design and urbanism.",
+            "Analyze architectural history and trends.",
+            "Contribute to architectural scholarship."
+          ],
+          "CareerProspects": "Architectural researchers, professors, or consultants.",
+          "UniqueFeatures": "Design research studios, international collaborations, and focus on sustainable architecture."
+        },
+        {
+          "Program": "PhD in Urban & Regional Planning",
+          "Overview": "The PhD in Urban & Regional Planning advances research in urban development. Students contribute to sustainable urban solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced urban planning research.",
+            "Develop expertise in spatial analysis and policy.",
+            "Analyze urban sustainability and social impacts.",
+            "Contribute to urban planning scholarship."
+          ],
+          "CareerProspects": "Urban planning researchers, professors, or policy advisors.",
+          "UniqueFeatures": "Urban research projects, GIS labs, and focus on smart cities."
+        }
+      ]
+    },
+    {
+      "Faculty": "Education",
+      "Programs": [
+        {
+          "Program": "PhD in Education",
+          "Overview": "The PhD in Education advances research in educational theory and practice. Students contribute to educational innovation and policy.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced educational research.",
+            "Develop expertise in pedagogy and educational policy.",
+            "Analyze educational systems and reforms.",
+            "Contribute to educational scholarship."
+          ],
+          "CareerProspects": "Education researchers, professors, or policy advisors.",
+          "UniqueFeatures": "Educational research projects, leadership workshops, and focus on global education."
+        },
+        {
+          "Program": "Doctor of Education (EdD)",
+          "Overview": "The EdD program advances leadership in educational practice. Students focus on applied research and educational leadership.",
+          "KeyLearningOutcomes": [
+            "Conduct applied educational research.",
+            "Develop expertise in educational leadership and policy.",
+            "Analyze practical educational challenges.",
+            "Contribute to educational practice improvements."
+          ],
+          "CareerProspects": "School superintendents, education consultants, or professors.",
+          "UniqueFeatures": "Leadership practicums, policy projects, and focus on applied education."
+        },
+        {
+          "Program": "PhD in Curriculum & Instruction",
+          "Overview": "The PhD in Curriculum & Instruction advances research in curriculum design and teaching. Students contribute to educational innovation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced research in curriculum design.",
+            "Develop expertise in instructional strategies.",
+            "Analyze curriculum standards and outcomes.",
+            "Contribute to curriculum scholarship."
+          ],
+          "CareerProspects": "Curriculum specialists, professors, or instructional designers.",
+          "UniqueFeatures": "Curriculum research projects, teaching practicums, and focus on inclusive education."
+        }
+      ]
+    },
+    {
+      "Faculty": "Law & Legal Studies",
+      "Programs": [
+        {
+          "Program": "PhD in Law",
+          "Overview": "The PhD in Law advances legal research and scholarship. Students explore specialized legal fields and contribute to legal theory.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced legal research.",
+            "Develop expertise in specialized legal areas.",
+            "Analyze complex legal issues and policies.",
+            "Contribute to legal scholarship and practice."
+          ],
+          "CareerProspects": "Legal scholars, professors, or consultants in law and academia.",
+          "UniqueFeatures": "Legal research seminars, moot court leadership, and focus on specialized law."
+        },
+        {
+          "Program": "Doctor of Juridical Science (SJD)",
+          "Overview": "The SJD program advances legal scholarship through original research. Students contribute to advanced legal theory and practice.",
+          "KeyLearningOutcomes": [
+            "Conduct original legal research.",
+            "Develop expertise in legal theory and jurisprudence.",
+            "Analyze global legal systems and issues.",
+            "Contribute to legal policy and scholarship."
+          ],
+          "CareerProspects": "Legal scholars, professors, or high-level legal advisors.",
+          "UniqueFeatures": "Advanced legal research, international collaborations, and focus on global law."
+        }
+      ]
+    },
+    {
+      "Faculty": "Agriculture & Natural Resources",
+      "Programs": [
+        {
+          "Program": "PhD in Agronomy",
+          "Overview": "The PhD in Agronomy advances research in crop and soil science. Students contribute to sustainable agricultural solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced agronomy research.",
+            "Develop expertise in crop breeding and soil management.",
+            "Analyze sustainable agriculture practices.",
+            "Contribute to agronomic advancements."
+          ],
+          "CareerProspects": "Agronomy researchers, professors, or consultants.",
+          "UniqueFeatures": "Agricultural research farms, field studies, and focus on precision agriculture."
+        },
+        {
+          "Program": "PhD in Agricultural Economics",
+          "Overview": "The PhD in Agricultural Economics advances research in agricultural markets and policies. Students contribute to agribusiness scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced agricultural economics research.",
+            "Develop expertise in market analysis and policy.",
+            "Analyze global agricultural trade issues.",
+            "Contribute to agricultural economic solutions."
+          ],
+          "CareerProspects": "Agricultural economists, professors, or policy advisors.",
+          "UniqueFeatures": "Agribusiness research, industry collaborations, and focus on agricultural policy."
+        },
+        {
+          "Program": "PhD in Environmental Science",
+          "Overview": "The PhD in Environmental Science advances research in environmental sustainability. Students contribute to global environmental solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced environmental research.",
+            "Develop expertise in ecological modeling and policy.",
+            "Analyze environmental challenges and solutions.",
+            "Contribute to environmental scholarship."
+          ],
+          "CareerProspects": "Environmental researchers, professors, or consultants.",
+          "UniqueFeatures": "Field-based research, partnerships with green organizations, and focus on climate change."
+        }
+      ]
+    },
+    {
+      "Faculty": "Arts & Humanities",
+      "Programs": [
+        {
+          "Program": "PhD in English Literature",
+          "Overview": "The PhD in English Literature advances research in literary studies. Students conduct original research in literature and critical theory.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced literary research.",
+            "Develop expertise in literary theory and criticism.",
+            "Analyze global literature and cultural contexts.",
+            "Contribute to literary scholarship."
+          ],
+          "CareerProspects": "Professors, literary critics, or researchers in academia and publishing.",
+          "UniqueFeatures": "Literary research seminars, publishing opportunities, and focus on global literature."
+        },
+        {
+          "Program": "PhD in Philosophy",
+          "Overview": "The PhD in Philosophy advances research in philosophical theory. Students explore advanced ethical and metaphysical questions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced philosophical research.",
+            "Develop expertise in ethical and logical analysis.",
+            "Analyze contemporary philosophical issues.",
+            "Contribute to philosophical scholarship."
+          ],
+          "CareerProspects": "Philosophers, professors, or ethicists in academia and consulting.",
+          "UniqueFeatures": "Philosophy colloquia, research symposia, and focus on applied philosophy."
+        },
+        {
+          "Program": "PhD in History",
+          "Overview": "The PhD in History advances historical research. Students conduct original research in global histories and methodologies.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced historical research.",
+            "Develop expertise in archival and historiographical methods.",
+            "Analyze global historical events and impacts.",
+            "Contribute to historical scholarship."
+          ],
+          "CareerProspects": "Historians, professors, or archivists in academia and cultural institutions.",
+          "UniqueFeatures": "Archival research, historical seminars, and focus on global history."
+        }
+      ]
+    },
+    {
+      "Faculty": "Hospitality & Culinary Arts",
+      "Programs": [
+        {
+          "Program": "PhD in Hospitality Management",
+          "Overview": "The PhD in Hospitality Management advances research in hospitality operations and leadership. Students contribute to industry innovation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced hospitality research.",
+            "Develop expertise in strategic hospitality management.",
+            "Analyze global hospitality trends.",
+            "Contribute to hospitality scholarship."
+          ],
+          "CareerProspects": "Hospitality researchers, professors, or consultants.",
+          "UniqueFeatures": "Hospitality research projects, industry partnerships, and focus on sustainable hospitality."
+        },
+        {
+          "Program": "PhD in Culinary Arts & Food Science",
+          "Overview": "The PhD in Culinary Arts & Food Science advances research in culinary innovation and food technology. Students contribute to food industry advancements.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced culinary and food science research.",
+            "Develop expertise in food product development.",
+            "Analyze food safety and nutritional trends.",
+            "Contribute to culinary scholarship."
+          ],
+          "CareerProspects": "Culinary researchers, professors, or food scientists.",
+          "UniqueFeatures": "Culinary labs, innovation projects, and focus on sustainable food systems."
+        }
+      ]
+    },
+    {
+      "Faculty": "Fashion & Beauty",
+      "Programs": [
+        {
+          "Program": "PhD in Fashion & Textile Studies",
+          "Overview": "The PhD in Fashion & Textile Studies advances research in fashion design and textiles. Students contribute to fashion industry innovation.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced fashion and textile research.",
+            "Develop expertise in sustainable design and textile technology.",
+            "Analyze global fashion trends and markets.",
+            "Contribute to fashion scholarship."
+          ],
+          "CareerProspects": "Fashion researchers, professors, or consultants.",
+          "UniqueFeatures": "Fashion studios, research projects, and focus on sustainable fashion."
+        },
+        {
+          "Program": "PhD in Cosmetology & Aesthetic Sciences",
+          "Overview": "The PhD in Cosmetology & Aesthetic Sciences advances research in beauty and aesthetics. Students contribute to beauty industry advancements.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced cosmetology research.",
+            "Develop expertise in cosmetic science and aesthetics.",
+            "Analyze beauty trends and consumer behavior.",
+            "Contribute to aesthetic scholarship."
+          ],
+          "CareerProspects": "Beauty researchers, professors, or consultants.",
+          "UniqueFeatures": "Beauty labs, industry collaborations, and focus on aesthetic innovation."
+        }
+      ]
+    },
+    {
+      "Faculty": "Classical Studies",
+      "Programs": [
+        {
+          "Program": "PhD in Classical Studies",
+          "Overview": "The PhD in Classical Studies advances research in ancient civilizations. Students contribute to classical scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced classical research.",
+            "Develop expertise in ancient literature and history.",
+            "Analyze classical cultural impacts.",
+            "Contribute to classical scholarship."
+          ],
+          "CareerProspects": "Professors, historians, or curators in academia and cultural institutions.",
+          "UniqueFeatures": "Classical text research, archaeological projects, and focus on mythology."
+        },
+        {
+          "Program": "PhD in Ancient History",
+          "Overview": "The PhD in Ancient History advances research in ancient civilizations. Students contribute to historical scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced historical research.",
+            "Develop expertise in ancient texts and archaeology.",
+            "Analyze ancient civilizations and their impacts.",
+            "Contribute to historical scholarship."
+          ],
+          "CareerProspects": "Historians, professors, or archaeologists.",
+          "UniqueFeatures": "Archaeological excavations, historical seminars, and focus on ancient empires."
+        },
+        {
+          "Program": "PhD in Latin & Greek",
+          "Overview": "The PhD in Latin & Greek advances research in classical languages and literature. Students contribute to linguistic scholarship.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced research in Latin and Greek.",
+            "Develop expertise in classical text analysis.",
+            "Analyze cultural significance of ancient literature.",
+            "Contribute to classical language scholarship."
+          ],
+          "CareerProspects": "Language professors, translators, or researchers.",
+          "UniqueFeatures": "Language immersion programs, classical text seminars, and focus on ancient literature."
+        }
+      ]
+    },
+    {
+      "Faculty": "Nursing & Public Health",
+      "Programs": [
+        {
+          "Program": "PhD in Nursing",
+          "Overview": "The PhD in Nursing advances research in nursing practice and theory. Students contribute to healthcare improvements.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced nursing research.",
+            "Develop expertise in clinical and theoretical nursing.",
+            "Analyze healthcare policies and patient outcomes.",
+            "Contribute to nursing scholarship."
+          ],
+          "CareerProspects": "Nurse researchers, professors, or healthcare consultants.",
+          "UniqueFeatures": "Nursing research labs, clinical studies, and focus on advanced practice."
+        },
+        {
+          "Program": "Doctor of Nursing Practice (DNP)",
+          "Overview": "The DNP program advances clinical nursing practice and leadership. Students focus on applied nursing research.",
+          "KeyLearningOutcomes": [
+            "Conduct applied nursing research.",
+            "Develop expertise in clinical leadership and patient care.",
+            "Analyze healthcare delivery systems.",
+            "Contribute to nursing practice improvements."
+          ],
+          "CareerProspects": "Nurse practitioners, clinical directors, or professors.",
+          "UniqueFeatures": "Clinical practicums, leadership projects, and focus on evidence-based practice."
+        },
+        {
+          "Program": "PhD in Public Health",
+          "Overview": "The PhD in Public Health advances research in community health and policy. Students contribute to global health solutions.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced public health research.",
+            "Develop expertise in epidemiology and health policy.",
+            "Analyze global health challenges.",
+            "Contribute to public health scholarship."
+          ],
+          "CareerProspects": "Public health researchers, professors, or policy advisors.",
+          "UniqueFeatures": "Global health projects, research collaborations, and focus on health equity."
+        }
+      ]
+    },
+    {
+      "Faculty": "Veterinary Medicine",
+      "Programs": [
+        {
+          "Program": "Doctor of Veterinary Medicine (DVM)",
+          "Overview": "The DVM program advances veterinary practice and research. Students contribute to animal health and public health advancements.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced veterinary research.",
+            "Develop expertise in animal diagnostics and treatment.",
+            "Analyze veterinary public health issues.",
+            "Contribute to veterinary scholarship."
+          ],
+          "CareerProspects": "Veterinarians, researchers, or professors.",
+          "UniqueFeatures": "Veterinary clinics, research projects, and focus on zoonotic diseases."
+        },
+        {
+          "Program": "PhD in Animal Health & Production",
+          "Overview": "The PhD in Animal Health & Production advances research in animal care and productivity. Students contribute to sustainable animal systems.",
+          "KeyLearningOutcomes": [
+            "Conduct advanced animal health research.",
+            "Develop expertise in livestock management and welfare.",
+            "Analyze animal production systems.",
+            "Contribute to animal health scholarship."
+          ],
+          "CareerProspects": "Animal health researchers, professors, or consultants.",
+          "UniqueFeatures": "Animal health labs, farm-based research, and focus on sustainable animal production."
+        }
+      ]
+    }
+  ]
+}

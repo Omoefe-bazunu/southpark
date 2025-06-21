@@ -22,7 +22,6 @@ import {
   setDoc,
 } from "firebase/firestore"; // ensure these are imported
 
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 
 const Stage1Application = () => {
@@ -116,22 +115,32 @@ const Stage1Application = () => {
       const eligibilityRef = doc(db, "eligibility", user.uid);
       await setDoc(eligibilityRef, dataToSubmit);
 
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.fullName,
-          email: formData.email,
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        import.meta.env.VITE_EMAILJS_USER_ID
-      );
+        body: JSON.stringify({
+          toEmail: user.email,
+          name: formData.fullName, // Add name from formData
+        }),
+      }).then(async (response) => {
+        if (!response.ok) {
+          throw new Error("Failed to send email: " + (await response.text()));
+        }
+        return response.json();
+      });
 
       setSuccess(true);
       toast.success("Application submitted and confirmation email sent!");
       setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
     } catch (error) {
       console.error("Error submitting application:", error.message);
-      toast.error("Failed to submit application. Please try again.");
+      toast.error(
+        error.message.includes("email")
+          ? "Application submitted but failed to send confirmation email"
+          : "Failed to submit application. Please try again."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -693,7 +702,7 @@ const Stage1Application = () => {
                     I confirm that the information provided is accurate. *
                   </label>
                 </div>
-                <div className="flex items-center">
+                <div className="items-center hidden">
                   <input
                     type="checkbox"
                     id="agreeVerificationFee"
@@ -701,13 +710,11 @@ const Stage1Application = () => {
                     checked={formData.agreeVerificationFee}
                     onChange={handleChange}
                     className="mr-2 text-emerald-600 focus:ring-emerald-500"
-                    aria-required="true"
                     aria-label="Agree to Verification Fee"
-                    required
                   />
                   <label
                     htmlFor="agreeVerificationFee"
-                    className="text-gray-700"
+                    className="text-gray-700 hidden"
                   >
                     I agree to pay a document verification fee if offered a
                     scholarship. *

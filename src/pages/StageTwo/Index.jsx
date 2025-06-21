@@ -15,7 +15,7 @@ import {
 import { useAuth } from "../../contexts/AuthContext";
 import { db } from "../../services/firebase.jsx";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
-import emailjs from "@emailjs/browser";
+// import { sendStage2ConfirmationEmail } from "../../services/sendStage2ConfimationEmail";
 import { toast } from "react-toastify";
 
 const Stage2Application = () => {
@@ -91,27 +91,24 @@ const Stage2Application = () => {
 
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        reject(new Error("File size exceeds 5MB limit"));
+        reject(new Error(`File ${file.name} exceeds 5MB limit`));
+        return;
+      }
+
+      // Validate file types
+      const validTypes = ["application/pdf", "image/jpeg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        reject(
+          new Error(
+            `Invalid file type for ${file.name}. Only PDF, JPEG, PNG are allowed`
+          )
+        );
         return;
       }
 
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => {
-        // Additional validation for images
-        if (file.type.startsWith("image/")) {
-          const img = new Image();
-          img.onload = () => {
-            resolve(reader.result);
-          };
-          img.onerror = () => {
-            reject(new Error("Invalid image file"));
-          };
-          img.src = reader.result;
-        } else {
-          resolve(reader.result);
-        }
-      };
+      reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
   };
@@ -121,21 +118,30 @@ const Stage2Application = () => {
     setSubmitting(true);
 
     try {
-      // Validate required files
-      if (!formData.passportPhoto || !formData.academicTranscripts) {
-        throw new Error("Required documents are missing");
+      // Validate required files first with specific error messages
+      if (!formData.passportPhoto) {
+        throw new Error("Passport photo is required");
+      }
+      if (!formData.academicTranscripts) {
+        throw new Error("Academic transcripts are required");
       }
 
-      // Prepare file data with metadata
+      // Prepare file data with simplified structure
       const prepareFileData = async (file, fieldName) => {
         if (!file) return null;
-        return {
-          base64: await convertToBase64(file),
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          lastModified: file.lastModified,
-        };
+
+        try {
+          const base64 = await convertToBase64(file);
+          return {
+            data: base64,
+            name: file.name,
+            type: file.type,
+            size: file.size,
+          };
+        } catch (error) {
+          console.error(`Error processing ${fieldName}:`, error);
+          throw error;
+        }
       };
 
       const dataToSubmit = {
@@ -180,16 +186,22 @@ const Stage2Application = () => {
       // Write to Firestore applicants collection
       await addDoc(collection(db, "applicants"), dataToSubmit);
 
-      // Send confirmation email via EmailJS
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_STAGE2_TEMPLATE_ID,
-        {
-          name: fullName || "Applicant",
-          email: user.email,
+      // Send confirmation email via Resend
+      await fetch("/api/sendStage2Email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        import.meta.env.VITE_EMAILJS_USER_ID
-      );
+        body: JSON.stringify({
+          toEmail: user.email,
+          name: fullName || "Applicant",
+        }),
+      }).then(async (response) => {
+        if (!response.ok) {
+          throw new Error("Failed to send email: " + (await response.text()));
+        }
+        return response.json();
+      });
 
       setSuccess(true);
       toast.success("Application submitted and confirmation email sent!");
@@ -197,7 +209,11 @@ const Stage2Application = () => {
     } catch (error) {
       console.error("Error submitting application:", error);
       toast.error(
-        error.message || "Failed to submit application. Please try again."
+        error.message.includes("exceeds 5MB limit")
+          ? "File size too large (max 5MB)"
+          : error.message.includes("Invalid file type")
+            ? "Invalid file type. Please upload PDF, JPEG, or PNG only"
+            : error.message || "Failed to submit application. Please try again."
       );
     } finally {
       setSubmitting(false);
@@ -316,6 +332,25 @@ const Stage2Application = () => {
                     accept="image/jpeg,image/png"
                     required
                   />
+                  {formData.passportPhoto && (
+                    <div className="text-sm mt-1">
+                      Selected: {formData.passportPhoto.name} (
+                      {(formData.passportPhoto.size / 1024 / 1024).toFixed(2)}{" "}
+                      MB)
+                      {formData.passportPhoto.size > 5 * 1024 * 1024 && (
+                        <span className="text-red-500 ml-2">
+                          File exceeds 5MB limit!
+                        </span>
+                      )}
+                      {!["image/jpeg", "image/png"].includes(
+                        formData.passportPhoto.type
+                      ) && (
+                        <span className="text-red-500 ml-2">
+                          Only JPEG/PNG images allowed!
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -425,6 +460,28 @@ const Stage2Application = () => {
                     accept="application/pdf"
                     required
                   />
+                  {formData.academicTranscripts && (
+                    <div className="text-sm mt-1">
+                      Selected: {formData.academicTranscripts.name} (
+                      {(
+                        formData.academicTranscripts.size /
+                        1024 /
+                        1024
+                      ).toFixed(2)}{" "}
+                      MB)
+                      {formData.academicTranscripts.size > 5 * 1024 * 1024 && (
+                        <span className="text-red-500 ml-2">
+                          File exceeds 5MB limit!
+                        </span>
+                      )}
+                      {formData.academicTranscripts.type !==
+                        "application/pdf" && (
+                        <span className="text-red-500 ml-2">
+                          Only PDF files are allowed!
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label
@@ -445,6 +502,25 @@ const Stage2Application = () => {
                     aria-label="Upload Supporting Documents"
                     accept="application/pdf,image/jpeg,image/png"
                   />
+                  {formData.supportingDocs && (
+                    <div className="text-sm mt-1">
+                      Selected: {formData.supportingDocs.name} (
+                      {(formData.supportingDocs.size / 1024 / 1024).toFixed(2)}{" "}
+                      MB)
+                      {formData.supportingDocs.size > 5 * 1024 * 1024 && (
+                        <span className="text-red-500 ml-2">
+                          File exceeds 5MB limit!
+                        </span>
+                      )}
+                      {!["application/pdf", "image/jpeg", "image/png"].includes(
+                        formData.supportingDocs.type
+                      ) && (
+                        <span className="text-red-500 ml-2">
+                          Only PDF, JPEG, PNG files allowed!
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

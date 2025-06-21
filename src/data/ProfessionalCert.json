@@ -1,0 +1,290 @@
+{
+  "Professional Certificates & Diplomas": {
+    "Arts & Communication": [
+      {
+        "Program": "Certificate in Creative Writing",
+        "Overview": "Develops storytelling skills across genres. Students create compelling written content.",
+        "KeyLearningOutcomes": [
+          "Master creative writing techniques and genres.",
+          "Develop skills in narrative structure and style.",
+          "Analyze contemporary literature and trends.",
+          "Apply writing skills to professional projects."
+        ],
+        "CareerProspects": "Writers, editors, or content creators in publishing and media.",
+        "UniqueFeatures": "Writing workshops, publishing opportunities, and focus on narrative craft."
+      },
+      {
+        "Program": "Certificate in Photography",
+        "Overview": "Teaches professional photography techniques. Students learn to create impactful visual stories.",
+        "KeyLearningOutcomes": [
+          "Master photography techniques and equipment.",
+          "Develop skills in photo editing and composition.",
+          "Analyze visual storytelling and aesthetics.",
+          "Apply photography to professional projects."
+        ],
+        "CareerProspects": "Photographers, photo editors, or visual content creators in media and advertising.",
+        "UniqueFeatures": "Photography studios, portfolio projects, and focus on visual storytelling."
+      }
+    ],
+    "Business & Management": [
+      {
+        "Program": "Certificate in Project Management (PMP)",
+        "Overview": "Prepares students for PMP certification. Covers project planning and execution.",
+        "KeyLearningOutcomes": [
+          "Master project management methodologies.",
+          "Develop skills in risk management and scheduling.",
+          "Analyze project performance and stakeholder needs.",
+          "Apply project management to diverse industries."
+        ],
+        "CareerProspects": "Project managers, program coordinators, or consultants.",
+        "UniqueFeatures": "PMP prep courses, project simulations, and focus on agile methodologies."
+      },
+      {
+        "Program": "Certificate in Digital Marketing",
+        "Overview": "Teaches students to create effective online campaigns. Covers SEO, social media, and analytics.",
+        "KeyLearningOutcomes": [
+          "Master digital marketing strategies and tools.",
+          "Develop skills in SEO and content marketing.",
+          "Analyze online consumer behavior and trends.",
+          "Apply digital marketing to business growth."
+        ],
+        "CareerProspects": "Digital marketers, social media managers, or marketing analysts.",
+        "UniqueFeatures": "Marketing labs, campaign projects, and focus on analytics."
+      },
+      {
+        "Program": "Certificate in Business Analytics",
+        "Overview": "Focuses on data-driven business decisions. Students learn to analyze business data effectively.",
+        "KeyLearningOutcomes": [
+          "Master business analytics tools and techniques.",
+          "Develop skills in data visualization and forecasting.",
+          "Analyze business performance metrics.",
+          "Apply analytics to strategic business decisions."
+        ],
+        "CareerProspects": "Business analysts, data consultants, or strategy managers.",
+        "UniqueFeatures": "Analytics projects, software training, and focus on predictive modeling."
+      },
+      {
+        "Program": "Certificate in Accounting (ACCA, CPA)",
+        "Overview": "Prepares students for ACCA or CPA certifications. Covers financial reporting and auditing.",
+        "KeyLearningOutcomes": [
+          "Master accounting principles and standards.",
+          "Develop skills in financial analysis and auditing.",
+          "Analyze tax regulations and financial reporting.",
+          "Apply accounting skills to business contexts."
+        ],
+        "CareerProspects": "Accountants, auditors, or financial consultants.",
+        "UniqueFeatures": "Accounting software training, certification prep, and focus on financial management."
+      },
+      {
+        "Program": "Certificate in Supply Chain & Logistics",
+        "Overview": "Teaches students to optimize supply chains. Covers logistics and procurement.",
+        "KeyLearningOutcomes": [
+          "Master supply chain management principles.",
+          "Develop skills in logistics and inventory management.",
+          "Analyze global supply chain trends.",
+          "Apply strategies for supply chain efficiency."
+        ],
+        "CareerProspects": "Supply chain managers, logistics analysts, or procurement specialists.",
+        "UniqueFeatures": "Supply chain simulations, industry projects, and focus on blockchain."
+      },
+      {
+        "Program": "Certificate in Human Resource Management",
+        "Overview": "Provides skills in managing people and organizational culture. Students learn HR best practices.",
+        "KeyLearningOutcomes": [
+          "Master HR principles and labor laws.",
+          "Develop skills in recruitment and employee engagement.",
+          "Analyze workplace diversity and performance.",
+          "Apply HR strategies to organizational success."
+        ],
+        "CareerProspects": "HR managers, recruiters, or labor relations specialists.",
+        "UniqueFeatures": "HR simulations, industry internships, and focus on talent management."
+      }
+    ],
+    "Education & Social Work": [
+      {
+        "Program": "Certificate in Teaching & Learning",
+        "Overview": "Provides skills in effective pedagogy. Students learn to design engaging educational experiences.",
+        "KeyLearningOutcomes": [
+          "Master teaching methodologies and assessment.",
+          "Develop skills in curriculum design and classroom management.",
+          "Analyze learning theories and student needs.",
+          "Apply teaching strategies to diverse learners."
+        ],
+        "CareerProspects": "Teachers, instructional designers, or education consultants.",
+        "UniqueFeatures": "Teaching practicums, workshops, and focus on inclusive education."
+      },
+      {
+        "Program": "Certificate in Special Needs Education",
+        "Overview": "Focuses on supporting diverse learners. Students learn inclusive teaching strategies.",
+        "KeyLearningOutcomes": [
+          "Master special education techniques and interventions.",
+          "Develop skills in individualized education plans.",
+          "Analyze inclusive education practices.",
+          "Apply strategies for special needs students."
+        ],
+        "CareerProspects": "Special education teachers, inclusion specialists, or therapists.",
+        "UniqueFeatures": "Special education practicums, workshops, and focus on assistive technology."
+      },
+      {
+        "Program": "Certificate in Guidance & Counselling",
+        "Overview": "Teaches students to provide emotional and academic support. Focuses on counseling techniques.",
+        "KeyLearningOutcomes": [
+          "Master counseling theories and techniques.",
+          "Develop skills in student guidance and support.",
+          "Analyze mental health and academic challenges.",
+          "Apply counseling strategies in educational settings."
+        ],
+        "CareerProspects": "School counselors, academic advisors, or therapists.",
+        "UniqueFeatures": "Counseling practicums, workshops, and focus on student well-being."
+      },
+      {
+        "Program": "Certificate in Child Psychology",
+        "Overview": "Provides skills in understanding child development and behavior. Students learn to support children’s mental health.",
+        "KeyLearningOutcomes": [
+          "Master child psychology theories and assessment.",
+          "Develop skills in child behavioral interventions.",
+          "Analyze developmental and psychological issues.",
+          "Apply psychology to child education and care."
+        ],
+        "CareerProspects": "Child psychologists, counselors, or early intervention specialists.",
+        "UniqueFeatures": "Child psychology labs, clinical observations, and focus on developmental psychology."
+      }
+    ],
+    "Health & Sciences": [
+      {
+        "Program": "Certificate in First Aid & Emergency Care",
+        "Overview": "Teaches life-saving skills. Students learn to respond to medical emergencies effectively.",
+        "KeyLearningOutcomes": [
+          "Master first aid and CPR techniques.",
+          "Develop skills in emergency response and triage.",
+          "Analyze medical emergency protocols.",
+          "Apply first aid in real-world scenarios."
+        ],
+        "CareerProspects": "First aid trainers, emergency responders, or healthcare assistants.",
+        "UniqueFeatures": "Emergency simulations, certification training, and focus on trauma care."
+      },
+      {
+        "Program": "Certificate in Public Health",
+        "Overview": "Provides skills in community health promotion. Students learn to address public health challenges.",
+        "KeyLearningOutcomes": [
+          "Master public health principles and epidemiology.",
+          "Develop skills in health program planning.",
+          "Analyze social determinants of health.",
+          "Apply public health strategies to communities."
+        ],
+        "CareerProspects": "Public health officers, health educators, or community health workers.",
+        "UniqueFeatures": "Community health projects, internships, and focus on health equity."
+      },
+      {
+        "Program": "Certificate in Health Informatics",
+        "Overview": "Teaches students to manage health data systems. Covers healthcare technology.",
+        "KeyLearningOutcomes": [
+          "Master health informatics systems and tools.",
+          "Develop skills in health data management and analysis.",
+          "Analyze healthcare IT standards and privacy.",
+          "Apply informatics to healthcare delivery."
+        ],
+        "CareerProspects": "Health informatics specialists, data analysts, or IT consultants in healthcare.",
+        "UniqueFeatures": "Health IT labs, industry projects, and focus on electronic health records."
+      },
+      {
+        "Program": "Certificate in Medical Laboratory Practices",
+        "Overview": "Provides skills in diagnostic testing. Students learn lab techniques for medical diagnostics.",
+        "KeyLearningOutcomes": [
+          "Master laboratory techniques and diagnostics.",
+          "Develop skills in quality control and lab safety.",
+          "Analyze clinical laboratory standards.",
+          "Apply lab practices to medical testing."
+        ],
+        "CareerProspects": "Medical lab technicians, diagnostic specialists, or lab managers.",
+        "UniqueFeatures": "Diagnostic labs, clinical internships, and focus on molecular diagnostics."
+      }
+    ],
+    "Information Technology": [
+      {
+        "Program": "Certificate in Data Analytics",
+        "Overview": "Provides skills in analyzing and visualizing data. Students learn to derive insights from complex datasets.",
+        "KeyLearningOutcomes": [
+          "Master data analysis and visualization techniques.",
+          "Develop skills in statistical tools and software.",
+          "Analyze data-driven business problems.",
+          "Apply analytics to decision-making."
+        ],
+        "CareerProspects": "Data analysts, business intelligence specialists, or data consultants.",
+        "UniqueFeatures": "Data analytics projects, software training, and focus on big data."
+      },
+      {
+        "Program": "Certificate in Web Development",
+        "Overview": "Teaches students to build modern websites. Covers front-end and back-end development.",
+        "KeyLearningOutcomes": [
+          "Master HTML, CSS, and JavaScript.",
+          "Develop skills in web frameworks and responsive design.",
+          "Analyze user experience and web performance.",
+          "Apply web development to real-world projects."
+        ],
+        "CareerProspects": "Web developers, UI designers, or front-end engineers.",
+        "UniqueFeatures": "Web development labs, portfolio projects, and focus on full-stack development."
+      },
+      {
+        "Program": "Certificate in Mobile App Development",
+        "Overview": "Focuses on creating mobile applications. Students learn to develop apps for iOS and Android.",
+        "KeyLearningOutcomes": [
+          "Master mobile app development frameworks.",
+          "Develop skills in app design and testing.",
+          "Analyze mobile user experience and functionality.",
+          "Apply app development to real-world needs."
+        ],
+        "CareerProspects": "Mobile app developers, app designers, or tech consultants.",
+        "UniqueFeatures": "App development labs, real-world projects, and focus on cross-platform apps."
+      },
+      {
+        "Program": "Certificate in Cybersecurity",
+        "Overview": "Provides skills in protecting digital systems. Students learn threat detection and prevention.",
+        "KeyLearningOutcomes": [
+          "Master cybersecurity principles and techniques.",
+          "Develop skills in ethical hacking and security auditing.",
+          "Analyze cybersecurity threats and policies.",
+          "Apply security measures to protect systems."
+        ],
+        "CareerProspects": "Cybersecurity analysts, ethical hackers, or security consultants.",
+        "UniqueFeatures": "Cybersecurity labs, simulated attacks, and focus on certifications."
+      },
+      {
+        "Program": "Certificate in Cloud Computing",
+        "Overview": "Teaches students to manage cloud-based systems. Covers cloud architecture and services.",
+        "KeyLearningOutcomes": [
+          "Master cloud computing platforms and services.",
+          "Develop skills in cloud architecture and deployment.",
+          "Analyze cloud security and scalability.",
+          "Apply cloud solutions to business needs."
+        ],
+        "CareerProspects": "Cloud architects, cloud engineers, or IT consultants.",
+        "UniqueFeatures": "Cloud labs, industry certifications, and focus on cloud security."
+      },
+      {
+        "Program": "Certificate in UI/UX Design",
+        "Overview": "Focuses on creating user-friendly interfaces. Students learn to design intuitive digital experiences.",
+        "KeyLearningOutcomes": [
+          "Master UI/UX design principles and tools.",
+          "Develop skills in user research and prototyping.",
+          "Analyze user experience and design trends.",
+          "Apply design solutions to digital products."
+        ],
+        "CareerProspects": "UI/UX designers, interaction designers, or user researchers.",
+        "UniqueFeatures": "Design studios, user testing projects, and focus on human-centered design."
+      },
+      {
+        "Program": "Certificate in Networking (Cisco, CompTIA)",
+        "Overview": "Provides skills in network management and security. Prepares students for industry-standard certifications.",
+        "KeyLearningOutcomes": [
+          "Master network configuration and troubleshooting.",
+          "Develop skills in network security and protocols.",
+          "Analyze network performance and scalability.",
+          "Apply networking skills to IT infrastructure."
+        ],
+        "CareerProspects": "Network administrators, IT specialists, or cybersecurity analysts.",
+        "UniqueFeatures": "Networking labs, certification prep, and focus on enterprise networks."
+      }
+    ]
+  }
+}

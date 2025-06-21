@@ -1,0 +1,1029 @@
+{
+  "Faculties": [
+    {
+      "Faculty": "Agriculture & Natural Resources",
+      "Programs": [
+        {
+          "Program": "B.Sc. Agriculture",
+          "Overview": "Focuses on sustainable farming and food production, teaching modern agricultural techniques to address global food security.",
+          "KeyLearningOutcomes": [
+            "Understand crop production, soil science, and pest management.",
+            "Develop skills in precision agriculture and agribusiness.",
+            "Analyze sustainable farming practices.",
+            "Apply technology to enhance agricultural productivity."
+          ],
+          "CareerProspects": "Agronomists, farm managers, agricultural consultants in agribusiness and government.",
+          "UniqueFeatures": "On-campus research farm, industry internships, courses in sustainable agriculture."
+        },
+        {
+          "Program": "B.Sc. Agribusiness Management",
+          "Overview": "Combines agriculture with business principles to manage agricultural enterprises effectively.",
+          "KeyLearningOutcomes": [
+            "Understand agribusiness operations and supply chains.",
+            "Develop skills in agricultural marketing and finance.",
+            "Analyze global agricultural markets and policies.",
+            "Apply business strategies to agribusiness challenges."
+          ],
+          "CareerProspects": "Agribusiness managers, agricultural economists, consultants in agribusiness sectors.",
+          "UniqueFeatures": "Agribusiness projects, internships with agricultural firms, courses in agricultural economics."
+        },
+        {
+          "Program": "B.Sc. Forestry & Wildlife Management",
+          "Overview": "Focuses on conserving forests and wildlife, teaching sustainable natural resource management.",
+          "KeyLearningOutcomes": [
+            "Understand forest ecology and wildlife conservation.",
+            "Develop skills in resource management and biodiversity assessment.",
+            "Analyze environmental policies and conservation strategies.",
+            "Apply sustainable practices to forestry and wildlife."
+          ],
+          "CareerProspects": "Forest managers, conservationists, wildlife biologists in government and NGOs.",
+          "UniqueFeatures": "Fieldwork in forests, conservation projects, courses in wildlife ecology."
+        },
+        {
+          "Program": "B.Sc. Soil Science",
+          "Overview": "Explores soil properties and their role in agriculture and ecosystems, emphasizing soil health and productivity.",
+          "KeyLearningOutcomes": [
+            "Understand soil chemistry, biology, and physics.",
+            "Develop skills in soil analysis and fertility management.",
+            "Analyze soil conservation and land use practices.",
+            "Apply soil science to sustainable agriculture."
+          ],
+          "CareerProspects": "Soil scientists, agricultural consultants, environmental analysts in agriculture and research.",
+          "UniqueFeatures": "Soil science labs, fieldwork, courses in soil conservation."
+        }
+      ]
+    },
+    {
+      "Faculty": "Architecture & Design",
+      "Programs": [
+        {
+          "Program": "Bachelor of Architecture (B.Arch)",
+          "Overview": "Trains students to design innovative, sustainable buildings, combining creativity, engineering, and design principles.",
+          "KeyLearningOutcomes": [
+            "Master architectural design and construction principles.",
+            "Develop skills in drafting, modeling, and sustainable design.",
+            "Understand urban planning and building regulations.",
+            "Apply design solutions to real-world architectural challenges."
+          ],
+          "CareerProspects": "Architects, urban designers, project managers in architecture firms and construction.",
+          "UniqueFeatures": "Design studios, architectural workshops, internships with design firms."
+        },
+        {
+          "Program": "B.A. Interior Design",
+          "Overview": "Focuses on creating functional, aesthetic indoor spaces for residential and commercial settings.",
+          "KeyLearningOutcomes": [
+            "Master interior design principles and spatial planning.",
+            "Develop skills in 3D modeling and material selection.",
+            "Understand ergonomics and sustainable design.",
+            "Apply design concepts to client needs."
+          ],
+          "CareerProspects": "Interior designers, space planners, design consultants in design and real estate sectors.",
+          "UniqueFeatures": "Interior design studios, client projects, courses in sustainable interiors."
+        },
+        {
+          "Program": "B.F.A. Graphic Design",
+          "Overview": "Explores visual communication through digital and print media, creating designs for branding and advertising.",
+          "KeyLearningOutcomes": [
+            "Master graphic design tools and typography.",
+            "Develop skills in branding and digital media design.",
+            "Understand visual communication theories.",
+            "Apply design principles to marketing and media projects."
+          ],
+          "CareerProspects": "Graphic designers, art directors, UI/UX designers in advertising and media.",
+          "UniqueFeatures": "Design labs, portfolio development, courses in motion graphics."
+        },
+        {
+          "Program": "B.A. Industrial Design",
+          "Overview": "Focuses on designing innovative products and systems, combining creativity and technical skills.",
+          "KeyLearningOutcomes": [
+            "Master product design and prototyping techniques.",
+            "Develop skills in user-centered design and manufacturing.",
+            "Understand materials science and ergonomics.",
+            "Apply design thinking to product innovation."
+          ],
+          "CareerProspects": "Industrial designers, product developers, design consultants in manufacturing and tech.",
+          "UniqueFeatures": "Prototyping labs, industry collaborations, courses in sustainable design."
+        },
+        {
+          "Program": "B.A. Urban & Regional Planning",
+          "Overview": "Addresses the design and management of urban spaces, teaching students to create sustainable and livable communities.",
+          "KeyLearningOutcomes": [
+            "Understand urban planning principles and policies.",
+            "Develop skills in spatial analysis and urban design.",
+            "Analyze environmental and social impacts of urban development.",
+            "Apply planning strategies for sustainable cities."
+          ],
+          "CareerProspects": "Urban planners, community developers, policy analysts in government and planning agencies.",
+          "UniqueFeatures": "Urban planning projects, GIS training, courses in smart cities."
+        }
+      ]
+    },
+    {
+      "Faculty": "Classical Studies",
+      "Programs": [
+        {
+          "Program": "B.A. Classical Studies",
+          "Overview": "Explores ancient Greek and Roman civilizations through literature, history, and philosophy.",
+          "KeyLearningOutcomes": [
+            "Understand classical literature, history, and culture.",
+            "Develop skills in analyzing ancient texts and artifacts.",
+            "Analyze the influence of classical civilizations on modern society.",
+            "Apply classical knowledge to contemporary issues."
+          ],
+          "CareerProspects": "Educators, historians, curators in academia, museums, and cultural institutions.",
+          "UniqueFeatures": "Study of ancient texts, archaeological field trips, courses in classical mythology."
+        },
+        {
+          "Program": "B.A. Ancient History",
+          "Overview": "Examines the histories of ancient civilizations, exploring political, social, and cultural aspects of antiquity.",
+          "KeyLearningOutcomes": [
+            "Understand the history of ancient civilizations like Greece and Rome.",
+            "Develop skills in historical research and analysis.",
+            "Analyze archaeological evidence and historical texts.",
+            "Apply historical knowledge to cultural studies."
+          ],
+          "CareerProspects": "Historians, archaeologists, museum curators in academia and cultural sectors.",
+          "UniqueFeatures": "Archaeological excavations, historical seminars, courses in ancient empires."
+        },
+        {
+          "Program": "B.A. Latin & Greek",
+          "Overview": "Focuses on the languages and literature of ancient Greece and Rome, developing linguistic and analytical skills.",
+          "KeyLearningOutcomes": [
+            "Master Latin and Greek language and grammar.",
+            "Develop skills in translating and analyzing classical texts.",
+            "Understand the cultural and literary significance of ancient works.",
+            "Apply linguistic skills to classical studies."
+          ],
+          "CareerProspects": "Language educators, translators, researchers in academia and publishing.",
+          "UniqueFeatures": "Language immersion programs, classical text seminars, courses in ancient literature."
+        }
+      ]
+    },
+    {
+      "Faculty": "Business & Social Sciences",
+      "Programs": [
+        {
+          "Program": "B.Sc. Economics",
+          "Overview": "Examines economic theories, markets, and policies, developing analytical skills for economic challenges.",
+          "KeyLearningOutcomes": [
+            "Understand microeconomics, macroeconomics, and econometrics.",
+            "Analyze economic policies and market dynamics.",
+            "Develop skills in data analysis and economic modeling.",
+            "Apply economic principles to real-world issues like trade and development."
+          ],
+          "CareerProspects": "Economists, financial analysts, policy advisors in banking, government, and research.",
+          "UniqueFeatures": "Economic simulations, internships with financial institutions, courses in behavioral economics."
+        },
+        {
+          "Program": "B.Sc. Psychology",
+          "Overview": "Explores human behavior, cognition, and mental processes through psychological theories and research methods.",
+          "KeyLearningOutcomes": [
+            "Understand psychological theories and research methodologies.",
+            "Analyze human behavior and mental health issues.",
+            "Develop skills in psychological assessment and counseling.",
+            "Apply psychology to fields like education and healthcare."
+          ],
+          "CareerProspects": "Psychologists, counselors, HR specialists in healthcare, education, and corporate sectors.",
+          "UniqueFeatures": "Psychology labs, clinical observation opportunities, courses in neuropsychology."
+        },
+        {
+          "Program": "B.Sc. Criminology",
+          "Overview": "Examines crime, justice, and social behavior, exploring causes of crime and the criminal justice system.",
+          "KeyLearningOutcomes": [
+            "Understand criminological theories and criminal justice systems.",
+            "Analyze crime patterns and societal impacts.",
+            "Develop skills in forensic analysis and crime prevention.",
+            "Explore restorative justice and rehabilitation strategies."
+          ],
+          "CareerProspects": "Criminologists, law enforcement officers, forensic analysts in government and justice agencies.",
+          "UniqueFeatures": "Crime scene simulations, internships with law enforcement, courses in cybercrime."
+        },
+        {
+          "Program": "B.Sc. Public Administration",
+          "Overview": "Prepares students for leadership roles in government and public service, focusing on policy, management, and governance.",
+          "KeyLearningOutcomes": [
+            "Understand public policy, governance, and organizational management.",
+            "Develop skills in policy analysis and public budgeting.",
+            "Analyze ethical issues in public administration.",
+            "Apply leadership principles to public sector challenges."
+          ],
+          "CareerProspects": "Public administrators, policy analysts, government consultants in public and nonprofit sectors.",
+          "UniqueFeatures": "Public policy projects, internships with government agencies, courses in e-governance."
+        },
+        {
+          "Program": "B.Sc. Human Resource Management",
+          "Overview": "Focuses on managing people and organizational culture, teaching recruitment, training, and employee motivation.",
+          "KeyLearningOutcomes": [
+            "Understand HR theories, labor laws, and organizational behavior.",
+            "Develop skills in recruitment, training, and performance management.",
+            "Analyze workplace diversity and employee relations.",
+            "Apply HR strategies to enhance organizational productivity."
+          ],
+          "CareerProspects": "HR managers, recruiters, labor relations specialists in corporate and nonprofit sectors.",
+          "UniqueFeatures": "HR simulations, industry internships, courses in talent management."
+        },
+        {
+          "Program": "B.Sc. Marketing",
+          "Overview": "Explores consumer behavior, branding, and digital marketing strategies to create impactful campaigns.",
+          "KeyLearningOutcomes": [
+            "Understand marketing principles, consumer psychology, and market research.",
+            "Develop skills in digital marketing and brand management.",
+            "Analyze market trends and consumer behavior.",
+            "Create strategic marketing plans for diverse industries."
+          ],
+          "CareerProspects": "Marketing managers, brand strategists, digital marketers in advertising, retail, and media.",
+          "UniqueFeatures": "Marketing labs, real-world campaign projects, courses in social media marketing."
+        },
+        {
+          "Program": "B.Sc. Business Administration",
+          "Overview": "Provides a broad foundation in business operations, management, and strategy for leadership roles across industries.",
+          "KeyLearningOutcomes": [
+            "Understand business functions, including finance, marketing, and operations.",
+            "Develop skills in strategic planning and organizational management.",
+            "Analyze business environments and competitive strategies.",
+            "Apply entrepreneurial principles to business challenges."
+          ],
+          "CareerProspects": "Business managers, entrepreneurs, consultants in corporate, startup, and nonprofit sectors.",
+          "UniqueFeatures": "Business case competitions, internships with corporations, courses in global business."
+        },
+        {
+          "Program": "B.Sc. Accounting & Finance",
+          "Overview": "Equips students with skills in financial management, auditing, and accounting principles for financial careers.",
+          "KeyLearningOutcomes": [
+            "Master accounting standards, financial reporting, and auditing.",
+            "Develop skills in financial analysis and budgeting.",
+            "Understand tax laws and corporate finance.",
+            "Apply financial strategies to business decision-making."
+          ],
+          "CareerProspects": "Accountants, financial analysts, auditors in banking, corporate, and public sectors.",
+          "UniqueFeatures": "Accounting software training, internships with financial firms, preparation for CPA/ACCA certifications."
+        },
+        {
+          "Program": "B.Sc. Hospitality & Tourism Management",
+          "Overview": "Prepares students for careers in global hospitality and tourism, covering service management and tourism trends.",
+          "KeyLearningOutcomes": [
+            "Understand hospitality operations and tourism management.",
+            "Develop skills in customer service and event planning.",
+            "Analyze global tourism trends and sustainability practices.",
+            "Apply management principles to hospitality businesses."
+          ],
+          "CareerProspects": "Hotel managers, tourism consultants, event planners in hospitality and tourism sectors.",
+          "UniqueFeatures": "Industry internships, hospitality simulations, courses in sustainable tourism."
+        },
+        {
+          "Program": "B.Sc. Supply Chain Management",
+          "Overview": "Focuses on logistics, procurement, and supply chain operations to optimize global supply chains.",
+          "KeyLearningOutcomes": [
+            "Understand supply chain logistics, procurement, and operations.",
+            "Develop skills in supply chain analytics and inventory management.",
+            "Analyze global trade and supply chain strategies.",
+            "Apply technology to enhance supply chain efficiency."
+          ],
+          "CareerProspects": "Supply chain managers, logistics analysts, procurement specialists in manufacturing, retail, and logistics.",
+          "UniqueFeatures": "Supply chain simulations, industry partnerships, courses in blockchain for supply chains."
+        }
+      ]
+    },
+    {
+      "Faculty": "Education",
+      "Programs": [
+        {
+          "Program": "Bachelor of Education (B.Ed.)",
+          "Overview": "Prepares students to become skilled educators in primary and secondary schools, combining pedagogy and subject expertise.",
+          "KeyLearningOutcomes": [
+            "Master teaching methodologies and curriculum design.",
+            "Develop skills in classroom management and student assessment.",
+            "Understand educational psychology and learning theories.",
+            "Apply inclusive teaching practices."
+          ],
+          "CareerProspects": "Teachers, curriculum developers, education consultants in schools and educational organizations.",
+          "UniqueFeatures": "Teaching practicums, educational workshops, courses in inclusive education."
+        },
+        {
+          "Program": "B.A. Early Childhood Education",
+          "Overview": "Focuses on teaching young children (ages 0-8) through play-based learning to foster early development.",
+          "KeyLearningOutcomes": [
+            "Understand child development and early learning theories.",
+            "Develop skills in designing age-appropriate curricula.",
+            "Analyze early childhood education policies.",
+            "Apply play-based and inclusive teaching strategies."
+          ],
+          "CareerProspects": "Preschool teachers, childcare directors, early intervention specialists.",
+          "UniqueFeatures": "Early childhood labs, practicums in preschools, courses in child psychology."
+        },
+        {
+          "Program": "B.A. Special Education",
+          "Overview": "Prepares students to teach and support students with diverse learning needs, emphasizing inclusive education practices.",
+          "KeyLearningOutcomes": [
+            "Understand special education theories and interventions.",
+            "Develop skills in individualized education plans (IEPs).",
+            "Analyze inclusive teaching strategies.",
+            "Apply techniques to support diverse learners."
+          ],
+          "CareerProspects": "Special education teachers, inclusion specialists, educational therapists.",
+          "UniqueFeatures": "Special education practicums, workshops on inclusive practices, courses in assistive technology."
+        },
+        {
+          "Program": "B.Sc. Educational Technology",
+          "Overview": "Explores the integration of technology in education, designing digital learning environments.",
+          "KeyLearningOutcomes": [
+            "Understand educational technology tools and platforms.",
+            "Develop skills in designing e-learning content.",
+            "Analyze the impact of technology on learning outcomes.",
+            "Apply tech solutions to enhance education."
+          ],
+          "CareerProspects": "Instructional designers, edtech specialists, technology trainers in education sectors.",
+          "UniqueFeatures": "Edtech labs, digital curriculum projects, courses in learning management systems."
+        },
+        {
+          "Program": "B.A. Curriculum & Instruction",
+          "Overview": "Focuses on designing and implementing effective curricula to improve educational outcomes.",
+          "KeyLearningOutcomes": [
+            "Master curriculum design and instructional strategies.",
+            "Develop skills in assessing educational outcomes.",
+            "Analyze curriculum standards and policies.",
+            "Apply innovative teaching methods."
+          ],
+          "CareerProspects": "Curriculum developers, instructional coordinators, education consultants.",
+          "UniqueFeatures": "Curriculum design projects, teaching practicums, courses in global education trends."
+        }
+      ]
+    },
+    {
+      "Faculty": "Information Technology & Engineering",
+      "Programs": [
+        {
+          "Program": "B.Sc. Computer Science",
+          "Overview": "Explores programming, algorithms, and systems design to create innovative software solutions.",
+          "KeyLearningOutcomes": [
+            "Master programming languages, algorithms, and data structures.",
+            "Develop skills in software development and system design.",
+            "Understand computer architecture and operating systems.",
+            "Apply computational thinking to solve real-world problems."
+          ],
+          "CareerProspects": "Software developers, systems analysts, IT consultants in tech, finance, and healthcare.",
+          "UniqueFeatures": "Coding bootcamps, hackathons, internships with tech companies."
+        },
+        {
+          "Program": "B.Sc. Information Technology",
+          "Overview": "Focuses on managing and implementing IT systems to support organizational technology needs.",
+          "KeyLearningOutcomes": [
+            "Understand IT infrastructure, networking, and database management.",
+            "Develop skills in IT project management and cybersecurity.",
+            "Analyze organizational IT needs and solutions.",
+            "Apply emerging technologies like cloud computing."
+          ],
+          "CareerProspects": "IT managers, network administrators, IT consultants in corporate and public sectors.",
+          "UniqueFeatures": "IT labs, industry certifications, courses in cloud computing."
+        },
+        {
+          "Program": "B.Sc. Cybersecurity",
+          "Overview": "Equips students to protect digital systems from threats, covering network security, ethical hacking, and data protection.",
+          "KeyLearningOutcomes": [
+            "Master cybersecurity principles and threat analysis.",
+            "Develop skills in ethical hacking and penetration testing.",
+            "Understand cryptography and data protection laws.",
+            "Apply security strategies to protect organizations."
+          ],
+          "CareerProspects": "Cybersecurity analysts, ethical hackers, security consultants in tech and government.",
+          "UniqueFeatures": "Cybersecurity labs, simulated cyberattacks, certifications like CompTIA Security+."
+        },
+        {
+          "Program": "B.Sc. Software Engineering",
+          "Overview": "Focuses on designing, developing, and maintaining reliable and scalable software systems.",
+          "KeyLearningOutcomes": [
+            "Master software development methodologies and tools.",
+            "Develop skills in coding, testing, and software lifecycle management.",
+            "Understand software architecture and design patterns.",
+            "Apply engineering principles to software projects."
+          ],
+          "CareerProspects": "Software engineers, developers, project managers in tech and software industries.",
+          "UniqueFeatures": "Agile development projects, industry internships, courses in DevOps."
+        },
+        {
+          "Program": "B.Sc. Artificial Intelligence",
+          "Overview": "Explores machine learning, neural networks, and AI applications for cutting-edge tech fields.",
+          "KeyLearningOutcomes": [
+            "Understand AI algorithms, machine learning, and deep learning.",
+            "Develop skills in AI programming and data analysis.",
+            "Analyze ethical implications of AI technologies.",
+            "Apply AI to fields like robotics and healthcare."
+          ],
+          "CareerProspects": "AI engineers, data scientists, AI researchers in tech, healthcare, and automotive industries.",
+          "UniqueFeatures": "AI labs, collaborative research projects, courses in AI ethics."
+        },
+        {
+          "Program": "B.Sc. Data Science",
+          "Overview": "Focuses on extracting insights from data using statistical and computational methods for data-driven careers.",
+          "KeyLearningOutcomes": [
+            "Master data analysis, machine learning, and visualization.",
+            "Develop skills in statistical modeling and big data technologies.",
+            "Understand data ethics and privacy regulations.",
+            "Apply data science to business and scientific problems."
+          ],
+          "CareerProspects": "Data scientists, analysts, machine learning engineers in tech, finance, and research.",
+          "UniqueFeatures": "Data science labs, real-world data projects, courses in big data analytics."
+        },
+        {
+          "Program": "B.Sc. Robotics",
+          "Overview": "Combines engineering and computer science to design and build robotic systems for automation and intelligent machines.",
+          "KeyLearningOutcomes": [
+            "Understand robotics principles, sensors, and control systems.",
+            "Develop skills in robot programming and design.",
+            "Analyze applications of robotics in industry and healthcare.",
+            "Apply AI and machine learning to robotics."
+          ],
+          "CareerProspects": "Robotics engineers, automation specialists, researchers in manufacturing and tech.",
+          "UniqueFeatures": "Robotics labs, competitions, courses in autonomous systems."
+        },
+        {
+          "Program": "B.Sc. Electrical & Electronics Engineering",
+          "Overview": "Covers circuits, power systems, and electronics for careers in engineering and technology.",
+          "KeyLearningOutcomes": [
+            "Master electrical circuits, electronics, and power systems.",
+            "Develop skills in designing and testing electrical systems.",
+            "Understand renewable energy and smart grid technologies.",
+            "Apply engineering principles to solve technical challenges."
+          ],
+          "CareerProspects": "Electrical engineers, electronics designers, energy consultants in utilities and tech.",
+          "UniqueFeatures": "Engineering labs, industry projects, courses in renewable energy."
+        },
+        {
+          "Program": "B.Sc. Civil Engineering",
+          "Overview": "Focuses on designing and building infrastructure like bridges, roads, and buildings with sustainable practices.",
+          "KeyLearningOutcomes": [
+            "Understand structural engineering, geotechnics, and construction management.",
+            "Develop skills in designing and analyzing infrastructure projects.",
+            "Analyze environmental and safety standards in construction.",
+            "Apply sustainable engineering practices."
+          ],
+          "CareerProspects": "Civil engineers, project managers, urban planners in construction and government.",
+          "UniqueFeatures": "Fieldwork, structural design projects, courses in green building."
+        },
+        {
+          "Program": "B.Sc. Mechanical Engineering",
+          "Overview": "Explores the design and manufacturing of mechanical systems for careers in engineering and innovation.",
+          "KeyLearningOutcomes": [
+            "Master mechanics, thermodynamics, and materials science.",
+            "Develop skills in designing and testing mechanical systems.",
+            "Understand manufacturing processes and automation.",
+            "Apply engineering principles to product development."
+          ],
+          "CareerProspects": "Mechanical engineers, product designers, manufacturing managers in automotive and aerospace.",
+          "UniqueFeatures": "Mechanical labs, industry internships, courses in 3D printing."
+        }
+      ]
+    },
+    {
+      "Faculty": "Veterinary Medicine",
+      "Programs": [
+        {
+          "Program": "Bachelor of Veterinary Science (B.V.Sc)",
+          "Overview": "Trains students to become veterinarians, focusing on animal health and disease management with clinical and theoretical training.",
+          "KeyLearningOutcomes": [
+            "Master veterinary anatomy, physiology, and pathology.",
+            "Develop skills in animal diagnosis and treatment.",
+            "Understand veterinary ethics and public health.",
+            "Apply veterinary knowledge in clinical settings."
+          ],
+          "CareerProspects": "Veterinarians, animal health researchers, public health officers in veterinary clinics and government.",
+          "UniqueFeatures": "Veterinary clinics, animal hospitals, courses in zoonotic diseases."
+        },
+        {
+          "Program": "B.Sc. Animal Health & Production",
+          "Overview": "Focuses on improving animal health and productivity, managing livestock and companion animals.",
+          "KeyLearningOutcomes": [
+            "Understand animal health, nutrition, and reproduction.",
+            "Develop skills in livestock management and disease prevention.",
+            "Analyze animal production systems and welfare.",
+            "Apply sustainable practices in animal husbandry."
+          ],
+          "CareerProspects": "Animal health technicians, livestock managers, researchers in agriculture and veterinary sectors.",
+          "UniqueFeatures": "Animal health labs, farm-based training, courses in animal welfare."
+        }
+      ]
+    },
+    {
+      "Faculty": "Arts & Humanities",
+      "Programs": [
+        {
+          "Program": "B.A. English Language & Literature",
+          "Overview": "Explores the English language through literature, linguistics, and critical analysis, honing communication and analytical skills.",
+          "KeyLearningOutcomes": [
+            "Analyze literary works across genres, periods, and cultures.",
+            "Develop advanced skills in writing, critical thinking, and textual interpretation.",
+            "Understand linguistic structures and their cultural significance.",
+            "Cultivate creativity and effective communication for diverse audiences."
+          ],
+          "CareerProspects": "Writers, editors, educators, communications specialists in publishing, media, and education.",
+          "UniqueFeatures": "Creative writing workshops, literary seminars, opportunities to publish in university journals."
+        },
+        {
+          "Program": "B.A. History",
+          "Overview": "Examines human experiences through historical events, cultures, and societies, fostering critical thinking and research skills.",
+          "KeyLearningOutcomes": [
+            "Analyze historical events, movements, and their global implications.",
+            "Develop research skills using primary and secondary sources.",
+            "Understand historiographical methods and historical debates.",
+            "Apply historical knowledge to contemporary issues."
+          ],
+          "CareerProspects": "Historians, archivists, museum curators, policy analysts in government, education, and cultural institutions.",
+          "UniqueFeatures": "Access to historical archives, fieldwork at heritage sites, interdisciplinary courses on global history."
+        },
+        {
+          "Program": "B.A. Philosophy",
+          "Overview": "Delves into fundamental questions about existence, ethics, and knowledge, developing analytical and logical skills.",
+          "KeyLearningOutcomes": [
+            "Master critical thinking and logical reasoning through philosophical inquiry.",
+            "Explore ethical theories, metaphysics, and epistemology.",
+            "Analyze philosophical texts from diverse traditions.",
+            "Apply philosophical principles to real-world ethical dilemmas."
+          ],
+          "CareerProspects": "Ethicists, consultants, educators in law, business, and academia.",
+          "UniqueFeatures": "Philosophy debates, ethics workshops, interdisciplinary courses linking philosophy with science and technology."
+        },
+        {
+          "Program": "B.A. Religious Studies",
+          "Overview": "Explores beliefs, practices, and histories of world religions, fostering understanding of cultural diversity and spiritual traditions.",
+          "KeyLearningOutcomes": [
+            "Understand the historical and cultural contexts of major world religions.",
+            "Analyze religious texts, rituals, and their societal impacts.",
+            "Develop skills in interfaith dialogue and cultural sensitivity.",
+            "Explore the role of religion in shaping global societies."
+          ],
+          "CareerProspects": "Religious educators, community leaders, counselors in NGOs, religious institutions, and cultural organizations.",
+          "UniqueFeatures": "Interfaith seminars, study abroad programs, research opportunities in comparative religion."
+        },
+        {
+          "Program": "B.A. Creative Writing",
+          "Overview": "Nurtures storytelling and literary creativity across genres like fiction, poetry, and creative nonfiction.",
+          "KeyLearningOutcomes": [
+            "Master techniques in fiction, poetry, and nonfiction writing.",
+            "Develop a distinctive writing voice and portfolio.",
+            "Analyze contemporary literature to inform creative practice.",
+            "Collaborate on publishing projects and literary events."
+          ],
+          "CareerProspects": "Authors, editors, scriptwriters, content creators in publishing, media, and entertainment.",
+          "UniqueFeatures": "Writing workshops, guest lectures by published authors, opportunities to publish in literary magazines."
+        },
+        {
+          "Program": "B.A. Music",
+          "Overview": "Blends performance, theory, and history to foster musical creativity and expertise across diverse traditions.",
+          "KeyLearningOutcomes": [
+            "Master music theory, composition, and performance techniques.",
+            "Explore global music traditions and their cultural contexts.",
+            "Develop skills in music production and technology.",
+            "Perform in ensembles and solo recitals."
+          ],
+          "CareerProspects": "Musicians, composers, music educators, producers in the music industry and education.",
+          "UniqueFeatures": "State-of-the-art music studios, performance opportunities, courses in music technology."
+        },
+        {
+          "Program": "B.A. Fine Arts",
+          "Overview": "Cultivates creativity through visual arts like painting, sculpture, and digital media, developing technical skills and artistic vision.",
+          "KeyLearningOutcomes": [
+            "Master techniques in drawing, painting, sculpture, and digital art.",
+            "Develop a personal artistic style and portfolio.",
+            "Analyze art history and contemporary art trends.",
+            "Exhibit work in galleries and public spaces."
+          ],
+          "CareerProspects": "Artists, art educators, curators, designers in galleries, museums, and creative industries.",
+          "UniqueFeatures": "Art studios, gallery exhibitions, collaborations with local art communities."
+        },
+        {
+          "Program": "B.A. Political Science",
+          "Overview": "Examines political systems, governance, and public policy to address global and local political challenges.",
+          "KeyLearningOutcomes": [
+            "Understand political theories, institutions, and processes.",
+            "Analyze public policy and its societal impacts.",
+            "Develop skills in political research and data analysis.",
+            "Explore global politics and international relations."
+          ],
+          "CareerProspects": "Policy analysts, political consultants, diplomats in government, NGOs, and international organizations.",
+          "UniqueFeatures": "Model United Nations, policy simulations, internships with political organizations."
+        },
+        {
+          "Program": "B.A. International Relations",
+          "Overview": "Explores global politics, diplomacy, and international cooperation, addressing issues like trade, conflict, and human rights.",
+          "KeyLearningOutcomes": [
+            "Understand international political systems and global governance.",
+            "Analyze foreign policy and diplomatic strategies.",
+            "Develop skills in negotiation and cross-cultural communication.",
+            "Explore global challenges like climate change and security."
+          ],
+          "CareerProspects": "Diplomats, international consultants, analysts in government, NGOs, and global organizations.",
+          "UniqueFeatures": "Study abroad programs, diplomatic simulations, partnerships with international organizations."
+        },
+        {
+          "Program": "B.A. Sociology",
+          "Overview": "Examines social structures, cultures, and inequalities to understand societal dynamics and address social challenges.",
+          "KeyLearningOutcomes": [
+            "Understand sociological theories and research methods.",
+            "Analyze social issues like inequality, race, and gender.",
+            "Develop skills in qualitative and quantitative research.",
+            "Apply sociological insights to policy and community development."
+          ],
+          "CareerProspects": "Sociologists, social workers, policy analysts in government, NGOs, and research institutions.",
+          "UniqueFeatures": "Community-based research projects, sociology fieldwork, courses on social justice."
+        },
+        {
+          "Program": "B.A. Anthropology",
+          "Overview": "Explores human cultures, evolution, and diversity through archaeological, biological, and cultural perspectives.",
+          "KeyLearningOutcomes": [
+            "Understand anthropological theories and methodologies.",
+            "Analyze cultural practices and human evolution.",
+            "Develop skills in ethnographic and archaeological research.",
+            "Explore global cultural diversity and its implications."
+          ],
+          "CareerProspects": "Anthropologists, cultural consultants, museum curators in academia, NGOs, and cultural institutions.",
+          "UniqueFeatures": "Fieldwork in archaeological sites, ethnographic studies, interdisciplinary courses in cultural studies."
+        },
+        {
+          "Program": "B.A. Communication & Media Studies",
+          "Overview": "Explores media, journalism, and digital communication, developing skills to create and analyze media content.",
+          "KeyLearningOutcomes": [
+            "Master communication theories and media production techniques.",
+            "Develop skills in journalism, public relations, and digital media.",
+            "Analyze media’s role in shaping public opinion and culture.",
+            "Create multimedia content for diverse platforms."
+          ],
+          "CareerProspects": "Journalists, media producers, PR specialists in media, advertising, and corporate sectors.",
+          "UniqueFeatures": "Media production studios, internships with media outlets, courses in digital storytelling."
+        }
+      ]
+    },
+    {
+      "Faculty": "Hospitality & Culinary Arts",
+      "Programs": [
+        {
+          "Program": "B.Sc. Hospitality Management",
+          "Overview": "Prepares students for leadership roles in the hospitality industry, covering hotel operations and guest services.",
+          "KeyLearningOutcomes": [
+            "Understand hospitality operations and service management.",
+            "Develop skills in event planning and customer service.",
+            "Analyze hospitality trends and sustainability practices.",
+            "Apply management principles to hotels and resorts."
+          ],
+          "CareerProspects": "Hotel managers, event planners, hospitality consultants in hotels and tourism.",
+          "UniqueFeatures": "Hospitality simulations, industry internships, courses in sustainable hospitality."
+        },
+        {
+          "Program": "B.Sc. Culinary Arts",
+          "Overview": "Combines culinary skills with food science to create innovative and sustainable culinary creations.",
+          "KeyLearningOutcomes": [
+            "Master culinary techniques and food preparation.",
+            "Develop skills in menu planning and food safety.",
+            "Understand food science and culinary innovation.",
+            "Apply culinary arts to hospitality and catering."
+          ],
+          "CareerProspects": "Chefs, food stylists, culinary educators in restaurants and culinary schools.",
+          "UniqueFeatures": "Culinary labs, guest chef workshops, courses in global cuisines."
+        },
+        {
+          "Program": "B.Sc. Tourism & Event Management",
+          "Overview": "Focuses on planning and managing tourism and events to create memorable experiences.",
+          "KeyLearningOutcomes": [
+            "Understand tourism management and event planning.",
+            "Develop skills in marketing and logistics for events.",
+            "Analyze global tourism trends and sustainability.",
+            "Apply strategies for successful event execution."
+          ],
+          "CareerProspects": "Tourism managers, event planners, travel consultants in tourism and event industries.",
+          "UniqueFeatures": "Event planning projects, internships with tourism boards, courses in destination management."
+        },
+        {
+          "Program": "B.Sc. Hotel & Resort Management",
+          "Overview": "Prepares students to manage luxury hotels and resorts, emphasizing guest experience and operations.",
+          "KeyLearningOutcomes": [
+            "Understand hotel operations and guest services.",
+            "Develop skills in revenue management and hospitality marketing.",
+            "Analyze hospitality trends and customer expectations.",
+            "Apply management strategies to hotels and resorts."
+          ],
+          "CareerProspects": "Hotel managers, resort directors, hospitality consultants in the hospitality industry.",
+          "UniqueFeatures": "Hotel management simulations, internships with luxury resorts, courses in guest experience."
+        }
+      ]
+    },
+    {
+      "Faculty": "Fashion & Beauty",
+      "Programs": [
+        {
+          "Program": "B.A. Fashion Design",
+          "Overview": "Nurtures creativity in designing clothing and accessories, developing skills in design and fashion production.",
+          "KeyLearningOutcomes": [
+            "Master fashion design techniques and pattern-making.",
+            "Develop skills in textile selection and garment construction.",
+            "Understand fashion trends and consumer behavior.",
+            "Apply design concepts to create fashion collections."
+          ],
+          "CareerProspects": "Fashion designers, stylists, merchandisers in fashion and retail.",
+          "UniqueFeatures": "Fashion studios, runway shows, courses in sustainable fashion."
+        },
+        {
+          "Program": "B.Sc. Cosmetology",
+          "Overview": "Focuses on beauty techniques and aesthetics, teaching professional beauty services and product development.",
+          "KeyLearningOutcomes": [
+            "Master cosmetology techniques, including hair, skin, and makeup.",
+            "Develop skills in salon management and client care.",
+            "Understand cosmetic chemistry and product development.",
+            "Apply beauty trends to professional services."
+          ],
+          "CareerProspects": "Cosmetologists, makeup artists, beauty consultants in salons and cosmetics industries.",
+          "UniqueFeatures": "Beauty labs, industry internships, courses in aesthetic science."
+        },
+        {
+          "Program": "B.A. Textile & Apparel Management",
+          "Overview": "Explores the production and marketing of textiles and apparel for careers in the fashion business.",
+          "KeyLearningOutcomes": [
+            "Understand textile production and apparel supply chains.",
+            "Develop skills in fashion marketing and merchandising.",
+            "Analyze global fashion trends and sustainability.",
+            "Apply business strategies to textile industries."
+          ],
+          "CareerProspects": "Textile managers, merchandisers, fashion buyers in retail and fashion industries.",
+          "UniqueFeatures": "Textile labs, industry projects, courses in sustainable textiles."
+        }
+      ]
+    },
+    {
+      "Faculty": "Law & Legal Studies",
+      "Programs": [
+        {
+          "Program": "Bachelor of Laws (LLB)",
+          "Overview": "Provides a comprehensive legal education, covering constitutional, criminal, and civil law, preparing students for legal practice or advanced studies.",
+          "KeyLearningOutcomes": [
+            "Master legal principles, case law, and statutory interpretation.",
+            "Develop skills in legal research, writing, and advocacy.",
+            "Understand ethical responsibilities in legal practice.",
+            "Analyze complex legal issues in diverse fields."
+          ],
+          "CareerProspects": "Lawyers, legal advisors, judges in law firms, government, and judiciary.",
+          "UniqueFeatures": "Moot court competitions, legal clinics, internships with law firms."
+        },
+        {
+          "Program": "B.A. Legal Studies",
+          "Overview": "Explores law from a multidisciplinary perspective, focusing on legal systems, ethics, and policy for legal and administrative careers.",
+          "KeyLearningOutcomes": [
+            "Understand legal systems, ethics, and jurisprudence.",
+            "Develop skills in legal analysis and policy evaluation.",
+            "Analyze the societal impact of laws and regulations.",
+            "Apply legal knowledge to public and private sectors."
+          ],
+          "CareerProspects": "Legal assistants, policy analysts, compliance officers in government and corporate sectors.",
+          "UniqueFeatures": "Legal research projects, policy workshops, courses in human rights law."
+        },
+        {
+          "Program": "B.A. Criminology & Criminal Justice",
+          "Overview": "Examines crime, justice systems, and rehabilitation, exploring social and legal aspects of crime prevention.",
+          "KeyLearningOutcomes": [
+            "Understand criminological theories and justice systems.",
+            "Analyze crime prevention and rehabilitation strategies.",
+            "Develop skills in forensic analysis and victimology.",
+            "Apply knowledge to criminal justice policy."
+          ],
+          "CareerProspects": "Criminologists, probation officers, forensic analysts in justice and law enforcement agencies.",
+          "UniqueFeatures": "Crime scene simulations, internships with justice agencies, courses in restorative justice."
+        },
+        {
+          "Program": "B.A. International Law & Diplomacy",
+          "Overview": "Explores global legal frameworks and diplomatic practices, preparing students for careers in international law and diplomacy.",
+          "KeyLearningOutcomes": [
+            "Understand international law, treaties, and human rights.",
+            "Develop skills in diplomatic negotiation and legal analysis.",
+            "Analyze global legal and diplomatic issues.",
+            "Apply knowledge to international disputes and cooperation."
+          ],
+          "CareerProspects": "Diplomats, international lawyers, policy advisors in global organizations and government.",
+          "UniqueFeatures": "Model UN, diplomatic simulations, study abroad programs."
+        }
+      ]
+    },
+    {
+      "Faculty": "Medicine & Allied Health",
+      "Programs": [
+        {
+          "Program": "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
+          "Overview": "Trains students to become medical doctors through rigorous clinical and theoretical education.",
+          "KeyLearningOutcomes": [
+            "Master human anatomy, physiology, and pathology.",
+            "Develop clinical skills in diagnosis and treatment.",
+            "Understand medical ethics and patient care.",
+            "Apply medical knowledge in clinical settings."
+          ],
+          "CareerProspects": "Doctors, surgeons, medical researchers in hospitals and healthcare systems.",
+          "UniqueFeatures": "Clinical rotations, medical simulations, partnerships with hospitals."
+        },
+        {
+          "Program": "B.Sc. Nursing (BSN)",
+          "Overview": "Prepares students to provide compassionate and skilled healthcare, combining clinical practice and nursing theory.",
+          "KeyLearningOutcomes": [
+            "Master nursing care, patient assessment, and clinical skills.",
+            "Develop skills in health promotion and patient education.",
+            "Understand nursing ethics and healthcare policies.",
+            "Apply evidence-based practices in nursing."
+          ],
+          "CareerProspects": "Registered nurses, nurse educators, healthcare administrators in hospitals and clinics.",
+          "UniqueFeatures": "Nursing labs, clinical placements, courses in community health."
+        },
+        {
+          "Program": "B.Sc. Public Health",
+          "Overview": "Focuses on improving community health through prevention and policy, addressing global health challenges.",
+          "KeyLearningOutcomes": [
+            "Understand epidemiology, health policy, and disease prevention.",
+            "Develop skills in public health research and program planning.",
+            "Analyze social determinants of health.",
+            "Apply strategies for community health promotion."
+          ],
+          "CareerProspects": "Public health officers, epidemiologists, health educators in government and NGOs.",
+          "UniqueFeatures": "Community health projects, internships with health organizations, courses in global health."
+        },
+        {
+          "Program": "B.Sc. Physiotherapy",
+          "Overview": "Trains students to restore mobility and function through therapeutic techniques, emphasizing patient care and rehabilitation.",
+          "KeyLearningOutcomes": [
+            "Master physiotherapy techniques and rehabilitation strategies.",
+            "Develop skills in patient assessment and treatment planning.",
+            "Understand musculoskeletal and neurological conditions.",
+            "Apply evidence-based physiotherapy practices."
+          ],
+          "CareerProspects": "Physiotherapists, rehabilitation specialists, sports therapists in clinics and hospitals.",
+          "UniqueFeatures": "Physiotherapy clinics, clinical placements, courses in sports rehabilitation."
+        },
+        {
+          "Program": "B.Sc. Medical Laboratory Science",
+          "Overview": "Focuses on diagnostic testing and laboratory analysis for careers in medical diagnostics.",
+          "KeyLearningOutcomes": [
+            "Master laboratory techniques in hematology, microbiology, and biochemistry.",
+            "Develop skills in diagnostic testing and quality control.",
+            "Understand clinical laboratory standards.",
+            "Apply lab results to medical diagnoses."
+          ],
+          "CareerProspects": "Medical laboratory scientists, diagnostic technicians, researchers in hospitals and labs.",
+          "UniqueFeatures": "Advanced diagnostic labs, clinical internships, courses in molecular diagnostics."
+        },
+        {
+          "Program": "B.Sc. Radiography",
+          "Overview": "Trains students in medical imaging techniques like X-rays and MRIs for diagnostic imaging careers.",
+          "KeyLearningOutcomes": [
+            "Master imaging technologies and radiation safety.",
+            "Develop skills in patient positioning and image analysis.",
+            "Understand diagnostic imaging protocols.",
+            "Apply imaging techniques in clinical settings."
+          ],
+          "CareerProspects": "Radiographers, imaging specialists, radiology technicians in hospitals and clinics.",
+          "UniqueFeatures": "Imaging labs, clinical rotations, courses in advanced imaging technologies."
+        }
+      ]
+    },
+    {
+      "Faculty": "Sciences",
+      "Programs": [
+        {
+          "Program": "B.Sc. Biology",
+          "Overview": "Offers a comprehensive exploration of life sciences, covering molecular biology to ecology, preparing students for careers in research, healthcare, and environmental management.",
+          "KeyLearningOutcomes": [
+            "Gain a strong foundation in cellular biology, genetics, and ecology.",
+            "Develop skills in scientific research and laboratory techniques.",
+            "Understand biodiversity, evolution, and ecological systems.",
+            "Apply biological principles to real-world challenges."
+          ],
+          "CareerProspects": "Research scientists, environmental consultants, biotechnologists, educators, or advanced studies in medicine or veterinary science.",
+          "UniqueFeatures": "Hands-on labs, field trips, undergraduate research."
+        },
+        {
+          "Program": "B.Sc. Chemistry",
+          "Overview": "Provides an in-depth study of chemical principles, preparing students for careers in industry夏, research, and academia.",
+          "KeyLearningOutcomes": [
+            "Master organic, inorganic, physical, and analytical chemistry.",
+            "Develop proficiency in lab techniques like spectroscopy.",
+            "Apply chemical principles to medicine and sustainability.",
+            "Enhance critical thinking."
+          ],
+          "CareerProspects": "Pharmaceuticals, chemical engineering, forensics, or advanced degrees.",
+          "UniqueFeatures": "Modern labs, industry internships, green chemistry research."
+        },
+        {
+          "Program": "B.Sc. Physics",
+          "Overview": "Delves into the fundamental laws of the universe, fostering skills for research and technology careers.",
+          "KeyLearningOutcomes": [
+            "Understand mechanics, electromagnetism, and quantum theory.",
+            "Develop computational skills for modeling systems.",
+            "Conduct experiments with advanced tools.",
+            "Apply physics to renewable energy."
+          ],
+          "CareerProspects": "Physicists, engineers, data analysts, or graduate studies.",
+          "UniqueFeatures": "Observatories, computational labs, particle physics research."
+        },
+        {
+          "Program": "B.Sc. Environmental Science",
+          "Overview": "Addresses global challenges like climate change through an interdisciplinary approach.",
+          "KeyLearningOutcomes": [
+            "Understand ecosystems and resource cycles.",
+            "Develop environmental monitoring skills.",
+            "Explore solutions to pollution and biodiversity loss.",
+            "Gain sustainability expertise."
+          ],
+          "CareerProspects": "Environmental consultants, conservation officers, policy analysts.",
+          "UniqueFeatures": "Fieldwork, partnerships, sustainable development courses."
+        },
+        {
+          "Program": "B.Sc. Biotechnology",
+          "Overview": "Focuses on biological processes for solutions in healthcare and agriculture.",
+          "KeyLearningOutcomes": [
+            "Master genetic engineering and bioinformatics.",
+            "Understand biotech ethics.",
+            "Design biotech experiments.",
+            "Apply biotechnology to drug development."
+          ],
+          "CareerProspects": "Biotechnologists, research scientists, quality analysts.",
+          "UniqueFeatures": "Biotech labs, industry internships, cutting-edge curriculum."
+        },
+        {
+          "Program": "B.Sc. Microbiology",
+          "Overview": "Explores microorganisms, preparing students for healthcare and research careers.",
+          "KeyLearningOutcomes": [
+            "Understand microbial genetics and function.",
+            "Develop culturing techniques.",
+            "Explore medical and environmental applications.",
+            "Analyze microbes in health."
+          ],
+          "CareerProspects": "Microbiologists, clinical scientists, research associates.",
+          "UniqueFeatures": "Microbiology labs, infectious disease research, health collaborations."
+        },
+        {
+          "Program": "B.Sc. Geology",
+          "Overview": "Examines Earth’s structure and processes for exploration and environmental careers.",
+          "KeyLearningOutcomes": [
+            "Understand plate tectonics and mineral formation.",
+            "Develop geological mapping skills.",
+            "Analyze environmental impacts.",
+            "Interpret resource data."
+          ],
+          "CareerProspects": "Geologists, environmental consultants, exploration managers.",
+          "UniqueFeatures": "Fieldwork, survey tools, mineral exploration research."
+        },
+        {
+          "Program": "B.Sc. Mathematics",
+          "Overview": "Provides a foundation in pure and applied mathematics for diverse careers.",
+          "KeyLearningOutcomes": [
+            "Master calculus and algebra.",
+            "Develop modeling and computational skills.",
+            "Apply math to finance and engineering.",
+            "Enhance logical reasoning."
+          ],
+          "CareerProspects": "Data analysts, actuaries, mathematicians, educators.",
+          "UniqueFeatures": "Math labs, interdisciplinary projects, modeling competitions."
+        },
+        {
+          "Program": "B.Sc. Statistics",
+          "Overview": "Focuses on data analysis for decision-making in data-driven fields.",
+          "KeyLearningOutcomes": [
+            "Master statistical methods and probability.",
+            "Develop software proficiency.",
+            "Apply statistics to healthcare and policy.",
+            "Enhance predictive modeling."
+          ],
+          "CareerProspects": "Statisticians, data scientists, biostatisticians.",
+          "UniqueFeatures": "Software training, data projects, internships."
+        },
+        {
+          "Program": "B.Sc. Food Science & Technology",
+          "Overview": "Explores food production and safety for sustainable products.",
+          "KeyLearningOutcomes": [
+            "Understand food chemistry and microbiology.",
+            "Develop quality control skills.",
+            "Explore plant-based innovations.",
+            "Analyze consumer trends."
+          ],
+          "CareerProspects": "Food technologists, product developers, quality managers.",
+          "UniqueFeatures": "Food labs, sensory training, industry partnerships."
+        },
+        {
+          "Program": "B.Sc. Marine Science",
+          "Overview": "Investigates marine environments, addressing conservation and climate issues.",
+          "KeyLearningOutcomes": [
+            "Understand marine ecosystems and oceanography.",
+            "Develop research and data skills.",
+            "Explore pollution solutions.",
+            "Gain conservation expertise."
+          ],
+          "CareerProspects": "Marine biologists, oceanographers, conservationists.",
+          "UniqueFeatures": "Marine fieldwork, research vessels, conservation partnerships."
+        },
+        {
+          "Program": "B.Sc. Biomedical Science",
+          "Overview": "Bridges biology and medicine to advance human health.",
+          "KeyLearningOutcomes": [
+            "Understand physiology and pathology.",
+            "Develop research and diagnostic skills.",
+            "Explore medical technology.",
+            "Analyze disease biology."
+          ],
+          "CareerProspects": "Biomedical scientists, clinical researchers, lab technicians.",
+          "UniqueFeatures": "Biomedical labs, clinical internships, personalized medicine research."
+        }
+      ]
+    }
+  ]
+}

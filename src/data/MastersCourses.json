@@ -1,0 +1,830 @@
+{
+  "Faculties": [
+    {
+      "Faculty": "Law & Legal Studies",
+      "Programs": [
+        {
+          "Program": "Master of Laws (LL.M)",
+          "Overview": "Advances expertise in specialized areas like international or corporate law for advanced legal practice and research.",
+          "KeyLearningOutcomes": [
+            "Master advanced legal theories and specialized law areas.",
+            "Develop skills in legal research and advocacy.",
+            "Analyze complex legal issues and regulations.",
+            "Apply legal knowledge to global and domestic challenges."
+          ],
+          "CareerProspects": "Lawyers, legal consultants, professors in law firms, government, academia.",
+          "UniqueFeatures": "Moot court competitions, legal research projects, specialized law courses."
+        },
+        {
+          "Program": "M.A. International Law",
+          "Overview": "Explores global legal frameworks and treaties for international legal practice.",
+          "KeyLearningOutcomes": [
+            "Master international law principles and treaties.",
+            "Develop skills in legal analysis and diplomatic negotiation.",
+            "Analyze global legal issues like human rights.",
+            "Apply international law to global disputes."
+          ],
+          "CareerProspects": "International lawyers, diplomats, legal advisors in global organizations.",
+          "UniqueFeatures": "International law seminars, diplomatic simulations, global governance courses."
+        },
+        {
+          "Program": "M.A. Human Rights Law",
+          "Overview": "Focuses on protecting human rights through legal frameworks.",
+          "KeyLearningOutcomes": [
+            "Master human rights law and international conventions.",
+            "Develop skills in legal advocacy and policy analysis.",
+            "Analyze human rights violations and remedies.",
+            "Apply human rights law to global issues."
+          ],
+          "CareerProspects": "Human rights lawyers, advocates, policy advisors in NGOs, government.",
+          "UniqueFeatures": "Human rights clinics, Juno projects, international justice courses."
+        },
+        {
+          "Program": "M.A. Environmental Law",
+          "Overview": "Examines legal frameworks for environmental protection and policy.",
+          "KeyLearningOutcomes": [
+            "Master environmental law and regulations.",
+            "Develop skills in legal research and policy advocacy.",
+            "Analyze environmental policies and compliance.",
+            "Apply environmental law to sustainability challenges."
+          ],
+          "CareerProspects": "Environmental lawyers, policy advisors, consultants in government, NGOs.",
+          "UniqueFeatures": "Environmental law projects, green organization partnerships, climate law courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Technology & Engineering",
+      "Programs": [
+        {
+          "Program": "M.Sc. Computer Science",
+          "Overview": "Advances expertise in algorithms, systems, software for tech innovation leadership.",
+          "KeyLearningOutcomes": [
+            "Master advanced algorithms, AI, distributed systems.",
+            "Develop skills in software architecture and development.",
+            "Analyze emerging technologies and applications.",
+            "Apply computer science to solve complex problems."
+          ],
+          "CareerProspects": "Software engineers, AI researchers, tech consultants in tech, research sectors.",
+          "UniqueFeatures": "Advanced computing labs, research projects, AI, cloud computing courses."
+        },
+        {
+          "Program": "M.Sc. Information Systems",
+          "Overview": "Focuses on managing IT systems for IT management leadership.",
+          "KeyLearningOutcomes": [
+            "Master information systems design and management.",
+            "Develop skills in IT strategy and enterprise systems.",
+            "Analyze cybersecurity and data management challenges.",
+            "Apply IT solutions to organizational needs."
+          ],
+          "CareerProspects": "IT managers, systems analysts, consultants in corporate, tech sectors.",
+          "UniqueFeatures": "IT labs, industry projects, enterprise resource planning courses."
+        },
+        {
+          "Program": "M.Sc. Cybersecurity",
+          "Overview": "Advances skills in protecting digital systems through threat detection, security strategies.",
+          "KeyLearningOutcomes": [
+            "Master advanced cybersecurity techniques and threat analysis.",
+            "Develop skills in ethical hacking and security auditing.",
+            "Analyze cybersecurity policies and regulations.",
+            "Apply security solutions to protect organizations."
+          ],
+          "CareerProspects": "Cybersecurity experts, security analysts, consultants in tech, government.",
+          "UniqueFeatures": "Cybersecurity labs, simulated cyberattacks, security certifications."
+        },
+        {
+          "Program": "M.Sc. Artificial Intelligence",
+          "Overview": "Explores AI techniques for leadership in AI-driven industries.",
+          "KeyLearningOutcomes": [
+            "Master machine learning, deep learning, AI algorithms.",
+            "Develop skills in AI programming and ethics.",
+            "Analyze AI applications in healthcare and robotics.",
+            "Apply AI to solve complex industry problems."
+          ],
+          "CareerProspects": "AI engineers, researchers, data scientists in tech, healthcare.",
+          "UniqueFeatures": "AI research labs, industry collaborations, AI ethics courses."
+        },
+        {
+          "Program": "M.Sc. Data Analytics",
+          "Overview": "Focuses on data analysis, visualization for data-driven decision-making.",
+          "KeyLearningOutcomes": [
+            "Master advanced data analytics and machine learning.",
+            "Develop skills in data visualization and big data technologies.",
+            "Analyze data-driven business and scientific problems.",
+            "Apply analytics to strategic decision-making."
+          ],
+          "CareerProspects": "Data analysts, data scientists, business intelligence specialists in tech, finance.",
+          "UniqueFeatures": "Data science labs, real-world data projects, predictive analytics courses."
+        },
+        {
+          "Program": "M.Sc. Software Development",
+          "Overview": "Advances skills in designing software systems for software engineering leadership.",
+          "KeyLearningOutcomes": [
+            "Master advanced software development methodologies.",
+            "Develop skills in software testing and DevOps.",
+            "Analyze software architecture and scalability.",
+            "Apply software solutions to industry challenges."
+          ],
+          "CareerProspects": "Software engineers, architects, project managers in tech industries.",
+          "UniqueFeatures": "Software development labs, agile projects, cloud-native development courses."
+        },
+        {
+          "Program": "M.Sc. Engineering Management",
+          "Overview": "Bridges engineering and management for leading technical projects, teams.",
+          "KeyLearningOutcomes": [
+            "Master engineering project management and leadership.",
+            "Develop skills in resource allocation and risk management.",
+            "Analyze technical and business challenges in engineering.",
+            "Apply management strategies to engineering projects."
+          ],
+          "CareerProspects": "Engineering managers, project directors, wi in engineering, tech sectors.",
+          "UniqueFeatures": "Industry projects, leadership workshops, innovation management courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Classical Studies",
+      "Programs": [
+        {
+          "Program": "M.A. Classical Studies",
+          "Overview": "Advances expertise in Greek, Roman civilizations through literature, history, philosophy.",
+          "KeyLearningOutcomes": [
+            "Master advanced classical literature and history.",
+            "Develop skills in analyzing ancient texts and artifacts.",
+            "Analyze the influence of classical civilizations.",
+            "Apply classical knowledge to modern contexts."
+          ],
+          "CareerProspects": "Professors, historians, curators in academia, cultural institutions.",
+          "UniqueFeatures": "Classical text seminars, archaeological research, classical mythology courses."
+        },
+        {
+          "Program": "M.A. Ancient History",
+          "Overview": "Advances knowledge of ancient civilizations through historical research.",
+          "KeyLearningOutcomes": [
+            "Master advanced historical research and methodologies.",
+            "Develop skills in analyzing ancient texts and archaeology.",
+            "Analyze ancient civilizations and their impacts.",
+            "Apply historical insights to cultural studies."
+          ],
+          "CareerProspects": "Historians, archaeologists, professors in academia, museums.",
+          "UniqueFeatures": "Archaeological excavations, historical seminars, ancient empires courses."
+        },
+        {
+          "Program": "M.A. Latin & Greek",
+          "Overview": "Advances expertise in classical languages, literature for study, teaching.",
+          "KeyLearningOutcomes": [
+            "Master advanced Latin and Greek language and grammar.",
+            "Develop skills in translating and analyzing classical texts.",
+            "Analyze the cultural significance of ancient literature.",
+            "Apply linguistic skills to classical research."
+          ],
+          "CareerProspects": "Language educators, translators, researchers in academia, publishing.",
+          "UniqueFeatures": "Language immersion programs, classical text seminars, ancient literature courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Education",
+      "Programs": [
+        {
+          "Program": "Master of Education (M.Ed.)",
+          "Overview": "Advances expertise in educational theory, practice for leadership roles.",
+          "KeyLearningOutcomes": [
+            "Master advanced educational theories and pedagogies.",
+            "Develop skills in curriculum design and assessment.",
+            "Analyze educational policies and leadership strategies.",
+            "Apply innovative teaching methods."
+          ],
+          "CareerProspects": "School principals, curriculum developers, education consultants in schools, organizations.",
+          "UniqueFeatures": "Educational leadership workshops, practicums, global education courses."
+        },
+        {
+          "Program": "M.A. Educational Leadership",
+          "Overview": "Focuses on leading educational institutions through administration, policy.",
+          "KeyLearningOutcomes": [
+            "Master educational leadership and management theories.",
+            "Develop skills in school administration and policy-making.",
+            "Analyze educational systems and reforms.",
+            "Apply leadership strategies to educational challenges."
+          ],
+          "CareerProspects": "School administrators, education policymakers, consultants.",
+          "UniqueFeatures": "Leadership simulations, school internships, educational policy courses."
+        },
+        {
+          "Program": "M.Sc. Curriculum & Instruction",
+          "Overview": "Advances expertise in designing effective curricula.",
+          "KeyLearningOutcomes": [
+            "Master advanced curriculum design and instructional strategies.",
+            "Develop skills in educational assessment and evaluation.",
+            "Analyze curriculum standards and innovations.",
+            "Apply curriculum solutions to educational settings."
+          ],
+          "CareerProspects": "Curriculum specialists, instructional coordinators, education consultants.",
+          "UniqueFeatures": "Curriculum projects, educational research, inclusive education courses."
+        },
+        {
+          "Program": "M.A. Special Education",
+          "Overview": "Advances skills in supporting diverse learners through inclusive education.",
+          "KeyLearningOutcomes": [
+            "Master special education theories and interventions.",
+            "Develop skills in individualized education plans.",
+            "Analyze inclusive education practices.",
+            "Apply strategies for diverse learners."
+          ],
+          "CareerProspects": "Special education coordinators, inclusion specialists, educational therapists.",
+          "UniqueFeatures": "Special education practicums, workshops, assistive technology courses."
+        },
+        {
+          "Program": "M.Sc. Educational Technology",
+          "Overview": "Explores technology applications in education for innovative learning environments.",
+          "KeyLearningOutcomes": [
+            "Master educational technology tools and platforms.",
+            "Develop skills in e-learning design and implementation.",
+            "Analyze technology’s impact on education.",
+            "Apply tech solutions to enhance learning."
+          ],
+          "CareerProspects": "Instructional designers, edtech specialists, technology trainers.",
+          "UniqueFeatures": "Edtech labs, digital curriculum projects, learning analytics courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Business & Social Sciences",
+      "Programs": [
+        {
+          "Program": "M.Sc. Economics",
+          "Overview": "Advances expertise in economic theory, policy analysis for research, consulting.",
+          "KeyLearningOutcomes": [
+            "Master advanced economic theories and econometrics.",
+            "Develop skills in economic modeling and policy analysis.",
+            "Analyze global economic trends and policies.",
+            "Apply economic insights to business and government."
+          ],
+          "CareerProspects": "Economists, financial analysts, policy advisors in banking, government, research sectors.",
+          "UniqueFeatures": "Economic simulations, research projects, behavioral economics courses."
+        },
+        {
+          "Program": "M.Sc. Psychology",
+          "Overview": "Advances knowledge in psychological research, practice in cognition, behavior.",
+          "KeyLearningOutcomes": [
+            "Master advanced psychological theories and research methods.",
+            "Develop skills in psychological assessment and intervention.",
+            "Analyze mental health and behavioral issues.",
+            "Apply psychology to clinical and organizational settings."
+          ],
+          "CareerProspects": "Clinical psychologists, researchers, consultants in healthcare, corporate sectors.",
+          "UniqueFeatures": "Psychology labs, clinical internships, neuropsychology courses."
+        },
+        {
+          "Program": "M.Sc. Human Resource Management",
+          "Overview": "Focuses on HR strategies, organizational leadership for HR roles.",
+          "KeyLearningOutcomes": [
+            "Master advanced HR theories and labor regulations.",
+            "Develop skills in talent management and organizational development.",
+            "Analyze workplace diversity and employee engagement.",
+            "Apply HR strategies to enhance organizational performance."
+          ],
+          "CareerProspects": "HR directors, consultants, labor relations specialists in corporate, nonprofit sectors.",
+          "UniqueFeatures": "HR simulations, industry internships, strategic HR courses."
+        },
+        {
+          "Program": "M.Sc. Project Management",
+          "Overview": "Equips students with skills in planning, executing projects with leadership focus.",
+          "KeyLearningOutcomes": [
+            "Master project management methodologies and tools.",
+            "Develop skills in risk management and project evaluation.",
+            "Analyze project planning and resource allocation.",
+            "Apply project management to diverse industries."
+          ],
+          "CareerProspects": "Project managers, program coordinators, consultants in corporate, government sectors.",
+          "UniqueFeatures": "Project management certifications, simulations, agile methodologies courses."
+        },
+        {
+          "Program": "M.Sc. Finance",
+          "Overview": "Advances expertise in financial management, investment strategies.",
+          "KeyLearningOutcomes": [
+            "Master advanced financial analysis and investment strategies.",
+            "Develop skills in risk management and financial modeling.",
+            "Analyze global financial markets and trends.",
+            "Apply financial strategies to corporate decision-making."
+          ],
+          "CareerProspects": "Financial analysts, investment bankers, CFOs in banking, corporate sectors.",
+          "UniqueFeatures": "Financial simulations, industry internships, fintech courses."
+        },
+        {
+          "Program": "M.Sc. Marketing",
+          "Overview": "Explores marketing strategies, consumer behavior for leadership in marketing, branding.",
+          "KeyLearningOutcomes": [
+            "Master advanced marketing theories and consumer psychology.",
+            "Develop skills in digital marketing and brand management.",
+            "Analyze market trends and marketing analytics.",
+            "Apply strategic marketing to global markets."
+          ],
+          "CareerProspects": "Marketing directors, brand managers, digital strategists in advertising, corporate sectors.",
+          "UniqueFeatures": "Marketing labs, campaign projects, neuromarketing courses."
+        },
+        {
+          "Program": "M.Sc. Political Science",
+          "Overview": "Advances knowledge of political systems, policies for governance, analysis roles.",
+          "KeyLearningOutcomes": [
+            "Master advanced political theories and methodologies.",
+            "Develop skills in policy analysis and political research.",
+            "Analyze global political systems and issues.",
+            "Apply political science to public policy challenges."
+          ],
+          "CareerProspects": "Policy analysts, political consultants, professors in government, academia.",
+          "UniqueFeatures": "Policy simulations, research seminars, global politics courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Sciences",
+      "Programs": [
+        {
+          "Program": "M.Sc. Environmental Science",
+          "Overview": "Advances expertise in addressing environmental challenges like climate change, pollution.",
+          "KeyLearningOutcomes": [
+            "Master advanced environmental research and analysis techniques.",
+            "Develop skills in environmental policy and sustainability planning.",
+            "Analyze ecological systems and global impacts.",
+            "Apply solutions to environmental issues like resource management."
+          ],
+          "CareerProspects": "Environmental consultants, sustainability managers, researchers in government, NGOs, industry.",
+          "UniqueFeatures": "Field-based research, environmental agency partnerships, climate change mitigation courses."
+        },
+        {
+          "Program": "M.Sc. Applied Mathematics",
+          "Overview": "Focuses on mathematical models for real-world problems in science, engineering, finance.",
+          "KeyLearningOutcomes": [
+            "Master advanced mathematical techniques and modeling.",
+            "Develop skills in computational mathematics and data analysis.",
+            "Apply mathematics to cryptography, optimization.",
+            "Analyze complex systems using mathematical tools."
+          ],
+          "CareerProspects": "Data scientists, mathematical modelers, researchers in tech, finance, academia.",
+          "UniqueFeatures": "Computational labs, interdisciplinary projects, mathematical modeling courses."
+        },
+        {
+          "Program": "M.Sc. Biotechnology",
+          "Overview": "Explores advanced techniques in genetic engineering, bioprocessing for biotech innovation.",
+          "KeyLearningOutcomes": [
+            "Master advanced biotechnology techniques like CRISPR, bioinformatics.",
+            "Develop skills in bioprocess design and product development.",
+            "Analyze ethical and regulatory issues in biotechnology.",
+            "Apply biotech solutions to healthcare, agriculture."
+          ],
+          "CareerProspects": "Biotech researchers, product developers, regulatory affairs specialists in pharmaceuticals, agriculture.",
+          "UniqueFeatures": "Biotech labs, industry collaborations, bioprocessing courses."
+        },
+        {
+          "Program": "M.Sc. Physics",
+          "Overview": "Advances knowledge in theoreticalussia and experimental physics, including quantum mechanics, astrophysics.",
+          "KeyLearningOutcomes": [
+            "Master advanced physics concepts and experimental techniques.",
+            "Develop skills in computational physics and data analysis.",
+            "Analyze complex physical systems and phenomena.",
+            "Apply physics to fields like nanotechnology."
+          ],
+          "CareerProspects": "Physicists, research scientists, professors in academia, research, technology sectors.",
+          "UniqueFeatures": "Advanced physics labs, research collaborations, quantum computing courses."
+        },
+        {
+          "Program": "M.Sc. Biochemistry",
+          "Overview": "Delves into molecular mechanisms of life processes for research, healthcare careers.",
+          "KeyLearningOutcomes": [
+            "Master biochemical pathways and molecular techniques.",
+            "Develop skills in protein analysis and enzymology.",
+            "Analyze biochemical applications in medicine, biotechnology.",
+            "Apply research methods to biochemical challenges."
+          ],
+          "CareerProspects": "Biochemists, clinical researchers, lab managers in healthcare, biotech industries.",
+          "UniqueFeatures": "Biochemistry labs, research projects, molecular diagnostics courses."
+        },
+        {
+          "Program": "M.Sc. Public Health",
+          "Overview": "Focuses on strategies for disease prevention, health promotion through research, policy.",
+          "KeyLearningOutcomes": [
+            "Master epidemiology, biostatistics, health policy analysis.",
+            "Develop skills in public health program design and evaluation.",
+            "Analyze global health issues and social determinants.",
+            "Apply evidence-based strategies to public health challenges."
+          ],
+          "CareerProspects": "Public health specialists, epidemiologists, health policy analysts in government, NGOs.",
+          "UniqueFeatures": "Community health projects, global health seminars, health equity courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Arts & Humanities",
+      "Programs": [
+        {
+          "Program": "M.A. English Literature",
+          "Overview": "Deepens understanding of literary works through critical analysis.",
+          "KeyLearningOutcomes": [
+            "Master advanced literary analysis and critical theory.",
+            "Develop skills in research and academic writing.",
+            "Analyze global literature and cultural contexts.",
+            "Apply literary insights to teaching, publishing."
+          ],
+          "CareerProspects": "Professors, editors, literary critics in academia, publishing, media.",
+          "UniqueFeatures": "Literary seminars, research symposia, postcolonial literature courses."
+        },
+        {
+          "Program": "M.A. International Relations",
+          "Overview": "Advances knowledge of global politics, diplomacy, and international systems.",
+          "KeyLearningOutcomes": [
+            "Master theories of international relations and global governance.",
+            "Develop skills in diplomatic analysis and policy evaluation.",
+            "Analyze global issues like security, trade.",
+            "Apply strategies for international cooperation."
+          ],
+          "CareerProspects": "Diplomats, policy analysts, international consultants in government, global organizations.",
+          "UniqueFeatures": "Diplomatic simulations, study abroad programs, global security courses."
+        },
+        {
+          "Program": "M.A. Philosophy",
+          "Overview": "Explores advanced philosophical concepts, ethics, and critical thinking.",
+          "KeyLearningOutcomes": [
+            "Master advanced philosophical theories and arguments.",
+            "Develop skills in ethical analysis and logical reasoning.",
+            "Analyze contemporary philosophical issues.",
+            "Apply philosophy to interdisciplinary fields."
+          ],
+          "CareerProspects": "Ethicists, professors, consultants in academia, law, business.",
+          "UniqueFeatures": "Philosophy colloquia, ethics workshops, applied philosophy courses."
+        },
+        {
+          "Program": "M.A. Development Studies",
+          "Overview": "Focuses on global development challenges like poverty, inequality.",
+          "KeyLearningOutcomes": [
+            "Master theories of development and global inequality.",
+            "Develop skills in policy analysis and program evaluation.",
+            "Analyze social and international development issues.",
+            "Apply sustainable development strategies."
+          ],
+          "CareerProspects": "Development consultants, policy advisors, program managers in NGOs, government.",
+          "UniqueFeatures": "Development projects, NGO partnerships, sustainable development courses."
+        },
+        {
+          "Program": "M.A. History",
+          "Overview": "Advances historical research and analysis of global histories.",
+          "KeyLearningOutcomes": [
+            "Master advanced historical research and methodologies.",
+            "Develop skills in archival research.",
+            "Analyze global historical events and impacts.",
+            "Apply historical insights to contemporary issues."
+          ],
+          "CareerProspects": "Historians, archivists, professors in academia, cultural institutions.",
+          "UniqueFeatures": "Archival research, historical seminars, global history courses."
+        },
+        {
+          "Program": "M.A. Communication Studies",
+          "Overview": "Explores advanced media, communication theories for leadership roles.",
+          "KeyLearningOutcomes": [
+            "Master communication theories and media analysis.",
+            "Develop skills in strategic communication and media production.",
+            "Analyze media’s role in shaping public opinion.",
+            "Apply communication strategies in diverse contexts."
+          ],
+          "CareerProspects": "Media strategists, communication directors, professors in media, corporate sectors.",
+          "UniqueFeatures": "Media production studios, communication projects, digital media courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Medicine & Allied Health",
+      "Programs": [
+        {
+          "Program": "M.Sc. Public Health (MPH)",
+          "Overview": "Advances expertise in community health, epidemiology for global health challenges.",
+          "KeyLearningOutcomes": [
+            "Master advanced epidemiology and health policy analysis.",
+            "Develop skills in public health program design.",
+            "Analyze social determinants of health.",
+            "Apply evidence-based public health strategies."
+          ],
+          "CareerProspects": "Public health directors, epidemiologists, health policy analysts in government, NGOs.",
+          "UniqueFeatures": "Global health projects, health organization internships, health equity courses."
+        },
+        {
+          "Program": "M.Sc. Nursing (MSN)",
+          "Overview": "Advances clinical and leadership skills in nursing for advanced practice.",
+          "KeyLearningOutcomes": [
+            "Master advanced nursing care and clinical practice.",
+            "Develop skills in healthcare leadership and patient education.",
+            "Analyze nursing research and evidence-based practice.",
+            "Apply advanced nursing to diverse healthcare settings."
+          ],
+          "CareerProspects": "Nurse practitioners, nurse educators, educators, healthcare administrators in hospitals, clinics.",
+          "UniqueFeatures": "Advanced nursing labs, clinical placements, advanced practice nursing courses."
+        },
+        {
+          "Program": "M.Sc. Clinical Psychology",
+          "Overview": "Advances expertise in mental health assessment, therapy for clinical practice.",
+          "KeyLearningOutcomes": [
+            "Master clinical assessmentcommodation and therapeutic techniques.",
+            "Develop skills in psychological research and intervention.",
+            "Analyze mental health disorders and treatments.",
+            "Apply clinical psychology to patient care."
+          ],
+          "CareerProspects": "Clinical psychologists, therapists, researchers in healthcare, academia.",
+          "UniqueFeatures": "Clinical internships, psychology labs, cognitive-behavioral therapy courses."
+        },
+        {
+          "Program": "M.Sc. Physiotherapy",
+          "Overview": "Advances skills in rehabilitation, patient care through therapeutic techniques.",
+          "KeyLearningOutcomes": [
+            "Master advanced physiotherapy techniques and rehabilitation.",
+            "Develop skills in patient assessment and treatment planning.",
+            "Analyze musculoskeletal and neurological conditions.",
+            "Apply evidence-based physiotherapy practices."
+          ],
+          "CareerProspects": "Advanced physiotherapists, rehabilitation specialists, researchers.",
+          "UniqueFeatures": "Advanced physiotherapy clinics, clinical research, sports therapy courses."
+        },
+        {
+          "Program": "M.Sc. Medical Laboratory Science",
+          "Overview": "Advances expertise in diagnostic testing for medical diagnostics leadership.",
+          "KeyLearningOutcomes": [
+            "Master advanced laboratory techniques and diagnostics.",
+            "Develop skills in quality control and lab management.",
+            "Analyze clinical laboratory standards.",
+            "Apply lab results to medical research."
+          ],
+          "CareerProspects": "Lab directors, diagnostic researchers, clinical scientists in hospitals, labs.",
+          "UniqueFeatures": "Advanced diagnostic labs, research projects, molecular diagnostics courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Hospitality & Culinary Arts",
+      "Programs": [
+        {
+          "Program": "M.Sc. Hospitality Management",
+          "Overview": "Advances leadership skills in hospitality operations, strategies.",
+          "KeyLearningOutcomes": [
+            "Master advanced hospitality management and guest services.",
+            "Develop skills in revenue management and strategic planning.",
+            "Analyze global hospitality trends and sustainability.",
+            "Apply leadership strategies to hospitality businesses."
+          ],
+          "CareerProspects": "Hospitality directors, hotel managers, consultants in hospitality sectors.",
+          "UniqueFeatures": "Hospitality simulations, industry internships, luxury hospitality courses."
+        },
+        {
+          "Program": "M.Sc. Culinary Innovation & Food Science",
+          "Overview": "Advances expertise in culinary arts, food technology for innovative solutions.",
+          "KeyLearningOutcomes": [
+            "Master advanced culinary techniques and food science.",
+            "Develop skills in food product development and innovation.",
+            "Analyze food safety and nutritional trends.",
+            "Apply culinary innovation to industry challenges."
+          ],
+          "CareerProspects": "Culinary innovators, food scientists, culinary educators.",
+          "UniqueFeatures": "Culinary labs, innovation projects, sustainable food systems courses."
+        },
+        {
+          "Program": "M.Sc. Tourism & Event Management",
+          "Overview": "Advances skills in planning, managing tourism and events.",
+          "KeyLearningOutcomes": [
+            "Master advanced tourism management and event planning.",
+            "Develop skills in tourism marketing and logistics.",
+            "Analyze global tourism trends and sustainability.",
+            "Apply strategies for successful events and tourism."
+          ],
+          "CareerProspects": "Tourism directors, event managers, travel consultants.",
+          "UniqueFeatures": "Event planning projects, tourism board internships, destination management courses."
+        }
+      ]
+    },
+    {
+      "Faculty": "Fashion & Beauty",
+      "Programs": [
+        {
+          "Program": "M.A. Fashion Design",
+          "Overview": "The M.A. in Fashion Design advances creative and technical skills in fashion. Students create innovative fashion collections.",
+          "KeyLearningOutcomes": [
+            "Master advanced fashion design and pattern-making.",
+            "Develop skills in textile innovation and sustainable fashion.",
+            "Analyze global fashion trends and consumer behavior.",
+            "Apply design concepts to professional collections."
+          ],
+          "CareerProspects": "Senior fashion designers, creative directors, or professors in fashion industries.",
+          "UniqueFeatures": "Fashion studios, runway shows, and courses in sustainable fashion."
+        },
+        {
+          "Program": "M.Sc. Textile & Apparel Management",
+          "Overview": "The M.Sc. in Textile & Apparel Management advances expertise in textile production and fashion business. Students prepare for leadership in fashion management.",
+          "KeyLearningOutcomes": [
+            "Master advanced textile production and supply chain management.",
+            "Develop skills in fashion marketing and merchandising.",
+            "Analyze global textile and apparel markets.",
+            "Apply management strategies to fashion industries."
+          ],
+          "CareerProspects": "Textile managers, fashion buyers, or consultants in retail and fashion industries.",
+          "UniqueFeatures": "Textile labs, industry projects, and courses in sustainable textiles."
+        },
+        {
+          "Program": "M.A. Cosmetology & Aesthetics",
+          "Overview": "The M.A. in Cosmetology & Aesthetics advances expertise in beauty and aesthetic practices. Students explore advanced beauty techniques.",
+          "KeyLearningOutcomes": [
+            "Master advanced cosmetology and aesthetic techniques.",
+            "Develop skills in cosmetic product development and salon management.",
+            "Analyze beauty trends and consumer preferences.",
+            "Apply aesthetic solutions to professional services."
+          ],
+          "CareerProspects": "Beauty consultants, aestheticians, or professors in beauty industries.",
+          "UniqueFeatures": "Beauty labs, industry internships, and courses in aesthetic science."
+        }
+      ]
+    },
+    {
+      "Faculty": "Architecture & Design",
+      "Programs": [
+        {
+          "Program": "Master of Architecture (M.Arch)",
+          "Overview": "The M.Arch program advances architectural design and theory. Students explore innovative and sustainable architectural solutions.",
+          "KeyLearningOutcomes": [
+            "Master advanced architectural design and theory.",
+            "Develop skills in sustainable design and urban planning.",
+            "Analyze architectural cultural studies.",
+            "Apply design solutions to complex projects."
+          ],
+          "CareerProspects": "Architects, urban designers, or professors in architecture firms and academia.",
+          "UniqueFeatures": "Advanced design studios, architectural research, and courses in sustainable architecture."
+        },
+        {
+          "Program": "M.A. Interior Design",
+          "Overview": "The M.A. in Interior Design advances expertise in creating functional and aesthetic spaces. Students prepare for leadership in interior design.",
+          "KeyLearningOutcomes": [
+            "Master advanced interior design and spatial planning.",
+            "Develop skills in advanced 3D modeling and material innovation.",
+            "Analyze ergonomic and sustainable design principles.",
+            "Apply design solutions to client needs."
+          ],
+          "CareerProspects": "Senior interior designers, design consultants, or professors.",
+          "UniqueFeatures": "Interior design studios, client projects, and courses in sustainable interiors."
+        },
+        {
+          "Program": "M.F.A. Graphic Design",
+          "Overview": "The M.F.A. in Graphic Design advances skills in visual communication. Students create innovative designs for branding and media.",
+          "KeyLearningOutcomes": [
+            "Master advanced graphic design and typography.",
+            "Develop skills in digital media and branding.",
+            "Analyze visual communication trends.",
+            "Apply design principles to professional projects."
+          ],
+          "CareerProspects": "Art directors, senior designers, or professors in advertising and media.",
+          "UniqueFeatures": "Design labs, portfolio development, and courses in motion graphics."
+        },
+        {
+          "Program": "M.Sc. Urban & Regional Planning",
+          "Overview": "The M.Sc. in Urban & Regional Planning advances expertise in designing sustainable urban spaces. Students address urban development challenges.",
+          "KeyLearningOutcomes": [
+            "Master advanced urban planning and policy analysis.",
+            "Develop skills in GIS and spatial planning.",
+            "Analyze environmental and social impacts of urban development.",
+            "Apply planning strategies for sustainable cities."
+          ],
+          "CareerProspects": "Urban planners, policy advisors, or consultants in government and planning agencies.",
+          "UniqueFeatures": "Urban planning projects, GIS labs, and courses in smart cities."
+        }
+      ]
+    },
+    {
+      "Faculty": "Nursing & Public Health",
+      "Programs": [
+        {
+          "Program": "M.Sc. Nursing (MSN)",
+          "Overview": "The M.Sc. in Nursing advances clinical and leadership skills in nursing. Students prepare for advanced practice and leadership roles.",
+          "KeyLearningOutcomes": [
+            "Master advanced nursing care and clinical practice.",
+            "Develop skills in healthcare leadership and patient education.",
+            "Analyze nursing research and evidence-based practice.",
+            "Apply advanced nursing to diverse healthcare settings."
+          ],
+          "CareerProspects": "Nurse practitioners, nurse educators, healthcare administrators.",
+          "UniqueFeatures": "Advanced nursing labs, clinical placements, and courses in advanced practice nursing."
+        },
+        {
+          "Program": "Master of Public Health (MPH)",
+          "Overview": "The MPH program advances expertise in public health and epidemiology. Students address global health challenges through advanced strategies.",
+          "KeyLearningOutcomes": [
+            "Master advanced epidemiology and health policy analysis.",
+            "Develop skills in public health program design.",
+            "Analyze social determinants of health.",
+            "Apply evidence-based public health strategies."
+          ],
+          "CareerProspects": "Public health directors, epidemiologists, or health policy analysts.",
+          "UniqueFeatures": "Global health projects, internships with health organizations, and courses in health equity."
+        },
+        {
+          "Program": "M.Sc. Community Health Nursing",
+          "Overview": "The M.Sc. in Community Health Nursing advances skills in community-based nursing care. Students focus on health promotion and community health.",
+          "KeyLearningOutcomes": [
+            "Master community health nursing and health promotion.",
+            "Develop skills in community assessment and intervention.",
+            "Analyze community health needs and policies.",
+            "Apply nursing strategies to community health."
+          ],
+          "CareerProspects": "Community health nurses, public health nurses, or health educators.",
+          "UniqueFeatures": "Community health projects, clinical placements, and courses in health promotion."
+        },
+        {
+          "Program": "M.Sc. Health Promotion",
+          "Overview": "The M.Sc. in Health Promotion advances expertise in promoting healthy behaviors and policies. Students prepare for leadership in health promotion.",
+          "KeyLearningOutcomes": [
+            "Master health promotion theories and strategies.",
+            "Develop skills in program design and community engagement.",
+            "Analyze health behavior and social determinants.",
+            "Apply health promotion to public health challenges."
+          ],
+          "CareerProspects": "Health promotion specialists, public health educators, or program managers.",
+          "UniqueFeatures": "Health promotion campaigns, community projects, and courses in behavioral health."
+        }
+      ]
+    },
+    {
+      "Faculty": "Veterinary Medicine",
+      "Programs": [
+        {
+          "Program": "Master of Veterinary Science (M.V.Sc)",
+          "Overview": "The M.V.Sc program advances expertise in veterinary medicine and research. Students prepare for advanced veterinary practice and research.",
+          "KeyLearningOutcomes": [
+            "Master advanced veterinary diagnostics and treatments.",
+            "Develop skills in veterinary research and surgery.",
+            "Analyze animal health and public health issues.",
+            "Apply veterinary science to clinical and research settings."
+          ],
+          "CareerProspects": "Veterinarians, researchers, or professors in veterinary and research sectors.",
+          "UniqueFeatures": "Veterinary clinics, research projects, and courses in advanced veterinary care."
+        },
+        {
+          "Program": "M.Sc. Animal Health & Production",
+          "Overview": "The M.Sc. in Animal Health & Production advances expertise in livestock and animal management. Students explore sustainable animal production.",
+          "KeyLearningOutcomes": [
+            "Master advanced animal health and production techniques.",
+            "Develop skills in livestock management and disease prevention.",
+            "Analyze animal welfare and production systems.",
+            "Apply sustainable practices in animal husbandry."
+          ],
+          "CareerProspects": "Animal health specialists, livestock managers, or researchers.",
+          "UniqueFeatures": "Animal health labs, farm-based research, and courses in animal welfare."
+        }
+      ]
+    },
+    {
+      "Faculty": "Agriculture & Natural Resources",
+      "Programs": [
+        {
+          "Program": "M.Sc. Agronomy",
+          "Overview": "The M.Sc. in Agronomy advances expertise in crop production and soil management. Students explore sustainable agricultural practices.",
+          "KeyLearningOutcomes": [
+            "Master advanced agronomy and crop science.",
+            "Develop skills in soil fertility and crop breeding.",
+            "Analyze sustainable agriculture practices.",
+            "Apply agronomic solutions to food security."
+          ],
+          "CareerProspects": "Graduates can work as agronomists, agricultural researchers, or consultants in agriculture and research.",
+          "UniqueFeatures": "Agricultural research farms, field experiments, and courses in precision agriculture."
+        },
+        {
+          "Program": "M.Sc. Agricultural Economics",
+          "Overview": "The M.Sc. in Agricultural Economics advances knowledge in agricultural markets and policies. Students prepare for leadership in agribusiness.",
+          "KeyLearningOutcomes": [
+            "Master advanced agricultural economics and policy analysis.",
+            "Develop skills in market analysis and agribusiness management.",
+            "Analyze global agricultural trade and policies.",
+            "Apply economic strategies to agribusiness challenges."
+          ],
+          "CareerProspects": "Career options include agricultural economists, policy advisors, or agribusiness managers.",
+          "UniqueFeatures": "Agribusiness projects, industry internships, and courses in agricultural policy."
+        },
+        {
+          "Program": "M.Sc. Environmental Management",
+          "Overview": "The M.Sc. in Environmental Management focuses on sustainable resource management. Students address environmental challenges through policy and practice.",
+          "KeyLearningOutcomes": [
+            "Master environmental management and sustainability principles.",
+            "Develop skills in environmental impact assessment.",
+            "Analyze environmental policies and regulations.",
+            "Apply management strategies for conservation."
+          ],
+          "CareerProspects": "Graduates can work as environmental managers, sustainability consultants, or policy advisors in government and NGOs.",
+          "UniqueFeatures": "Environmental projects, partnerships with green organizations, and courses in conservation management."
+        },
+        {
+          "Program": "M.Sc. Soil Science",
+          "Overview": "The M.Sc. in Soil Science advances expertise in soil health and management. Students explore soil’s role in agriculture and ecosystems.",
+          "KeyLearningOutcomes": [
+            "Master advanced soil chemistry and biology.",
+            "Develop skills in soil analysis and conservation.",
+            "Analyze soil management practices for sustainability.",
+            "Apply soil science to agricultural productivity."
+          ],
+          "CareerProspects": "Career paths include soil scientists, agricultural consultants, or researchers.",
+          "UniqueFeatures": "Soil science labs, field research, and courses in soil conservation."
+        }
+      ]
+    }
+  ]
+}
